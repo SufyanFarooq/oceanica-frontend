@@ -1,6 +1,14 @@
 # Oceanica Crop Science Website
 
-A modern, responsive website for Oceanica Crop Science built with Next.js 14 and Tailwind CSS.
+A modern, responsive, **bilingual (English/Urdu)** website for Oceanica Crop Science built with Next.js 15 and Tailwind CSS.
+
+## 🌍 **Bilingual Features**
+
+- **Dual Language Support**: Complete English and Urdu translations
+- **Language Switching**: Easy toggle between English and Urdu
+- **RTL Support**: Full right-to-left layout support for Urdu
+- **Localized Content**: All text content available in both languages
+- **Dynamic Logos**: Automatic logo switching based on language
 
 ## 🚀 Features
 
@@ -8,7 +16,8 @@ A modern, responsive website for Oceanica Crop Science built with Next.js 14 and
 - **Responsive Layout**: Mobile-first design that works on all devices
 - **Interactive Navigation**: Dropdown menus for crops and products
 - **Comprehensive Pages**: All major sections covered as requested
-- **Performance Optimized**: Built with Next.js for fast loading and SEO
+- **Performance Optimized**: Built with Next.js 15 for fast loading and SEO
+- **Bilingual Support**: Full English and Urdu language support
 
 ## 📁 Project Structure
 
@@ -18,6 +27,9 @@ oceanica-frontend/
 │   ├── globals.css              # Global styles and Tailwind CSS
 │   ├── layout.tsx               # Root layout component
 │   ├── page.tsx                 # Home page (landing page)
+│   ├── i18n/                    # Internationalization
+│   │   ├── context.tsx          # Language context provider
+│   │   └── locales/             # (legacy) Language files – now in public/i18n
 │   ├── crop-solutions/          # Crop solutions section
 │   │   ├── page.tsx            # Main crop solutions page
 │   │   ├── corn/               # Individual crop pages
@@ -36,7 +48,15 @@ oceanica-frontend/
 │   └── contact-us/             # Contact Us page
 ├── components/                   # Reusable components
 │   ├── Navbar.tsx              # Navigation component
-│   └── Footer.tsx              # Footer component
+│   ├── Footer.tsx              # Footer component
+│   └── LanguageSwitcher.tsx    # Language switching component
+├── public/                      # Static assets
+│   ├── i18n/                   # Translation JSONs served statically
+│   │   ├── en.json             # English translations
+│   │   └── ur.json             # Urdu translations
+│   ├── logo-en.png             # English logo (required)
+│   ├── logo-ur.png             # Urdu logo (required)
+│   └── README.md               # Asset documentation
 ├── package.json                 # Dependencies and scripts
 ├── tailwind.config.js          # Tailwind CSS configuration
 ├── next.config.js              # Next.js configuration
@@ -45,11 +65,12 @@ oceanica-frontend/
 
 ## 🛠️ Technologies Used
 
-- **Next.js 14**: React framework with app router
-- **React 18**: Latest React features and hooks
+- **Next.js 15**: React framework with app router
+- **React 19**: Latest React features and hooks
 - **TypeScript**: Type-safe development
 - **Tailwind CSS**: Utility-first CSS framework
 - **Lucide React**: Beautiful, customizable icons
+- **i18n**: Internationalization support
 
 ## 🚀 Getting Started
 
@@ -73,15 +94,36 @@ oceanica-frontend/
    yarn install
    ```
 
-3. **Run the development server**
+3. **Add Logo Files**
+   Place your logo files in the `public/` folder:
+   - `logo-en.png` - English version
+   - `logo-ur.png` - Urdu version
+
+4. **Run the development server**
    ```bash
    npm run dev
    # or
    yarn dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 🌐 Language Support
+
+### Available Languages
+- **English (en)**: Default language
+- **Urdu (ur)**: Full RTL support with complete translations
+
+### Language Switching
+- Click the language switcher in the top navigation
+- Automatically switches logos and content
+- Remembers user preference in localStorage
+- Updates document direction (LTR/RTL)
+
+### Translation Files
+- **English**: `app/i18n/locales/en.json`
+- **Urdu**: `app/i18n/locales/ur.json`
 
 ## 📱 Pages Created
 
@@ -132,8 +174,15 @@ oceanica-frontend/
 - **Icons**: Relevant agricultural and business icons
 - **Animations**: Subtle hover effects and transitions
 - **Responsive**: Mobile-first design approach
+- **RTL Support**: Full right-to-left layout for Urdu
 
 ## 🔧 Customization
+
+### Languages
+Add new languages by:
+1. Creating new locale file in `app/i18n/locales/`
+2. Adding language to the context
+3. Updating the language switcher
 
 ### Colors
 Edit `tailwind.config.js` to modify the color scheme:
@@ -152,6 +201,7 @@ colors: {
 - Update company information in respective page components
 - Modify contact details in `ContactUs` component
 - Change product information in products pages
+- Update translations in locale files
 
 ## 📦 Build and Deploy
 
@@ -185,13 +235,15 @@ The site can be deployed to:
 - Contact form is ready for backend integration
 - SEO-friendly with proper meta tags and structure
 - Performance optimized with Next.js features
+- Full bilingual support with RTL layout
+- Automatic logo switching based on language
 
 ## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch
 3. Make your changes
-4. Test thoroughly
+4. Test thoroughly in both languages
 5. Submit a pull request
 
 ## 📄 License
@@ -205,3 +257,5 @@ For any questions or issues, please contact the development team or refer to the
 ---
 
 **Oceanica Crop Science** - Growing Tomorrow's Food Security 🌱
+
+*Available in English and Urdu / انگریزی اور اردو میں دستیاب*

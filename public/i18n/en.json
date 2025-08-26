@@ -1,0 +1,169 @@
+{
+  "nav": {
+    "crops": "Crops",
+    "products": "Products",
+    "nayaSavera": "Naya Savera",
+    "sustainability": "Sustainability",
+    "aboutUs": "About US",
+    "contactUs": "Contact US",
+    "careers": "Careers"
+  },
+  "home": {
+    "hero": {
+      "title": "Growing Tomorrow's",
+      "titleHighlight": "Food Security",
+      "subtitle": "Oceanica Crop Science provides innovative agricultural solutions to help farmers increase yields, protect crops, and ensure sustainable food production for Pakistan.",
+      "exploreCrops": "Explore Crop Solutions",
+      "viewProducts": "View Products"
+    },
+    "features": {
+      "title": "Why Choose Oceanica?",
+      "subtitle": "We combine cutting-edge science with local expertise to deliver solutions that work for Pakistani farmers.",
+      "innovation": {
+        "title": "Innovation",
+        "description": "Latest agricultural technologies and research-backed solutions"
+      },
+      "quality": {
+        "title": "Quality",
+        "description": "Premium products that meet international standards"
+      },
+      "support": {
+        "title": "Support",
+        "description": "Expert agronomic advice and technical support"
+      },
+      "results": {
+        "title": "Results",
+        "description": "Proven track record of increased yields and crop protection"
+      }
+    },
+    "crops": {
+      "title": "Crop Solutions",
+      "subtitle": "Comprehensive solutions for Pakistan's major crops, from seed to harvest.",
+      "viewAll": "View All Crop Solutions"
+    },
+    "cta": {
+      "title": "Ready to Transform Your Farming?",
+      "subtitle": "Join thousands of farmers who trust Oceanica Crop Science for their agricultural needs. Get expert advice and premium products today.",
+      "contactUs": "Contact Us",
+      "learnMore": "Learn More"
+    }
+  },
+  "crops": {
+    "title": "Crop Solutions",
+    "subtitle": "Comprehensive agricultural solutions tailored for Pakistan's major crops. From seed treatment to harvest protection, we've got you covered.",
+    "solutions": {
+      "title": "Why Choose Our Crop Solutions?",
+      "subtitle": "We provide science-backed solutions that deliver real results for Pakistani farmers.",
+      "increasedYields": {
+        "title": "Increased Yields",
+        "description": "Proven solutions that boost crop productivity and quality"
+      },
+      "cropProtection": {
+        "title": "Crop Protection",
+        "description": "Comprehensive protection against pests, diseases, and weeds"
+      },
+      "sustainableFarming": {
+        "title": "Sustainable Farming",
+        "description": "Environmentally responsible solutions for long-term success"
+      }
+    },
+    "cta": {
+      "title": "Need Expert Advice?",
+      "subtitle": "Our agricultural experts are here to help you choose the right solutions for your specific crop and growing conditions.",
+      "getAdvice": "Get Expert Advice",
+      "viewProducts": "View Products"
+    }
+  },
+  "products": {
+    "title": "Crop Protection Products",
+    "subtitle": "Premium agricultural solutions designed for Pakistani farmers. Protect your crops with our proven product range.",
+    "categories": {
+      "title": "Product Categories",
+      "subtitle": "Explore our comprehensive range of crop protection solutions designed for every stage of crop development.",
+      "herbicide": "Herbicide",
+      "insecticide": "Insecticide",
+      "fungicide": "Fungicide",
+      "seedcare": "Seedcare"
+    },
+    "featured": {
+      "title": "Featured Products",
+      "subtitle": "Our most popular and effective crop protection solutions trusted by farmers across Pakistan."
+    },
+    "whyChoose": {
+      "title": "Why Choose Oceanica Products?",
+      "subtitle": "We track our progress through key performance indicators and regular reporting to ensure transparency and accountability."
+    },
+    "cta": {
+      "title": "Need Product Recommendations?",
+      "subtitle": "Our product specialists are here to help you choose the right solutions for your specific crop and growing conditions.",
+      "getAdvice": "Get Expert Advice",
+      "viewCrops": "View Crop Solutions"
+    }
+  },
+  "nayaSavera": {
+    "title": "Naya Savera",
+    "subtitle": "A new dawn for Pakistani agriculture. Empowering farmers, engaging youth, and building sustainable farming communities for tomorrow.",
+    "mission": {
+      "title": "Our Mission",
+      "description": "Naya Savera represents our commitment to not just providing agricultural products, but to building a brighter future for Pakistan's farming community.",
+      "principles": "Key Objectives"
+    },
+    "initiatives": {
+      "title": "Our Initiatives",
+      "subtitle": "Comprehensive programs designed to transform Pakistani agriculture and create opportunities for farmers and youth."
+    },
+    "successStories": {
+      "title": "Success Stories",
+      "subtitle": "Real stories from real farmers who have transformed their lives through Naya Savera programs."
+    },
+    "cta": {
+      "title": "Be Part of Naya Savera",
+      "subtitle": "Join us in building a brighter future for Pakistani agriculture. Whether you're a farmer, student, or community member, there's a place for you.",
+      "joinPrograms": "Join Our Programs",
+      "learnMore": "Learn More"
+    }
+  },
+  "sustainability": {
+    "stewardship": {
+      "title": "Stewardship",
+      "subtitle": "Responsible stewardship of our products and the environment. We're committed to protecting both people and the planet.",
+      "mission": "Our Stewardship Mission",
+      "areas": "Areas of Focus",
+      "commitments": "Our Commitments",
+      "whyMatters": "Why Stewardship Matters"
+    },
+    "growthPlan": {
+      "title": "Good Growth Plan",
+      "subtitle": "Our comprehensive roadmap for sustainable growth that benefits farmers, communities, and the environment.",
+      "vision": "Our Vision for Growth",
+      "pillars": "Four Pillars of Growth",
+      "targets": "Our Targets",
+      "progress": "Measuring Progress"
+    }
+  },
+  "about": {
+    "title": "About Oceanica Crop Science",
+    "subtitle": "Leading agricultural innovation in Pakistan. We're committed to helping farmers increase yields, protect crops, and build sustainable futures.",
+    "mission": "Our Mission",
+    "values": "Our Values",
+    "journey": "Our Journey",
+    "team": "Leadership Team",
+    "cta": "Join Our Mission"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Get in touch with our team of agricultural experts. We're here to help you find the right solutions for your farming needs.",
+    "getInTouch": "Get in Touch",
+    "sendMessage": "Send Us a Message",
+    "officeInfo": "Office Information",
+    "departments": "Department Contacts",
+    "cta": "Ready to Get Started?"
+  },
+  "footer": {
+    "description": "Leading agricultural solutions for sustainable farming and food security.",
+    "cropSolutions": "Crop Solutions",
+    "products": "Products",
+    "company": "Company",
+    "copyright": "© 2024 Oceanica Crop Science. All rights reserved."
+  }
+}
