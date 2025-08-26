@@ -1,6 +1,9 @@
 {
-  "/page": "app/page.js",
-  "/about-us/page": "app/about-us/page.js",
   "/crop-solutions/corn/page": "app/crop-solutions/corn/page.js",
-  "/crop-solutions/page": "app/crop-solutions/page.js"
+  "/about-us/page": "app/about-us/page.js",
+  "/crop-solutions/page": "app/crop-solutions/page.js",
+  "/stewardship/page": "app/stewardship/page.js",
+  "/naya-savera/page": "app/naya-savera/page.js",
+  "/growth-plan/page": "app/growth-plan/page.js",
+  "/contact-us/page": "app/contact-us/page.js"
 }
