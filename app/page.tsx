@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Link from 'next/link'
@@ -11,8 +12,17 @@ import CropsSection from '@/components/CropsSection'
 import ScrollSection from '../components/ScrollSection'
 
 export default function Home() {
+  const { locale, t } = useI18n()
+  const [currentFeature, setCurrentFeature] = useState(0)
+
   return (
-    <HomeContent />
+    <>
+      <Head>
+        <title>{locale === 'en' ? 'Oceanica Crop Science - Home' : 'اوشینیکا کراپ سائنس - ہوم'}</title>
+        <meta name="description" content={locale === 'en' ? 'Leading agricultural solutions for sustainable farming' : 'پائیدار کاشتکاری کے لیے معروف زرعی حل'} />
+      </Head>
+      <HomeContent />
+    </>
   )
 }
 

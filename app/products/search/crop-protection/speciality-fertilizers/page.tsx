@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import Navbar from '../../../../../components/Navbar'
 import Footer from '../../../../../components/Footer'
 import { useI18n } from '../../../../../app/i18n/context'
@@ -83,8 +84,13 @@ export default function SpecialityFertilizers() {
   ]
 
   return (
-    <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
-      <Navbar />
+    <>
+      <Head>
+        <title>{locale === 'en' ? 'Speciality Fertilizers - Oceanica Crop Science' : 'خصوصی کھادیں - اوشینیکا کراپ سائنس'}</title>
+        <meta name="description" content={locale === 'en' ? 'Premium speciality fertilizer solutions for enhanced crop productivity' : 'بہتر فصل کی پیداواری صلاحیت کے لیے اعلیٰ معیار کی خصوصی کھاد کے حل'} />
+      </Head>
+      <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
+        <Navbar />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 text-white py-20 overflow-hidden">
@@ -277,6 +283,7 @@ export default function SpecialityFertilizers() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }

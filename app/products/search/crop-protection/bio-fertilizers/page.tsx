@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+import Head from 'next/head'
 import Navbar from '../../../../../components/Navbar'
 import Footer from '../../../../../components/Footer'
 import { useI18n } from '../../../../../app/i18n/context'
@@ -88,8 +89,13 @@ export default function BioFertilizers() {
   ]
 
   return (
-    <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
-      <Navbar />
+    <>
+      <Head>
+        <title>{locale === 'en' ? 'Bio Fertilizers - Oceanica Crop Science' : 'بائیو کھادیں - اوشینیکا کراپ سائنس'}</title>
+        <meta name="description" content={locale === 'en' ? 'Natural and organic bio-fertilizer solutions for sustainable agriculture' : 'پائیدار زراعت کے لیے قدرتی اور نامیاتی بائیو کھاد کے حل'} />
+      </Head>
+      <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
+        <Navbar />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-900 text-white py-20 overflow-hidden">
@@ -346,6 +352,7 @@ export default function BioFertilizers() {
       </section>
 
       <Footer />
-    </div>
+      </div>
+    </>
   )
 }
