@@ -80,7 +80,7 @@ function ScrollSection() {
         src="/assets/landing/crops/crops.jpg"
         alt="Crops Background"
         fill
-        className="object-cover opacity-2"
+        className="object-cover opacity-10"
         priority
       />
       

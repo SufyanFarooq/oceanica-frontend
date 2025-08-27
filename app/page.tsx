@@ -8,7 +8,7 @@ import Image from 'next/image'
 import { ArrowRight, Leaf, Shield, Users, Target } from 'lucide-react'
 import { useI18n } from './i18n/context'
 import CropsSection from '@/components/CropsSection'
-import ScrollSection from '@/components/ScrollSection'
+import ScrollSection from '../components/ScrollSection'
 
 export default function Home() {
   return (
