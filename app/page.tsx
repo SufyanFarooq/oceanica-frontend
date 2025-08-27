@@ -1,11 +1,14 @@
 'use client'
 
+import { useState, useEffect } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowRight, Leaf, Shield, Users, Target } from 'lucide-react'
 import { useI18n } from './i18n/context'
+import CropsSection from '@/components/CropsSection'
+import ScrollSection from '@/components/ScrollSection'
 
 export default function Home() {
   return (
@@ -14,14 +17,39 @@ export default function Home() {
 }
 
 function HomeContent() {
-  const { t, isRTL } = useI18n()
+  const { t, isRTL, locale } = useI18n()
+  const [currentCropIndex, setCurrentCropIndex] = useState(0)
+
+  // Scroll-based crop switching
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY
+      const windowHeight = window.innerHeight
+      const cropsSection = document.querySelector('[data-crops-section]')
+      
+      if (cropsSection) {
+        const rect = cropsSection.getBoundingClientRect()
+        const sectionTop = rect.top + window.scrollY
+        
+        // Calculate which crop should be visible based on scroll position
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          const scrollProgress = (window.scrollY - sectionTop + windowHeight) / (windowHeight * 2)
+          const cropIndex = Math.min(Math.floor(scrollProgress * 6), 5)
+          setCurrentCropIndex(Math.max(0, cropIndex))
+        }
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   return (
     <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden min-h-screen" style={{borderRadius: '0 0 100px 0'}}>
+      <section className="relative py-32 overflow-hidden min-m-screen" style={{borderRadius: '60px'}}>
         {/* Background Image */}
         <Image
           src="/assets/landing/hero.jpg"
@@ -78,95 +106,150 @@ function HomeContent() {
 
       {/* Features Section */}
       <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
-        {/* Background decorative elements */}
-        <div className="absolute top-0 left-0 w-32 h-32 bg-primary-200 rounded-full opacity-20 -translate-x-16 -translate-y-16"></div>
-        <div className="absolute top-20 right-0 w-24 h-24 bg-secondary-200 rounded-full opacity-20 translate-x-12"></div>
-        <div className="absolute bottom-20 left-20 w-20 h-20 bg-accent-200 rounded-full opacity-20"></div>
+        {/* Agriculture-themed animated background elements */}
+        <div className="absolute top-0 left-0 w-32 h-32 bg-primary-200 rounded-full opacity-20 -translate-x-16 -translate-y-16 animate-pulse"></div>
+        <div className="absolute top-20 right-0 w-24 h-24 bg-secondary-200 rounded-full opacity-20 translate-x-12 animate-bounce"></div>
+        <div className="absolute bottom-20 left-20 w-20 h-20 bg-accent-200 rounded-full opacity-20 animate-ping"></div>
+        
+        {/* Floating Leaves */}
+        <div className="absolute top-10 left-1/4 w-8 h-8 text-primary-400 opacity-30 animate-float-slow">
+          <Leaf className="w-full h-full" />
+        </div>
+        <div className="absolute top-32 right-1/3 w-6 h-6 text-secondary-400 opacity-40 animate-float-medium">
+          <Leaf className="w-full h-full" />
+        </div>
+        <div className="absolute bottom-32 left-1/3 w-10 h-10 text-accent-400 opacity-25 animate-float-fast">
+          <Leaf className="w-full h-full" />
+        </div>
+        
+        {/* Growing Plants Animation */}
+        <div className="absolute top-16 left-16 w-4 h-4 bg-accent-500 rounded-full opacity-60 animate-grow-plant"></div>
+        <div className="absolute top-24 right-24 w-3 h-3 bg-primary-500 rounded-full opacity-50 animate-grow-plant-delayed"></div>
+        <div className="absolute bottom-24 left-32 w-5 h-5 bg-secondary-500 rounded-full opacity-70 animate-grow-plant-slow"></div>
+        
+        {/* Floating Seeds */}
+        <div className="absolute top-40 left-1/2 w-2 h-2 bg-accent-600 rounded-full opacity-80 animate-float-seed"></div>
+        <div className="absolute top-60 right-16 w-3 h-3 bg-primary-600 rounded-full opacity-60 animate-float-seed-delayed"></div>
+        <div className="absolute bottom-40 left-1/2 w-2 h-2 bg-secondary-600 rounded-full opacity-70 animate-float-seed-slow"></div>
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center mb-20 animate-slide-up">
             <h2 className="text-5xl font-bold text-gray-900 mb-6">
-              {t('home.features.title')}
+              {locale === 'ur' && <span className="bg-gradient-to-r from-accent-500 to-accent-600 bg-clip-text text-transparent">
+                اوشینیکا
+              </span>}
+              {locale === 'en' ? 'Why Choose ' : ' کو کیوں منتخب کریں؟ '}
+              {locale === 'en' &&<span className="bg-gradient-to-r from-accent-500 to-accent-600 bg-clip-text text-transparent">
+                Oceanica
+              </span>}
+              {locale === 'en' ? '?' : ''}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               {t('home.features.subtitle')}
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-left stagger-1">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Leaf className="w-10 h-10 text-white" />
+          {/* 2-Column Layout */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            
+            {/* Left Column - 1 Large Card */}
+            <div className="animate-fade-in-left">
+              <div className="relative h-full min-h-[600px] bg-white rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+                {/* Background Image */}
+                <Image
+                  src="/assets/landing/why-chose-us/Innovation.jpg"
+                  alt="Innovation Background"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
+                
+                {/* Dark Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+                
+                {/* Content */}
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                  <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <Leaf className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-3xl font-bold mb-4 drop-shadow-lg">{t('home.features.innovation.title')}</h3>
+                  <p className="text-white/90 text-lg leading-relaxed drop-shadow-lg">{t('home.features.innovation.description')}</p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.features.innovation.title')}</h3>
-              <p className="text-gray-600 leading-relaxed">{t('home.features.innovation.description')}</p>
             </div>
             
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-left stagger-2">
-              <div className="w-20 h-20 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Shield className="w-10 h-10 text-white" />
+            {/* Right Column - 3 Cards in Grid */}
+            <div className="grid grid-rows-2 gap-6 animate-fade-in-right h-full">
+              
+              {/* Top Row - 2 Cards */}
+              <div className="grid grid-cols-2 gap-6">
+                
+                {/* Quality Card */}
+                <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                  <div className="relative h-full min-h-[280px]">
+                    <Image
+                      src="/assets/landing/why-chose-us/quality.jpg"
+                      alt="Quality"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <Shield className="w-6 h-6 text-white" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.quality.title')}</h4>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Support Card */}
+                <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                  <div className="relative h-full min-h-[280px]">
+                    <Image
+                      src="/assets/landing/why-chose-us/support.jpg"
+                      alt="Support"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                        <Users className="w-6 h-6 text-white" />
+                      </div>
+                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.support.title')}</h4>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.features.quality.title')}</h3>
-              <p className="text-gray-600 leading-relaxed">{t('home.features.quality.description')}</p>
+              
+              {/* Bottom Row - 1 Card */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                <div className="relative h-full min-h-[280px]">
+                  <Image
+                    src="/assets/landing/why-chose-us/results.jpg"
+                    alt="Results"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.results.title')}</h4>
+                  </div>
+                </div>
+              </div>
+              
             </div>
             
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-left stagger-3">
-              <div className="w-20 h-20 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Users className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.features.support.title')}</h3>
-              <p className="text-gray-600 leading-relaxed">{t('home.features.support.description')}</p>
-            </div>
-            
-            <div className="group text-center p-8 bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 animate-fade-in-left stagger-4">
-              <div className="w-20 h-20 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
-                <Target className="w-10 h-10 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">{t('home.features.results.title')}</h3>
-              <p className="text-gray-600 leading-relaxed">{t('home.features.results.description')}</p>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Crops Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              {t('home.crops.title')}
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('home.crops.subtitle')}
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { name: t('nav.crops') === 'Crops' ? 'Corn' : 'مکئی', href: '/crop-solutions/corn', color: 'bg-yellow-100' },
-              { name: t('nav.crops') === 'Crops' ? 'Wheat' : 'گندم', href: '/crop-solutions/wheat', color: 'bg-amber-100' },
-              { name: t('nav.crops') === 'Crops' ? 'Rice' : 'چاول', href: '/crop-solutions/rice', color: 'bg-green-100' },
-              { name: t('nav.crops') === 'Crops' ? 'Sugarcane' : 'گنا', href: '/crop-solutions/sugarcane', color: 'bg-red-100' },
-              { name: t('nav.crops') === 'Crops' ? 'Potato' : 'آلو', href: '/crop-solutions/potato', color: 'bg-purple-100' },
-              { name: t('nav.crops') === 'Crops' ? 'Cotton' : 'کپاس', href: '/crop-solutions/cotton', color: 'bg-blue-100' },
-            ].map((crop) => (
-              <Link
-                key={crop.name}
-                href={crop.href}
-                className={`${crop.color} rounded-lg p-6 text-center hover:shadow-lg transition-shadow duration-200`}
-              >
-                <h3 className="text-lg font-semibold text-gray-900">{crop.name}</h3>
-              </Link>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Link href="/crop-solutions" className="btn-primary">
-              {t('home.crops.viewAll')}
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Crops Section - Scroll-based Carousel */}
+      {/* <CropsSection /> */}
+      <ScrollSection />
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-600">
