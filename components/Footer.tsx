@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useI18n } from '../app/i18n/context'
+import LanguageSwitcher from './LanguageSwitcher'
 
 export default function Footer() {
   const { t, locale, isRTL } = useI18n()
@@ -63,6 +64,10 @@ export default function Footer() {
                   </svg>
                 </a>
               </div>
+            </div>
+            {/* Language Switcher */}
+            <div className="mt-6">
+              <LanguageSwitcher variant="dark" />
             </div>
           </div>
           

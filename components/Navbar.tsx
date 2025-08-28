@@ -129,7 +129,13 @@ export default function Navbar() {
                   onMouseEnter={() => setCropsOpen(true)}
                   onMouseLeave={() => setCropsOpen(false)}
                 >
-                  <span>{t("nav.crops")}</span>
+                  <span>
+                    {t("nav.crops") !== "nav.crops" ? (
+                      t("nav.crops")
+                    ) : (
+                      <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
+                    )}
+                  </span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
                 {cropsOpen && (
@@ -159,7 +165,13 @@ export default function Navbar() {
                   onMouseEnter={() => setProductsOpen(true)}
                   onMouseLeave={() => setProductsOpen(false)}
                 >
-                  <span>{t("nav.products")}</span>
+                  <span>
+                    {t("nav.products") !== "nav.products" ? (
+                      t("nav.products")
+                    ) : (
+                      <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                    )}
+                  </span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
                 {productsOpen && (
@@ -183,9 +195,13 @@ export default function Navbar() {
                 )}
               </div>
 
-              <Link href="/naya-savera" className="nav-link">
-                {t("nav.nayaSavera")}
-              </Link>
+              {/* <Link href="/naya-savera" className="nav-link">
+                {t("nav.nayaSavera") !== "nav.nayaSavera" ? (
+                  t("nav.nayaSavera")
+                ) : (
+                  <span className="inline-block h-4 w-28 rounded bg-gray-200 animate-pulse" />
+                )}
+              </Link> */}
 
               <div className="relative">
                 <button
@@ -193,7 +209,13 @@ export default function Navbar() {
                   onMouseEnter={() => setSustainabilityOpen(true)}
                   onMouseLeave={() => setSustainabilityOpen(false)}
                 >
-                  <span>{t("nav.sustainability")}</span>
+                  <span>
+                    {t("nav.sustainability") !== "nav.sustainability" ? (
+                      t("nav.sustainability")
+                    ) : (
+                      <span className="inline-block h-4 w-32 rounded bg-gray-200 animate-pulse" />
+                    )}
+                  </span>
                   <ChevronDown className="w-4 h-4" />
                 </button>
                 {sustainabilityOpen && (
@@ -218,15 +240,27 @@ export default function Navbar() {
               </div>
 
               <Link href="/about-us" className="nav-link">
-                {t("nav.aboutUs")}
+                {t("nav.aboutUs") !== "nav.aboutUs" ? (
+                  t("nav.aboutUs")
+                ) : (
+                  <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                )}
               </Link>
 
               <Link href="/contact-us" className="nav-link">
-                {t("nav.contactUs")}
+                {t("nav.contactUs") !== "nav.contactUs" ? (
+                  t("nav.contactUs")
+                ) : (
+                  <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                )}
               </Link>
 
               <Link href="/careers" className="nav-link">
-                {t("nav.careers")}
+                {t("nav.careers") !== "nav.careers" ? (
+                  t("nav.careers")
+                ) : (
+                  <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
+                )}
               </Link>
             </div>
 
@@ -268,7 +302,11 @@ export default function Navbar() {
                 {/* Crops Dropdown */}
                 <div className="space-y-2">
                   <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.crops")}
+                    {t("nav.crops") !== "nav.crops" ? (
+                      t("nav.crops")
+                    ) : (
+                      <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
+                    )}
                   </div>
                   <div className="pl-4 space-y-2">
                     {crops.map((crop) => (
@@ -286,7 +324,11 @@ export default function Navbar() {
                 {/* Products Dropdown */}
                 <div className="space-y-2">
                   <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.products")}
+                    {t("nav.products") !== "nav.products" ? (
+                      t("nav.products")
+                    ) : (
+                      <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                    )}
                   </div>
                   <div className="pl-4 space-y-2">
                     {products.map((product) => (
@@ -302,13 +344,21 @@ export default function Navbar() {
                 </div>
 
                 <Link href="/naya-savera" className="block nav-link">
-                  {t("nav.nayaSavera")}
+                  {t("nav.nayaSavera") !== "nav.nayaSavera" ? (
+                    t("nav.nayaSavera")
+                  ) : (
+                    <span className="inline-block h-4 w-28 rounded bg-gray-200 animate-pulse" />
+                  )}
                 </Link>
 
                 {/* Sustainability Dropdown */}
                 <div className="space-y-2">
                   <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.sustainability")}
+                    {t("nav.sustainability") !== "nav.sustainability" ? (
+                      t("nav.sustainability")
+                    ) : (
+                      <span className="inline-block h-4 w-32 rounded bg-gray-200 animate-pulse" />
+                    )}
                   </div>
                   <div className="pl-4 space-y-2">
                     {sustainability.map((item) => (
@@ -324,15 +374,27 @@ export default function Navbar() {
                 </div>
 
                 <Link href="/about-us" className="block nav-link">
-                  {t("nav.aboutUs")}
+                  {t("nav.aboutUs") !== "nav.aboutUs" ? (
+                    t("nav.aboutUs")
+                  ) : (
+                    <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                  )}
                 </Link>
 
                 <Link href="/contact-us" className="block nav-link">
-                  {t("nav.contactUs")}
+                  {t("nav.contactUs") !== "nav.contactUs" ? (
+                    t("nav.contactUs")
+                  ) : (
+                    <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
+                  )}
                 </Link>
 
                 <Link href="/careers" className="block nav-link">
-                  {t("nav.careers")}
+                  {t("nav.careers") !== "nav.careers" ? (
+                    t("nav.careers")
+                  ) : (
+                    <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
+                  )}
                 </Link>
               </div>
             </div>

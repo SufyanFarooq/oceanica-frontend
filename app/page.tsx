@@ -30,6 +30,16 @@ function HomeContent() {
   const { t, isRTL, locale } = useI18n()
   const [currentCropIndex, setCurrentCropIndex] = useState(0)
 
+  // Render translation or a skeleton while keys are still loading
+  const renderT = (key: string, skeletonClasses: string = 'h-4 w-24') => {
+    const value = t(key)
+    return value !== key ? (
+      value
+    ) : (
+      <span className={`inline-block rounded bg-gray-200 animate-pulse ${skeletonClasses}`} />
+    )
+  }
+
   // Scroll-based crop switching
   useEffect(() => {
     const handleScroll = () => {
@@ -77,21 +87,21 @@ function HomeContent() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in-left">
               <h1 className="text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
-                {t('home.hero.title')}{' '}
+                {renderT('home.hero.title','h-8 w-60')}{' '}
                 <span className="text-secondary-400 bg-gradient-to-r from-secondary-400 to-accent-400 bg-clip-text text-transparent">
-                  {t('home.hero.titleHighlight')}
+                  {renderT('home.hero.titleHighlight','h-8 w-48')}
                 </span>
               </h1>
               <p className="text-xl text-white/90 mb-8 drop-shadow-lg animate-slide-up stagger-1">
-                {t('home.hero.subtitle')}
+                {renderT('home.hero.subtitle','h-5 w-72')}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 animate-slide-up stagger-2">
                 <Link href="/crop-solutions" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center">
-                  {t('home.hero.exploreCrops')}
+                  {renderT('home.hero.exploreCrops','h-5 w-40')}
                   <ArrowRight className="ml-2 w-5 h-5" />
                 </Link>
                 <Link href="/products/search/crop-protection" className="bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
-                  {t('home.hero.viewProducts')}
+                  {renderT('home.hero.viewProducts','h-5 w-40')}
                 </Link>
               </div>
             </div>
@@ -155,7 +165,7 @@ function HomeContent() {
               {locale === 'en' ? '?' : ''}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {t('home.features.subtitle')}
+              {renderT('home.features.subtitle','h-5 w-80')}
             </p>
           </div>
           
@@ -181,8 +191,8 @@ function HomeContent() {
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                     <Leaf className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold mb-4 drop-shadow-lg">{t('home.features.innovation.title')}</h3>
-                  <p className="text-white/90 text-lg leading-relaxed drop-shadow-lg">{t('home.features.innovation.description')}</p>
+                  <h3 className="text-3xl font-bold mb-4 drop-shadow-lg">{renderT('home.features.innovation.title','h-7 w-52')}</h3>
+                  <p className="text-white/90 text-lg leading-relaxed drop-shadow-lg">{renderT('home.features.innovation.description','h-5 w-72')}</p>
                 </div>
               </div>
             </div>
@@ -207,7 +217,7 @@ function HomeContent() {
                       <div className="w-12 h-12 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <Shield className="w-6 h-6 text-white" />
                       </div>
-                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.quality.title')}</h4>
+                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{renderT('home.features.quality.title','h-5 w-36')}</h4>
                     </div>
                   </div>
                 </div>
@@ -226,7 +236,7 @@ function HomeContent() {
                       <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                         <Users className="w-6 h-6 text-white" />
                       </div>
-                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.support.title')}</h4>
+                      <h4 className="text-lg font-bold text-white drop-shadow-lg">{renderT('home.features.support.title','h-5 w-40')}</h4>
                     </div>
                   </div>
                 </div>
@@ -246,7 +256,7 @@ function HomeContent() {
                     <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
                       <Target className="w-6 h-6 text-white" />
                     </div>
-                    <h4 className="text-lg font-bold text-white drop-shadow-lg">{t('home.features.results.title')}</h4>
+                    <h4 className="text-lg font-bold text-white drop-shadow-lg">{renderT('home.features.results.title','h-5 w-40')}</h4>
                   </div>
                 </div>
               </div>
@@ -265,17 +275,17 @@ function HomeContent() {
       <section className="py-20 bg-primary-600">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-4">
-            {t('home.cta.title')}
+            {renderT('home.cta.title','h-7 w-64')}
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            {t('home.cta.subtitle')}
+            {renderT('home.cta.subtitle','h-5 w-80')}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact-us" className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-              {t('home.cta.contactUs')}
+              {renderT('home.cta.contactUs','h-5 w-32')}
             </Link>
             <Link href="/about-us" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-200">
-              {t('home.cta.learnMore')}
+              {renderT('home.cta.learnMore','h-5 w-28')}
             </Link>
           </div>
         </div>
