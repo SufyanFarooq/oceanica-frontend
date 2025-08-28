@@ -294,7 +294,64 @@ export default function CornPage() {
           
           {/* Products Carousel */}
           <div className="relative">
-            <div className="flex justify-center">
+            {/* Mobile: Single column, Desktop: Grid */}
+            <div className="block lg:hidden">
+              {/* Mobile Single Product View */}
+              <div className="max-w-sm mx-auto">
+                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-shadow duration-300">
+                  <div className="text-center mb-4">
+                    <div className="text-4xl mb-3">{relatedProducts[currentProductIndex].logo}</div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-1">{relatedProducts[currentProductIndex].name}</h3>
+                    <p className="text-sm text-gray-600 uppercase tracking-wide">{relatedProducts[currentProductIndex].category}</p>
+                  </div>
+                  <div className="text-center mb-4">
+                    <p className="text-sm font-semibold text-gray-900">{relatedProducts[currentProductIndex].name}</p>
+                  </div>
+                  <div className="text-xs text-gray-600 mb-4 text-center">
+                    <p>{relatedProducts[currentProductIndex].details}</p>
+                    <p>{relatedProducts[currentProductIndex].form}</p>
+                  </div>
+                  <div className="text-center">
+                    <Link href={`/products/search/crop-protection/bio-fertilizers/${relatedProducts[currentProductIndex].id}`} className="text-gray-700 hover:text-primary-600 font-medium text-sm">
+                      Learn more →
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Mobile Navigation */}
+              <div className="flex justify-center items-center mt-6 space-x-4">
+                <button
+                  onClick={prevProduct}
+                  className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <ChevronLeft className="w-6 h-6 text-gray-600" />
+                </button>
+                
+                {/* Mobile Progress Dots */}
+                <div className="flex space-x-2">
+                  {relatedProducts.map((_, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setCurrentProductIndex(index)}
+                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                        index === currentProductIndex ? 'bg-primary-500' : 'bg-gray-300'
+                      }`}
+                    />
+                  ))}
+                </div>
+                
+                <button
+                  onClick={nextProduct}
+                  className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+                >
+                  <ChevronRight className="w-6 h-6 text-gray-600" />
+                </button>
+              </div>
+            </div>
+            
+            {/* Desktop Grid View */}
+            <div className="hidden lg:flex justify-center">
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
                 {relatedProducts.map((product, index) => (
                   <div key={product.id} className={`bg-white rounded-xl p-6 shadow-lg border-l-4 border-${product.color}-500 hover:shadow-xl transition-shadow duration-300 ${index === currentProductIndex ? 'ring-2 ring-primary-500' : ''}`}>
@@ -320,23 +377,25 @@ export default function CornPage() {
               </div>
             </div>
             
-            {/* Navigation Arrows */}
-            <button
-              onClick={prevProduct}
-              className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-            >
-              <ChevronLeft className="w-5 h-5 text-gray-600" />
-            </button>
-            <button
-              onClick={nextProduct}
-              className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-            >
-              <ChevronRight className="w-5 h-5 text-gray-600" />
-            </button>
+            {/* Desktop Navigation Arrows */}
+            <div className="hidden lg:block">
+              <button
+                onClick={prevProduct}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+              >
+                <ChevronLeft className="w-5 h-5 text-gray-600" />
+              </button>
+              <button
+                onClick={nextProduct}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
+              >
+                <ChevronRight className="w-5 h-5 text-gray-600" />
+              </button>
+            </div>
           </div>
           
-          {/* Progress Bar */}
-          <div className="flex justify-center mt-8">
+          {/* Desktop Progress Bar */}
+          <div className="hidden lg:flex justify-center mt-8">
             <div className="w-64 h-1 bg-gray-200 rounded-full">
               <div 
                 className="h-1 bg-primary-500 rounded-full transition-all duration-300"

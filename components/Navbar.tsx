@@ -1,287 +1,357 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { Home, Globe, Search, ShoppingCart, ChevronDown, Menu, X } from "lucide-react";
+import Image from "next/image";
+import {
+  Menu,
+  X,
+  ChevronDown,
+  Search,
+  Facebook,
+  Twitter,
+  Instagram,
+  Globe,
+  Home,
+} from "lucide-react";
 import { useI18n } from "../app/i18n/context";
 import LanguageSwitcher from "./LanguageSwitcher";
-import Image from "next/image";
 
 export default function Navbar() {
   const { t, locale, isRTL } = useI18n();
-  const [cropsOpen, setCropsOpen] = useState(false);
-  const [productsOpen, setProductsOpen] = useState(false);
-  const [sustainabilityOpen, setSustainabilityOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [cropsDropdownOpen, setCropsDropdownOpen] = useState(false);
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
+  const [sustainabilityDropdownOpen, setSustainabilityDropdownOpen] =
+    useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      setIsScrolled(scrollTop > 50);
+      setIsScrolled(window.scrollY > 10);
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle search functionality
+    console.log("Searching for:", searchQuery);
+  };
+
   const crops = [
-    { name: locale === "en" ? "Corn" : "مکئی", href: "/crop-solutions/corn" },
+    {
+      name: locale === "en" ? "Corn" : "مکئی",
+      description:
+        locale === "en" ? "Healthy Corn Growth" : "مکئی کی اچھی نشوونما",
+      href: "/crop-solutions/corn",
+      color: "bg-yellow-100",
+      icon: "🌽",
+    },
     {
       name: locale === "en" ? "Potato" : "آلو",
+      description:
+        locale === "en" ? "Potato Crop Success" : "آلو کی فصل کامیاب",
       href: "/crop-solutions/potato",
+      color: "bg-gray-100",
+      icon: "🥔",
     },
     {
       name: locale === "en" ? "Cotton" : "کپاس",
+      description:
+        locale === "en" ? "Superior Cotton Fiber" : "بہترین کپاس فائبر",
       href: "/crop-solutions/cotton",
+      color: "bg-blue-100",
+      icon: "🧵",
     },
-    { name: locale === "en" ? "Rice" : "چاول", href: "/crop-solutions/rice" },
+    {
+      name: locale === "en" ? "Rice" : "چاول",
+      description:
+        locale === "en" ? "Healthy Rice Harvest" : "چاول کی اچھی فصل",
+      href: "/crop-solutions/rice",
+      color: "bg-green-100",
+      icon: "🍚",
+    },
     {
       name: locale === "en" ? "Sugarcane" : "گنا",
+      description:
+        locale === "en" ? "Sweet Cane Solutions" : "گنے کی بہترین دیکھ بھال",
       href: "/crop-solutions/sugarcane",
+      color: "bg-red-100",
+      icon: "🎋",
     },
-    { name: locale === "en" ? "Wheat" : "گندم", href: "/crop-solutions/wheat" },
+    {
+      name: locale === "en" ? "Wheat" : "گندم",
+      description:
+        locale === "en" ? "Golden Wheat Fields" : "سنہری گندم کی فصل",
+      href: "/crop-solutions/wheat",
+      color: "bg-amber-100",
+      icon: "🌾",
+    },
   ];
 
   const products = [
     {
       name: locale === "en" ? "Speciality Fertilizers" : "خصوصی کھادیں",
+      description:
+        locale === "en" ? "Advanced crop nutrition" : "جدید فصل کی خوراک",
       href: "/products/search/crop-protection/speciality-fertilizers",
+      color: "bg-purple-100",
+      icon: "🧪",
     },
     {
       name: locale === "en" ? "Bio Fertilizers" : "بائیو کھادیں",
+      description:
+        locale === "en" ? "Natural soil boosters" : "قدرتی مٹی کی بہتری",
       href: "/products/search/crop-protection/bio-fertilizers",
+      color: "bg-indigo-100",
+      icon: "🧬",
     },
-    // {
-    //   name: locale === "en" ? "Herbicide" : "جڑی بوٹی مار",
-    //   href: "/products/search/crop-protection/type/herbicide-1156",
-    // },
-    // {
-    //   name: locale === "en" ? "Insecticide" : "کیڑے مار",
-    //   href: "/products/search/crop-protection/type/insecticide-1166",
-    // },
-    // {
-    //   name: locale === "en" ? "Fungicide" : "فنگس مار",
-    //   href: "/products/search/crop-protection/type/fungicide-1161",
-    // },
-    // {
-    //   name: locale === "en" ? "Seedcare" : "بیج کی دیکھ بھال",
-    //   href: "/products/search/crop-protection/type/seedcare-1176",
-    // },
-    // {
-    //   name: locale === "en" ? "Crop Enhancement" : "فصلوں کی بہتری",
-    //   href: "/products/search/crop-protection",
-    // },
   ];
 
   const sustainability = [
-    { name: locale === "en" ? "Stewardship" : "نگرانی", href: "/stewardship" },
+    {
+      name: locale === "en" ? "Stewardship" : "نگرانی",
+      description:
+        locale === "en" ? "Responsible crop care" : "ذمہ دار فصل کی دیکھ بھال",
+      href: "/stewardship",
+      color: "bg-teal-100",
+      icon: "🌱",
+    },
     {
       name: locale === "en" ? "Good Growth Plan" : "اچھی ترقی کا منصوبہ",
+      description:
+        locale === "en"
+          ? "Sustainable farming plan"
+          : "پائیدار کاشتکاری منصوبہ",
       href: "/growth-plan",
+      color: "bg-cyan-100",
+      icon: "📈",
     },
   ];
 
   return (
-    <div className="bg-white shadow-sm" dir={isRTL ? "rtl" : "ltr"}>
-      {/* Top Section - Large Logo and Details (Scrolls away) */}
-      <div className="bg-white py-2 px-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <div className="flex items-center space-x-1 sm:space-x-2">
-              <Search className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-              <span className="text-xs sm:text-sm text-gray-700">
-                {locale === "en"
-                  ? "WHAT ARE YOU LOOKING FOR?"
-                  : "آپ کیا تلاش کر رہے ہیں؟"}
-              </span>
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-white shadow-lg" : "bg-white"
+      }`}
+    >
+      {/* First Section - Social, Logo, Search & Language */}
+      <div className="border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 py-3">
+          <div className="flex items-center justify-between">
+            {/* Left Side - Social Icons */}
+            <div className="flex items-center space-x-4">
+              <Link
+                href="#"
+                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <Facebook className="w-5 h-5" />
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <Twitter className="w-5 h-5" />
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <Instagram className="w-5 h-5" />
+              </Link>
+              <Link
+                href="#"
+                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <Globe className="w-5 h-5" />
+              </Link>
             </div>
-          </div>
-          <div className="flex items-center space-x-1 sm:space-x-2">
-            <span className="text-xs sm:text-sm text-gray-700">
-              {locale === "en" ? "SHOP NOW" : "ابھی خریدیں"}
-            </span>
-            <ShoppingCart className="w-3 h-3 sm:w-4 sm:h-4 text-gray-600" />
-            <LanguageSwitcher />
+
+            {/* Center - Logo */}
+            <div className="flex-shrink-0">
+              <Link href="/" className="flex items-center">
+                <Image
+                  src={locale === "ur" ? "/logo-ur.png" : "/logo-en.png"}
+                  alt="Oceanica Crop Science"
+                  width={180}
+                  height={50}
+                  className="h-12 w-auto"
+                  priority
+                />
+              </Link>
+            </div>
+
+            {/* Right Side - Search Bar & Language Switcher */}
+            <div className="flex items-center space-x-4">
+              {/* Search Bar */}
+              <form onSubmit={handleSearch} className="relative">
+                <div className="flex items-center">
+                  <input
+                    type="text"
+                    placeholder={locale === "en" ? "Search..." : "تلاش کریں..."}
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-48 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-primary-600 text-white px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors duration-200"
+                  >
+                    <Search className="w-4 h-4" />
+                  </button>
+                </div>
+              </form>
+
+              {/* Language Switcher */}
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom Section - Main Navigation (Sticky) */}
-      <nav
-        className="z-50 bg-white shadow-lg border-b border-gray-200 w-full"
-        style={{
-          top: isScrolled ? "50" : "0",
-          position: isScrolled ? "fixed" : "sticky",
-        }}
-      >
+      {/* Second Section - Navigation Links */}
+      <div className="bg-gray-800">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
-            {/* Desktop Navigation - Hidden on Mobile */}
-            <div className="hidden lg:flex items-center space-x-2">
-              <Link href="/" className="nav-link">
-                <Home className="w-5 h-5" />
-              </Link>
-
-              <div className="relative">
-                <button
-                  className="nav-link flex items-center"
-                  onMouseEnter={() => setCropsOpen(true)}
-                  onMouseLeave={() => setCropsOpen(false)}
+          <div className="flex items-center justify-between h-12">
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center justify-center flex-1">
+              <div className="flex items-center space-x-8">
+                <Link
+                  href="/"
+                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
-                  <span>
-                    {t("nav.crops") !== "nav.crops" ? (
-                      t("nav.crops")
-                    ) : (
-                      <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-                {cropsOpen && (
-                  <div
-                    className="absolute top-full left-0 bg-white shadow-lg border rounded-lg py-4 px-6 z-50 min-w-[400px]"
-                    onMouseEnter={() => setCropsOpen(true)}
-                    onMouseLeave={() => setCropsOpen(false)}
-                  >
-                    <div className="grid grid-cols-3 gap-4">
+                  <Home className="w-5 h-5" />
+                </Link>
+
+                <div className="relative group">
+                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                    {t("nav.crops") || "Crops"}
+                    <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                    <div className="p-1">
                       {crops.map((crop) => (
                         <Link
                           key={crop.name}
                           href={crop.href}
-                          className="text-sm text-gray-800 font-semibold hover:text-primary-600 transition-colors duration-200"
+                          className={`flex items-center p-1.5 m-1.5 rounded-lg hover:bg-opacity-80 transition-all duration-200 group/item ${crop.color}`}
                         >
-                          {crop.name}
+                          <div
+                            className={`w-10 h-10 ${crop.color} rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-opacity-80 transition-colors duration-200`}
+                          >
+                            <span className="text-lg">{crop.icon}</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900 text-sm">
+                              {crop.name}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {crop.description}
+                            </div>
+                          </div>
                         </Link>
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
 
-              <div className="relative">
-                <button
-                  className="nav-link flex items-center"
-                  onMouseEnter={() => setProductsOpen(true)}
-                  onMouseLeave={() => setProductsOpen(false)}
-                >
-                  <span>
-                    {t("nav.products") !== "nav.products" ? (
-                      t("nav.products")
-                    ) : (
-                      <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-                {productsOpen && (
-                  <div
-                    className="absolute top-full left-0 bg-white shadow-lg border rounded-lg py-4 px-6 z-50 min-w-[400px]"
-                    onMouseEnter={() => setProductsOpen(true)}
-                    onMouseLeave={() => setProductsOpen(false)}
-                  >
-                    <div className="grid grid-cols-2 gap-4">
+                <div className="relative group">
+                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                    {t("nav.products") || "Products"}
+                    <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                    <div className="p-1">
                       {products.map((product) => (
                         <Link
                           key={product.name}
                           href={product.href}
-                          className="text-sm text-gray-800 font-semibold hover:text-primary-600 transition-colors duration-200"
+                          className={`flex items-center p-2 m-1 rounded-lg hover:bg-opacity-80 transition-all duration-200 group/item ${product.color}`}
                         >
-                          {product.name}
+                          <div
+                            className={`w-10 h-10 ${product.color} rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-opacity-80 transition-colors duration-200`}
+                          >
+                            <span className="text-lg">{product.icon}</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900 text-sm">
+                              {product.name}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {product.description}
+                            </div>
+                          </div>
                         </Link>
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
+                </div>
 
-              {/* <Link href="/naya-savera" className="nav-link">
-                {t("nav.nayaSavera") !== "nav.nayaSavera" ? (
-                  t("nav.nayaSavera")
-                ) : (
-                  <span className="inline-block h-4 w-28 rounded bg-gray-200 animate-pulse" />
-                )}
-              </Link> */}
-
-              <div className="relative">
-                <button
-                  className="nav-link flex items-center"
-                  onMouseEnter={() => setSustainabilityOpen(true)}
-                  onMouseLeave={() => setSustainabilityOpen(false)}
-                >
-                  <span>
-                    {t("nav.sustainability") !== "nav.sustainability" ? (
-                      t("nav.sustainability")
-                    ) : (
-                      <span className="inline-block h-4 w-32 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </span>
-                  <ChevronDown className="w-4 h-4" />
-                </button>
-                {sustainabilityOpen && (
-                  <div
-                    className="absolute top-full left-0 bg-white shadow-lg border rounded-lg py-4 px-6 z-50 min-w-[200px]"
-                    onMouseEnter={() => setSustainabilityOpen(true)}
-                    onMouseLeave={() => setSustainabilityOpen(false)}
-                  >
-                    <div className="space-y-2">
+                <div className="relative group">
+                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                    {t("nav.sustainability") || "Sustainability"}
+                    <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
+                  </button>
+                  <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
+                    <div className="p-1">
                       {sustainability.map((item) => (
                         <Link
                           key={item.name}
                           href={item.href}
-                          className="block text-sm text-gray-800 font-semibold hover:text-primary-600 transition-colors duration-200"
+                          className={`flex items-center p-2 m-1 rounded-lg hover:bg-opacity-80 transition-all duration-200 group/item ${item.color}`}
                         >
-                          {item.name}
+                          <div
+                            className={`w-10 h-10 ${item.color} rounded-lg flex items-center justify-center mr-3 group-hover/item:bg-opacity-80 transition-colors duration-200`}
+                          >
+                            <span className="text-lg">{item.icon}</span>
+                          </div>
+                          <div>
+                            <div className="font-semibold text-gray-900 text-sm">
+                              {item.name}
+                            </div>
+                            <div className="text-xs text-gray-500">
+                              {item.name}
+                            </div>
+                          </div>
                         </Link>
                       ))}
                     </div>
                   </div>
-                )}
+                </div>
+
+                <Link
+                  href="/about-us"
+                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.aboutUs") || "About US"}
+                </Link>
+
+                <Link
+                  href="/contact-us"
+                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.contactUs") || "Contact US"}
+                </Link>
+
+                <Link
+                  href="/careers"
+                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.careers") || "Careers"}
+                </Link>
               </div>
-
-              <Link href="/about-us" className="nav-link">
-                {t("nav.aboutUs") !== "nav.aboutUs" ? (
-                  t("nav.aboutUs")
-                ) : (
-                  <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                )}
-              </Link>
-
-              <Link href="/contact-us" className="nav-link">
-                {t("nav.contactUs") !== "nav.contactUs" ? (
-                  t("nav.contactUs")
-                ) : (
-                  <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                )}
-              </Link>
-
-              <Link href="/careers" className="nav-link">
-                {t("nav.careers") !== "nav.careers" ? (
-                  t("nav.careers")
-                ) : (
-                  <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
-                )}
-              </Link>
-            </div>
-
-            {/* Logo - Centered on Mobile */}
-            <div className="flex items-center justify-center lg:justify-end flex-1">
-              <Image
-                src={locale === "en" ? "/logo-en.png" : "/logo-ur.png"}
-                alt={locale === "en" ? "Oceanica Logo" : "اوشینیکا لوگو"}
-                width={isScrolled ? 120 : 150}
-                height={isScrolled ? 120 : 150}
-                className="rounded"
-              />
             </div>
 
             {/* Mobile Menu Button */}
             <div className="lg:hidden">
               <button
-                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-                className="p-2 text-gray-600 hover:text-gray-900 transition-colors"
+                onClick={() => setIsOpen(!isOpen)}
+                className="text-white hover:text-accent-400 transition-colors duration-200"
               >
-                {mobileMenuOpen ? (
+                {isOpen ? (
                   <X className="w-6 h-6" />
                 ) : (
                   <Menu className="w-6 h-6" />
@@ -289,118 +359,169 @@ export default function Navbar() {
               </button>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Menu */}
-          {mobileMenuOpen && (
-            <div className="lg:hidden border-t border-gray-200 py-4">
-              <div className="space-y-4">
-                <Link href="/" className="block nav-link">
-                  <Home className="w-5 h-5 inline mr-2" />
-                  {locale === "en" ? "Home" : "ہوم"}
-                </Link>
+        {/* Mobile Navigation Menu */}
+        {isOpen && (
+          <div className="lg:hidden bg-gray-800 border-t border-gray-700">
+            <div className="px-4 py-4 space-y-3">
+              <Link
+                href="/"
+                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                onClick={() => setIsOpen(false)}
+              >
+                {t("nav.home") || "Home"}
+              </Link>
 
-                {/* Crops Dropdown */}
-                <div className="space-y-2">
-                  <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.crops") !== "nav.crops" ? (
-                      t("nav.crops")
-                    ) : (
-                      <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </div>
-                  <div className="pl-4 space-y-2">
+              <div>
+                <button
+                  onClick={() => setCropsDropdownOpen(!cropsDropdownOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.crops") || "Crops"}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      cropsDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {cropsDropdownOpen && (
+                  <div className="mt-2 ml-4 space-y-2">
                     {crops.map((crop) => (
                       <Link
                         key={crop.name}
                         href={crop.href}
-                        className="block text-sm text-gray-600 hover:text-primary-600 transition-colors"
+                        className={`flex items-center p-2 rounded-lg transition-all duration-200 ${crop.color} mx-2`}
+                        onClick={() => setIsOpen(false)}
                       >
-                        {crop.name}
+                        <div
+                          className={`w-8 h-8 ${crop.color} rounded-lg flex items-center justify-center mr-3`}
+                        >
+                          <span className="text-sm">{crop.icon}</span>
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {crop.name}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            {crop.description}
+                          </div>
+                        </div>
                       </Link>
                     ))}
                   </div>
-                </div>
+                )}
+              </div>
 
-                {/* Products Dropdown */}
-                <div className="space-y-2">
-                  <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.products") !== "nav.products" ? (
-                      t("nav.products")
-                    ) : (
-                      <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </div>
-                  <div className="pl-4 space-y-2">
+              <div>
+                <button
+                  onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
+                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.products") || "Products"}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      productsDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {productsDropdownOpen && (
+                  <div className="mt-2 ml-4 space-y-2">
                     {products.map((product) => (
                       <Link
                         key={product.name}
                         href={product.href}
-                        className="block text-sm text-gray-600 hover:text-primary-600 transition-colors"
+                        className={`flex items-center p-2 rounded-lg transition-all duration-200 ${product.color} mx-2`}
+                        onClick={() => setIsOpen(false)}
                       >
-                        {product.name}
+                        <div
+                          className={`w-8 h-8 ${product.color} rounded-lg flex items-center justify-center mr-3`}
+                        >
+                          <span className="text-sm">{product.icon}</span>
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {product.name}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            {product.description}
+                          </div>
+                        </div>
                       </Link>
                     ))}
                   </div>
-                </div>
+                )}
+              </div>
 
-                <Link href="/naya-savera" className="block nav-link">
-                  {t("nav.nayaSavera") !== "nav.nayaSavera" ? (
-                    t("nav.nayaSavera")
-                  ) : (
-                    <span className="inline-block h-4 w-28 rounded bg-gray-200 animate-pulse" />
-                  )}
-                </Link>
-
-                {/* Sustainability Dropdown */}
-                <div className="space-y-2">
-                  <div className="font-semibold text-gray-900 mb-2">
-                    {t("nav.sustainability") !== "nav.sustainability" ? (
-                      t("nav.sustainability")
-                    ) : (
-                      <span className="inline-block h-4 w-32 rounded bg-gray-200 animate-pulse" />
-                    )}
-                  </div>
-                  <div className="pl-4 space-y-2">
+              <div>
+                <button
+                  onClick={() =>
+                    setSustainabilityDropdownOpen(!sustainabilityDropdownOpen)
+                  }
+                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                >
+                  {t("nav.sustainability") || "Sustainability"}
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform duration-200 ${
+                      sustainabilityDropdownOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {sustainabilityDropdownOpen && (
+                  <div className="mt-2 ml-4 space-y-2">
                     {sustainability.map((item) => (
                       <Link
                         key={item.name}
                         href={item.href}
-                        className="block text-sm text-gray-600 hover:text-primary-600 transition-colors"
+                        className={`flex items-center p-2 rounded-lg transition-all duration-200 ${item.color} mx-2`}
+                        onClick={() => setIsOpen(false)}
                       >
-                        {item.name}
+                        <div
+                          className={`w-8 h-8 ${item.color} rounded-lg flex items-center justify-center mr-3`}
+                        >
+                          <span className="text-sm">{item.icon}</span>
+                        </div>
+                        <div>
+                          <div className="text-sm font-medium text-gray-900">
+                            {item.name}
+                          </div>
+                          <div className="text-xs text-gray-600">
+                            {item.description}
+                          </div>
+                        </div>
                       </Link>
                     ))}
                   </div>
-                </div>
-
-                <Link href="/about-us" className="block nav-link">
-                  {t("nav.aboutUs") !== "nav.aboutUs" ? (
-                    t("nav.aboutUs")
-                  ) : (
-                    <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                  )}
-                </Link>
-
-                <Link href="/contact-us" className="block nav-link">
-                  {t("nav.contactUs") !== "nav.contactUs" ? (
-                    t("nav.contactUs")
-                  ) : (
-                    <span className="inline-block h-4 w-24 rounded bg-gray-200 animate-pulse" />
-                  )}
-                </Link>
-
-                <Link href="/careers" className="block nav-link">
-                  {t("nav.careers") !== "nav.careers" ? (
-                    t("nav.careers")
-                  ) : (
-                    <span className="inline-block h-4 w-20 rounded bg-gray-200 animate-pulse" />
-                  )}
-                </Link>
+                )}
               </div>
+
+              <Link
+                href="/about-us"
+                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                onClick={() => setIsOpen(false)}
+              >
+                {t("nav.aboutUs") || "About US"}
+              </Link>
+
+              <Link
+                href="/contact-us"
+                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                onClick={() => setIsOpen(false)}
+              >
+                {t("nav.contactUs") || "Contact US"}
+              </Link>
+
+              <Link
+                href="/careers"
+                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                onClick={() => setIsOpen(false)}
+              >
+                {t("nav.careers") || "Careers"}
+              </Link>
             </div>
-          )}
-        </div>
-      </nav>
-    </div>
+          </div>
+        )}
+      </div>
+    </nav>
   );
 }
