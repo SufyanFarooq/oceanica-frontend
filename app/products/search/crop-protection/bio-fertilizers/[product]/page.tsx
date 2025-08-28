@@ -1,9 +1,8 @@
-'use client'
+
 
 import React from 'react'
 import Navbar from '../../../../../../components/Navbar'
 import Footer from '../../../../../../components/Footer'
-import { useI18n } from '../../../../../../app/i18n/context'
 import {
   Phone,
   Download,
@@ -17,11 +16,25 @@ import { notFound } from 'next/navigation'
 import { getProductBySlug, getRelatedProducts } from '../../../../../../app/utils/productUtils'
 import ProductCard from '../../../../../../components/ProductCard'
 
-export default function ProductDetail({ params }: { params: { product: string } }) {
-  const { locale, t } = useI18n()
-  const isRTL = locale === 'ur'
+// Load translations
+async function getTranslations(locale: string) {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/i18n/${locale}.json`, { cache: 'no-store' })
+    return res.json()
+  } catch (e) {
+    console.error('Failed to load translations', e)
+    return {}
+  }
+}
 
-  const product = getProductBySlug('bioFertilizers', params.product)
+export default async function ProductDetail({ params }: { params: Promise<{ product: string }> }) {
+  // For now, default to English. In a real app, you'd get this from headers or cookies
+  const locale: 'en' | 'ur' = 'en'
+  const translations = await getTranslations(locale)
+  const isRTL = false // Since we're defaulting to English for now
+
+  const resolvedParams = await params
+  const product = getProductBySlug('bioFertilizers', resolvedParams.product)
   if (!product) {
     // NOTE: notFound() is server-only in App Router; if you hit issues, replace with a client redirect.
     notFound()
