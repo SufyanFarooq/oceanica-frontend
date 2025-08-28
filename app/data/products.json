@@ -1,0 +1,1359 @@
+{
+  "specialityFertilizers": {
+    "potassiumSulfateGroup": {
+      "name": "Potassium Sulfate Group",
+      "nameUr": "پوٹاشیم سلفیٹ گروپ",
+      "products": [
+        {
+          "id": "ever-sol",
+          "name": "EVER SOL",
+          "nameUr": "ایور سول",
+          "description": "Fully Soluble - SOP (0/0/50 + 18 S)",
+          "descriptionUr": "مکمل حل پذیر - ایس او پی (0/0/50 + 18 ایس)",
+          "image": "/assets/products/Speciality Fertilizers/ever-sol-1.jpg",
+          "features": [
+            "Powder fertilizer, acidic, free of chlorine and fully soluble in water",
+            "Improves crop yield and quality",
+            "Suitable for all fertigation systems (Sprinkler/Drip/Pivot/NFT)",
+            "Rich in Sulfur content",
+            "Reduces soil-pH and increases phosphorus availability",
+            "Very low salt index - preferred for saline soil areas"
+          ],
+          "featuresUr": [
+            "پاؤڈر کھاد، تیزابی، کلورین سے پاک اور پانی میں مکمل حل پذیر",
+            "فصل کی پیداوار اور معیار کو بہتر بناتا ہے",
+            "تمام فیٹیگیشن سسٹمز کے لیے موزوں (سپرنکلر/ڈرپ/پیوٹ/این ایف ٹی)",
+            "سلفر کی مقدار میں بھرپور",
+            "مٹی کی پی ایچ کو کم کرتا ہے اور فاسفورس کی دستیابی کو بڑھاتا ہے",
+            "بہت کم نمک کا انڈیکس - نمکین مٹی والے علاقوں کے لیے ترجیحی"
+          ],
+          "applications": [
+            "Fertigation systems (Sprinkler/Drip/Pivot/NFT)",
+            "Foliar application (5-8 gm/L)",
+            "All types of irrigation systems",
+            "Soil pH correction",
+            "Sulfur supplementation"
+          ],
+          "applicationsUr": [
+            "فیٹیگیشن سسٹمز (سپرنکلر/ڈرپ/پیوٹ/این ایف ٹی)",
+            "پتے پر استعمال (5-8 گرام/لیٹر)",
+            "تمام قسم کے آبپاشی کے نظام",
+            "مٹی کی پی ایچ کی درستگی",
+            "سلفر کی تکمیل"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "1.2 MT big bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "1.2 میٹرک ٹن کے بڑے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "0%",
+            "Phosphorus (P2O5)": "0%",
+            "Potassium (K2O)": "50%",
+            "Sulfur (S)": "18%"
+          }
+        },
+        {
+          "id": "ever-gran",
+          "name": "EVER GRAN",
+          "nameUr": "ایور گران",
+          "description": "Granular - SOP (0/0/50 + 18 S)",
+          "descriptionUr": "گرینولر - ایس او پی (0/0/50 + 18 ایس)",
+          "image": "/assets/products/Speciality Fertilizers/ever-gran.jpg",
+          "weight": "50Kg",
+          "features": [
+            "Granular fertilizer, easy to handle and apply",
+            "Slow-release potassium and sulfur",
+            "Improves soil structure and fertility",
+            "Suitable for broadcasting and row application",
+            "Long-lasting nutrient availability",
+            "Cost-effective for large-scale farming"
+          ],
+          "featuresUr": [
+            "گرینولر کھاد، استعمال کرنے میں آسان",
+            "آہستہ آہستہ خارج ہونے والا پوٹاشیم اور سلفر",
+            "مٹی کی ساخت اور زرخیزی کو بہتر بناتا ہے",
+            "چھڑکاؤ اور قطار میں استعمال کے لیے موزوں",
+            "طویل مدتی غذائی اجزاء کی دستیابی",
+            "بڑے پیمانے کی کاشتکاری کے لیے کم لاگت"
+          ],
+          "applications": [
+            "Broadcasting on field",
+            "Row application",
+            "Soil incorporation",
+            "Pre-planting application",
+            "Top dressing"
+          ],
+          "applicationsUr": [
+            "کھیت میں چھڑکاؤ",
+            "قطار میں استعمال",
+            "مٹی میں ملاوٹ",
+            "پودے لگانے سے پہلے استعمال",
+            "اوپر سے ڈالنے کے لیے"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "50 kg bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "50 کلوگرام کے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "0%",
+            "Phosphorus (P2O5)": "0%",
+            "Potassium (K2O)": "50%",
+            "Sulfur (S)": "18%"
+          }
+        },
+        {
+          "id": "ever-stand",
+          "name": "EVER STAND",
+          "nameUr": "ایور سٹینڈ",
+          "description": "Standard - SOP (0/0/50 + 18 S)",
+          "descriptionUr": "معیاری - ایس او پی (0/0/50 + 18 ایس)",
+          "image": "/assets/products/Speciality Fertilizers/ever-stand-2.jpg",
+          "features": [
+            "Standard quality SOP fertilizer",
+            "Balanced potassium and sulfur content",
+            "Suitable for general agricultural use",
+            "Good solubility in water",
+            "Affordable pricing for farmers",
+            "Widely compatible with other fertilizers"
+          ],
+          "featuresUr": [
+            "معیاری معیار کی ایس او پی کھاد",
+            "متوازن پوٹاشیم اور سلفر کی مقدار",
+            "عام زرعی استعمال کے لیے موزوں",
+            "پانی میں اچھی حل پذیری",
+            "کسانوں کے لیے مناسب قیمت",
+            "دیگر کھادوں کے ساتھ وسیع مطابقت"
+          ],
+          "applications": [
+            "General field application",
+            "Mixed with other fertilizers",
+            "Crop-specific application",
+            "Soil amendment",
+            "Fertigation systems"
+          ],
+          "applicationsUr": [
+            "عام کھیت میں استعمال",
+            "دیگر کھادوں کے ساتھ ملاوٹ",
+            "فصل کی مخصوص استعمال",
+            "مٹی کی بہتری",
+            "فیٹیگیشن سسٹمز"
+          ],
+          "packaging": [
+            "50 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "50 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "0%",
+            "Phosphorus (P2O5)": "0%",
+            "Potassium (K2O)": "50%",
+            "Sulfur (S)": "18%"
+          }
+        }
+      ]
+    },
+    "potassiumSulfoNitrateGroup": {
+      "name": "Potassium Sulfo Nitrate Group",
+      "nameUr": "پوٹاشیم سلفو نائٹریٹ گروپ",
+      "products": [
+        {
+          "id": "top-grow",
+          "name": "TOP GROW",
+          "nameUr": "ٹاپ گرو",
+          "description": "Potassium Sulfo Nitrate (KSN) - Balanced NPK",
+          "descriptionUr": "پوٹاشیم سلفو نائٹریٹ (کے ایس این) - متوازن این پی کے",
+          "image": "/assets/products/Speciality Fertilizers/top-grow-1.jpg",
+          "features": [
+            "Balanced NPK ratio for optimal crop growth",
+            "Contains sulfur for better nutrient absorption",
+            "Suitable for all crop types",
+            "Improves soil fertility and structure",
+            "Long-lasting nutrient release",
+            "Cost-effective for farmers"
+          ],
+          "featuresUr": [
+            "بہترین فصل کی نشوونما کے لیے متوازن این پی کے تناسب",
+            "بہتر غذائی اجزاء کی جذب کے لیے سلفر شامل",
+            "تمام فصل کی اقسام کے لیے موزوں",
+            "مٹی کی زرخیزی اور ساخت کو بہتر بناتا ہے",
+            "طویل مدتی غذائی اجزاء کی رہائی",
+            "کسانوں کے لیے کم لاگت"
+          ],
+          "applications": [
+            "General field application",
+            "Crop-specific fertilization",
+            "Soil improvement programs",
+            "Organic farming practices",
+            "Sustainable agriculture"
+          ],
+          "applicationsUr": [
+            "عام کھیت میں استعمال",
+            "فصل کی مخصوص کھاد",
+            "مٹی کی بہتری کے پروگرام",
+            "نامیاتی کاشتکاری کے طریقے",
+            "پائیدار زراعت"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "50 kg bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "50 کلوگرام کے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "15%",
+            "Phosphorus (P2O5)": "15%",
+            "Potassium (K2O)": "15%",
+            "Sulfur (S)": "5%"
+          }
+        },
+        {
+          "id": "super-grow",
+          "name": "SUPER GROW",
+          "nameUr": "سپر گرو",
+          "description": "Enhanced Potassium Sulfo Nitrate (KSN+)",
+          "descriptionUr": "بہتر پوٹاشیم سلفو نائٹریٹ (کے ایس این+)",
+          "image": "/assets/products/Speciality Fertilizers/super-grow-1.jpg",
+          "features": [
+            "Enhanced NPK formulation for maximum yield",
+            "Advanced sulfur technology for better absorption",
+            "Suitable for high-value crops",
+            "Improves crop quality and quantity",
+            "Fast-acting nutrient release",
+            "Premium quality for commercial farming"
+          ],
+          "featuresUr": [
+            "زیادہ سے زیادہ پیداوار کے لیے بہتر این پی کے فارمولیشن",
+            "بہتر جذب کے لیے جدید سلفر ٹیکنالوجی",
+            "اعلیٰ قیمت والی فصلوں کے لیے موزوں",
+            "فصل کی معیار اور مقدار کو بہتر بناتا ہے",
+            "تیز عمل کرنے والی غذائی اجزاء کی رہائی",
+            "تجارتی کاشتکاری کے لیے اعلیٰ معیار"
+          ],
+          "applications": [
+            "High-value crop production",
+            "Commercial farming operations",
+            "Precision agriculture",
+            "Greenhouse cultivation",
+            "Hydroponic systems"
+          ],
+          "applicationsUr": [
+            "اعلیٰ قیمت والی فصل کی پیداوار",
+            "تجارتی کاشتکاری کے آپریشنز",
+            "درستگی زراعت",
+            "گرین ہاؤس کی کاشت",
+            "ہائیڈروپونک سسٹمز"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "18%",
+            "Phosphorus (P2O5)": "18%",
+            "Potassium (K2O)": "18%",
+            "Sulfur (S)": "8%"
+          }
+        },
+        {
+          "id": "more-grow",
+          "name": "MORE GROW",
+          "nameUr": "مور گرو",
+          "description": "Premium Potassium Sulfo Nitrate (KSN Premium)",
+          "descriptionUr": "اعلیٰ معیار کا پوٹاشیم سلفو نائٹریٹ (کے ایس این پریمیم)",
+          "image": "/assets/products/Speciality Fertilizers/more-grow-1.jpg",
+          "features": [
+            "Premium NPK formulation for exceptional results",
+            "Advanced nutrient technology for maximum efficiency",
+            "Suitable for all soil types and conditions",
+            "Improves crop resistance to stress",
+            "Balanced nutrient release throughout growth cycle",
+            "Professional grade for agricultural experts"
+          ],
+          "featuresUr": [
+            "شاندار نتائج کے لیے اعلیٰ معیار کی این پی کے فارمولیشن",
+            "زیادہ سے زیادہ کارکردگی کے لیے جدید غذائی ٹیکنالوجی",
+            "تمام قسم کی مٹی اور حالات کے لیے موزوں",
+            "فصل کی تناؤ کے خلاف مزاحمت کو بہتر بناتا ہے",
+            "نشوونما کے چکر کے دوران متوازن غذائی اجزاء کی رہائی",
+            "زرعی ماہرین کے لیے پیشہ ورانہ گریڈ"
+          ],
+          "applications": [
+            "Professional farming operations",
+            "Research and development",
+            "Experimental agriculture",
+            "High-tech farming systems",
+            "Premium crop production"
+          ],
+          "applicationsUr": [
+            "پیشہ ورانہ کاشتکاری کے آپریشنز",
+            "تحقیق اور ترقی",
+            "تجرباتی زراعت",
+            "اعلیٰ ٹیک کاشتکاری کے نظام",
+            "اعلیٰ معیار کی فصل کی پیداوار"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Premium packaging"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "اعلیٰ معیار کی پیکنگ"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "20%",
+            "Phosphorus (P2O5)": "20%",
+            "Potassium (K2O)": "20%",
+            "Sulfur (S)": "10%"
+          }
+        }
+      ]
+    },
+    "balancedNpkGroup": {
+      "name": "Balanced-NPK Group",
+      "nameUr": "متوازن-این پی کے گروپ",
+      "products": [
+        {
+          "id": "power-grow",
+          "name": "POWER GROW",
+          "nameUr": "پاور گرو",
+          "description": "Balanced NPK Fertilizer (20-20-20)",
+          "descriptionUr": "متوازن این پی کے کھاد (20-20-20)",
+          "image": "/assets/products/Speciality Fertilizers/power-grow.jpg",
+          "features": [
+            "Perfectly balanced NPK ratio for all crops",
+            "Suitable for all growth stages",
+            "Improves root development and flowering",
+            "Enhances crop yield and quality",
+            "Easy to apply and handle",
+            "Cost-effective for all farming scales"
+          ],
+          "featuresUr": [
+            "تمام فصلوں کے لیے مکمل متوازن این پی کے تناسب",
+            "تمام نشوونما کے مراحل کے لیے موزوں",
+            "جڑ کی نشوونما اور پھول کو بہتر بناتا ہے",
+            "فصل کی پیداوار اور معیار کو بہتر بناتا ہے",
+            "استعمال اور ہینڈل کرنے میں آسان",
+            "تمام کاشتکاری کے پیمانے کے لیے کم لاگت"
+          ],
+          "applications": [
+            "General crop fertilization",
+            "Vegetable and fruit production",
+            "Field crop cultivation",
+            "Garden and landscape maintenance",
+            "Organic farming practices"
+          ],
+          "applicationsUr": [
+            "عام فصل کی کھاد",
+            "سبزیوں اور پھلوں کی پیداوار",
+            "کھیت کی فصل کی کاشت",
+            "باغ اور لینڈسکیپ کی دیکھ بھال",
+            "نامیاتی کاشتکاری کے طریقے"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "50 kg bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "50 کلوگرام کے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "20%",
+            "Phosphorus (P2O5)": "20%",
+            "Potassium (K2O)": "20%"
+          }
+        },
+        {
+          "id": "fast-grow",
+          "name": "FAST GROW",
+          "nameUr": "فاسٹ گرو",
+          "description": "Quick Release NPK Fertilizer (15-15-15)",
+          "descriptionUr": "تیز رہائی والی این پی کے کھاد (15-15-15)",
+          "image": "/assets/products/Speciality Fertilizers/fast-grow.jpg",
+          "features": [
+            "Fast-acting NPK for quick crop response",
+            "Suitable for early growth stages",
+            "Improves seedling establishment",
+            "Enhances early crop development",
+            "Quick nutrient availability",
+            "Ideal for time-sensitive applications"
+          ],
+          "featuresUr": [
+            "تیز فصل کی ردعمل کے لیے تیز عمل کرنے والی این پی کے",
+            "ابتدائی نشوونما کے مراحل کے لیے موزوں",
+            "پودے کی قیام کو بہتر بناتا ہے",
+            "ابتدائی فصل کی نشوونما کو بہتر بناتا ہے",
+            "تیز غذائی اجزاء کی دستیابی",
+            "وقت کے حساس استعمال کے لیے مثالی"
+          ],
+          "applications": [
+            "Seedling and early growth",
+            "Transplant establishment",
+            "Quick crop recovery",
+            "Emergency fertilization",
+            "Seasonal crop boost"
+          ],
+          "applicationsUr": [
+            "پودے اور ابتدائی نشوونما",
+            "ٹرانسپلانٹ کی قیام",
+            "تیز فصل کی بحالی",
+            "ہنگامی کھاد",
+            "موسمی فصل کی بوسٹ"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "15%",
+            "Phosphorus (P2O5)": "15%",
+            "Potassium (K2O)": "15%"
+          }
+        }
+      ]
+    },
+    "phosphateFertilizersGroup": {
+      "name": "Phosphate Fertilizers Group",
+      "nameUr": "فاسفیٹ کھاد گروپ",
+      "products": [
+        {
+          "id": "map",
+          "name": "MAP",
+          "nameUr": "ایم اے پی",
+          "description": "Mono-Ammonium Phosphate (12/61/0)",
+          "descriptionUr": "مونو-امونیم فاسفیٹ (12/61/0)",
+          "image": "/assets/products/Speciality Fertilizers/map-mono-ammonium-phospha.jpg",
+          "features": [
+            "High phosphorus content for root development",
+            "Ammonium nitrogen for immediate availability",
+            "Low salt index",
+            "Suitable for all soil types",
+            "Excellent for seed placement",
+            "Promotes early crop establishment"
+          ],
+          "featuresUr": [
+            "جڑ کی نشوونما کے لیے اعلیٰ فاسفورس کی مقدار",
+            "فوری دستیابی کے لیے امونیم نائٹروجن",
+            "کم نمک کا انڈیکس",
+            "تمام قسم کی مٹی کے لیے موزوں",
+            "بیج رکھنے کے لیے بہترین",
+            "فصل کی ابتدائی قیام کو فروغ دیتا ہے"
+          ],
+          "applications": [
+            "Seed placement",
+            "Row application",
+            "Pre-planting",
+            "Starter fertilizer",
+            "Greenhouse crops"
+          ],
+          "applicationsUr": [
+            "بیج رکھنے کے لیے",
+            "قطار میں استعمال",
+            "پودے لگانے سے پہلے",
+            "شروعاتی کھاد",
+            "گرین ہاؤس فصلوں کے لیے"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "50 kg bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "50 کلوگرام کے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "12%",
+            "Phosphorus (P2O5)": "61%",
+            "Potassium (K2O)": "0%"
+          }
+        },
+        {
+          "id": "up",
+          "name": "UP",
+          "nameUr": "یو پی",
+          "description": "Urea Phosphate-Magnum (17/44/0)",
+          "descriptionUr": "یوریا فاسفیٹ-میگنم (17/44/0)",
+          "image": "/assets/products/Speciality Fertilizers/up-urea-phosphate.jpg",
+          "features": [
+            "Combined urea and phosphate benefits",
+            "High nitrogen and phosphorus content",
+            "Suitable for fertigation",
+            "Good solubility in water",
+            "Versatile application methods",
+            "Cost-effective nutrient source"
+          ],
+          "featuresUr": [
+            "یوریا اور فاسفیٹ کے مشترکہ فوائد",
+            "اعلیٰ نائٹروجن اور فاسفورس کی مقدار",
+            "فیٹیگیشن کے لیے موزوں",
+            "پانی میں اچھی حل پذیری",
+            "مختلف طریقے استعمال کرنے کے لیے",
+            "کم لاگت والا غذائی ذریعہ"
+          ],
+          "applications": [
+            "Fertigation systems",
+            "Foliar application",
+            "Soil application",
+            "Hydroponic systems",
+            "Greenhouse production"
+          ],
+          "applicationsUr": [
+            "فیٹیگیشن سسٹمز",
+            "پتے پر استعمال",
+            "مٹی میں استعمال",
+            "ہائیڈروپونک سسٹمز",
+            "گرین ہاؤس پیداوار"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "17%",
+            "Phosphorus (P2O5)": "44%",
+            "Potassium (K2O)": "0%"
+          }
+        },
+        {
+          "id": "mkp",
+          "name": "MKP",
+          "nameUr": "ایم کے پی",
+          "description": "Mono-Potassium Phosphate (0/52/34)",
+          "descriptionUr": "مونو-پوٹاشیم فاسفیٹ (0/52/34)",
+          "image": "/assets/products/Speciality Fertilizers/mkp-mono-potassium-phosphate.jpg",
+          "features": [
+            "High phosphorus and potassium content",
+            "Excellent for flowering and fruiting",
+            "Highly soluble in water",
+            "Suitable for fertigation",
+            "Low salt index",
+            "Ideal for sensitive crops"
+          ],
+          "featuresUr": [
+            "اعلیٰ فاسفورس اور پوٹاشیم کی مقدار",
+            "پھول اور پھل کے لیے بہترین",
+            "پانی میں بہت حل پذیر",
+            "فیٹیگیشن کے لیے موزوں",
+            "کم نمک کا انڈیکس",
+            "حساس فصلوں کے لیے مثالی"
+          ],
+          "applications": [
+            "Fertigation systems",
+            "Foliar application",
+            "Hydroponic systems",
+            "Greenhouse crops",
+            "High-value crops"
+          ],
+          "applicationsUr": [
+            "فیٹیگیشن سسٹمز",
+            "پتے پر استعمال",
+            "ہائیڈروپونک سسٹمز",
+            "گرین ہاؤس فصلوں کے لیے",
+            "اعلیٰ قیمت والی فصلوں کے لیے"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "0%",
+            "Phosphorus (P2O5)": "52%",
+            "Potassium (K2O)": "34%"
+          }
+        }
+      ]
+    },
+    "calciumNitrateGroup": {
+      "name": "Calcium Nitrate Group",
+      "nameUr": "کیلشیم نائٹریٹ گروپ",
+      "products": [
+        {
+          "id": "nitro-cal",
+          "name": "NITRO CAL",
+          "nameUr": "نائٹرو کیل",
+          "description": "Calcium Nitrate (15.5-0-0 + 19 Ca)",
+          "descriptionUr": "کیلشیم نائٹریٹ (15.5-0-0 + 19 کیل)",
+          "image": "/assets/products/Speciality Fertilizers/nitro-cal-calcium-nitrate.jpg",
+          "features": [
+            "High calcium content for cell wall strength",
+            "Nitrate nitrogen for immediate availability",
+            "Improves fruit quality and shelf life",
+            "Prevents calcium deficiency disorders",
+            "Suitable for all crops",
+            "Excellent for fertigation systems"
+          ],
+          "featuresUr": [
+            "خلیوں کی دیوار کی طاقت کے لیے اعلیٰ کیلشیم کی مقدار",
+            "فوری دستیابی کے لیے نائٹریٹ نائٹروجن",
+            "پھل کی معیار اور شیلف لائف کو بہتر بناتا ہے",
+            "کیلشیم کی کمی کی خرابیوں کو روکتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "فیٹیگیشن سسٹمز کے لیے بہترین"
+          ],
+          "applications": [
+            "Fertigation systems",
+            "Foliar application",
+            "Soil application",
+            "Greenhouse production",
+            "High-value crops"
+          ],
+          "applicationsUr": [
+            "فیٹیگیشن سسٹمز",
+            "پتے پر استعمال",
+            "مٹی میں استعمال",
+            "گرین ہاؤس پیداوار",
+            "اعلیٰ قیمت والی فصلوں کے لیے"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "Bulk containers"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "بڑے کنٹینرز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "15.5%",
+            "Phosphorus (P2O5)": "0%",
+            "Potassium (K2O)": "0%",
+            "Calcium (Ca)": "19%"
+          }
+        },
+        {
+          "id": "grano-cal",
+          "name": "GRANO CAL",
+          "nameUr": "گرانو کیل",
+          "description": "Granular Calcium Nitrate (15-0-0 + 18 Ca)",
+          "descriptionUr": "گرینولر کیلشیم نائٹریٹ (15-0-0 + 18 کیل)",
+          "image": "/assets/products/Speciality Fertilizers/grano-cal-calcium-nitrate.jpg",
+          "features": [
+            "Granular form for easy application",
+            "High calcium content for soil improvement",
+            "Nitrate nitrogen for quick response",
+            "Improves soil structure and fertility",
+            "Suitable for broadcasting",
+            "Long-lasting calcium availability"
+          ],
+          "featuresUr": [
+            "آسان استعمال کے لیے گرینولر فارم",
+            "مٹی کی بہتری کے لیے اعلیٰ کیلشیم کی مقدار",
+            "تیز ردعمل کے لیے نائٹریٹ نائٹروجن",
+            "مٹی کی ساخت اور زرخیزی کو بہتر بناتا ہے",
+            "چھڑکاؤ کے لیے موزوں",
+            "طویل مدتی کیلشیم کی دستیابی"
+          ],
+          "applications": [
+            "Broadcasting on field",
+            "Soil incorporation",
+            "Pre-planting application",
+            "Top dressing",
+            "Soil amendment programs"
+          ],
+          "applicationsUr": [
+            "کھیت میں چھڑکاؤ",
+            "مٹی میں ملاوٹ",
+            "پودے لگانے سے پہلے استعمال",
+            "اوپر سے ڈالنے کے لیے",
+            "مٹی کی بہتری کے پروگرام"
+          ],
+          "packaging": [
+            "25 kg bags",
+            "50 kg bags"
+          ],
+          "packagingUr": [
+            "25 کلوگرام کے بیگز",
+            "50 کلوگرام کے بیگز"
+          ],
+          "nutrientComposition": {
+            "Nitrogen (N)": "15%",
+            "Phosphorus (P2O5)": "0%",
+            "Potassium (K2O)": "0%",
+            "Calcium (Ca)": "18%"
+          }
+        }
+      ]
+    }
+  },
+  "bioFertilizers": {
+    "aminoAcidCompoundsGroup": {
+      "name": "Amino Acid Compounds Group",
+      "nameUr": "امینو ایسڈ کمپاؤنڈز گروپ",
+      "products": [
+        {
+          "id": "ever-amino-s",
+          "name": "EVER AMINO - S",
+          "nameUr": "ایور امینو - ایس",
+          "description": "Liquid Amino Acid Solution (20 LITRE)",
+          "descriptionUr": "مائع امینو ایسڈ حل (20 لیٹر)",
+          "image": "/assets/products/Bio Fertilizers/ever-amino-s.jpg",
+          "features": [
+            "100% natural amino acid solution",
+            "Enhances plant growth and development",
+            "Improves stress tolerance in crops",
+            "Increases nutrient absorption efficiency",
+            "Safe for all types of crops",
+            "Environmentally friendly and biodegradable"
+          ],
+          "featuresUr": [
+            "100% قدرتی امینو ایسڈ حل",
+            "پودوں کی نشوونما اور ترقی کو بہتر بناتا ہے",
+            "فصلوں میں تناؤ برداشت کرنے کی صلاحیت کو بہتر بناتا ہے",
+            "غذائی اجزاء کی جذب کرنے کی کارکردگی کو بڑھاتا ہے",
+            "تمام قسم کی فصلوں کے لیے محفوظ",
+            "ماحول دوست اور حیاتیاتی طور پر تحلیل پذیر"
+          ],
+          "applications": [
+            "Foliar application (2-3 ml/L)",
+            "Soil drenching (5-10 ml/L)",
+            "Seed treatment and soaking",
+            "Hydroponic systems",
+            "Organic farming practices"
+          ],
+          "applicationsUr": [
+            "پتے پر استعمال (2-3 ملی لیٹر/لیٹر)",
+            "مٹی میں ڈالنے کے لیے (5-10 ملی لیٹر/لیٹر)",
+            "بیج کی تیاری اور بھگونے کے لیے",
+            "ہائیڈروپونک سسٹمز",
+            "نامیاتی کاشتکاری کے طریقے"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Amino Acids": "1.04%",
+            "Bactirine": "0.88%",
+            "Organic Matter": "15%",
+            "pH Level": "6.5-7.0"
+          }
+        },
+        {
+          "id": "ever-amino-l",
+          "name": "EVER AMINO - L",
+          "nameUr": "ایور امینو - ایل",
+          "description": "Liquid Amino Acid Solution (20 LITRE)",
+          "descriptionUr": "مائع امینو ایسڈ حل (20 لیٹر)",
+          "image": "/assets/products/Bio Fertilizers/ever-amino-l.jpg",
+          "features": [
+            "Enhanced amino acid profile",
+            "Improved stress resistance",
+            "Better nutrient uptake",
+            "Enhanced root development",
+            "Increased crop yield",
+            "Natural growth promoter"
+          ],
+          "featuresUr": [
+            "بہتر امینو ایسڈ پروفائل",
+            "بہتر تناؤ کی مزاحمت",
+            "بہتر غذائی اجزاء کی جذب",
+            "بہتر جڑ کی نشوونما",
+            "بڑھی ہوئی فصل کی پیداوار",
+            "قدرتی نشوونما کو فروغ دینے والا"
+          ],
+          "applications": [
+            "Foliar application (3-5 ml/L)",
+            "Soil application (8-12 ml/L)",
+            "Seed treatment",
+            "Root dipping",
+            "Drip irrigation"
+          ],
+          "applicationsUr": [
+            "پتے پر استعمال (3-5 ملی لیٹر/لیٹر)",
+            "مٹی میں استعمال (8-12 ملی لیٹر/لیٹر)",
+            "بیج کی تیاری",
+            "جڑ کو بھگونے کے لیے",
+            "ڈرپ آبپاشی"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Amino Acids": "1.2%",
+            "Bactirine": "0.95%",
+            "Organic Matter": "18%",
+            "pH Level": "6.8-7.2"
+          }
+        }
+      ]
+    },
+    "calciumAndBoronGroup": {
+      "name": "Calcium and Boron Fertilizer Compounds Group",
+      "nameUr": "کیلشیم اور بورون کھاد کمپاؤنڈز گروپ",
+      "products": [
+        {
+          "id": "ever-boron",
+          "name": "EVER BORON 15%",
+          "nameUr": "ایور بورون 15%",
+          "description": "Boron Fertilizer Solution (15% B)",
+          "descriptionUr": "بورون کھاد کا حل (15% بی)",
+          "image": "/assets/products/Bio Fertilizers/ever-boron.jpg",
+          "features": [
+            "High boron concentration",
+            "Essential for cell division",
+            "Improves flowering and fruiting",
+            "Prevents boron deficiency",
+            "Suitable for all crops",
+            "Easy to apply and absorb"
+          ],
+          "featuresUr": [
+            "اعلیٰ بورون کی حراست",
+            "خلیوں کی تقسیم کے لیے ضروری",
+            "پھول اور پھل کو بہتر بناتا ہے",
+            "بورون کی کمی کو روکتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "استعمال اور جذب کرنے میں آسان"
+          ],
+          "applications": [
+            "Foliar application (1-2 ml/L)",
+            "Soil application (3-5 ml/L)",
+            "Seed treatment",
+            "Drip irrigation",
+            "Pre-flowering application"
+          ],
+          "applicationsUr": [
+            "پتے پر استعمال (1-2 ملی لیٹر/لیٹر)",
+            "مٹی میں استعمال (3-5 ملی لیٹر/لیٹر)",
+            "بیج کی تیاری",
+            "ڈرپ آبپاشی",
+            "پھول آنے سے پہلے استعمال"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Boron (B)": "15%",
+            "pH Level": "6.0-7.0",
+            "Density": "1.2 g/ml"
+          }
+        },
+        {
+          "id": "ever-ca-b",
+          "name": "EVER Ca - B",
+          "nameUr": "ایور کیل - بی",
+          "description": "Calcium Boron Complex (Ca + B)",
+          "descriptionUr": "کیلشیم بورون کمپلیکس (کیل + بی)",
+          "image": "/assets/products/Bio Fertilizers/ever-ca-b.jpg",
+          "features": [
+            "Combined calcium and boron",
+            "Improves cell wall strength",
+            "Enhances fruit quality",
+            "Prevents physiological disorders",
+            "Better nutrient balance",
+            "Synergistic effect"
+          ],
+          "featuresUr": [
+            "کیلشیم اور بورون کا مجموعہ",
+            "خلیوں کی دیوار کی طاقت کو بہتر بناتا ہے",
+            "پھل کی معیار کو بہتر بناتا ہے",
+            "جسمانی خرابیوں کو روکتا ہے",
+            "بہتر غذائی توازن",
+            "مشترکہ اثر"
+          ],
+          "applications": [
+            "Foliar application (2-4 ml/L)",
+            "Soil application (5-8 ml/L)",
+            "Fruit crops",
+            "Vegetable crops",
+            "Pre-harvest application"
+          ],
+          "applicationsUr": [
+            "پتے پر استعمال (2-4 ملی لیٹر/لیٹر)",
+            "مٹی میں استعمال (5-8 ملی لیٹر/لیٹر)",
+            "پھل والی فصلوں کے لیے",
+            "سبزیوں والی فصلوں کے لیے",
+            "کاٹنے سے پہلے استعمال"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Calcium (Ca)": "8%",
+            "Boron (B)": "3%",
+            "pH Level": "6.5-7.5"
+          }
+        }
+      ]
+    },
+    "climateChangeAdaptationGroup": {
+      "name": "Climate Change Adaptation Group",
+      "nameUr": "موسمیاتی تبدیلی کے مطابق ڈھالنے والا گروپ",
+      "products": [
+        {
+          "id": "ever-silica-k",
+          "name": "EVER SILICA K",
+          "nameUr": "ایور سلیکا کے",
+          "description": "Silica Potassium Solution for Climate Resilience",
+          "descriptionUr": "موسمیاتی تبدیلی کے خلاف مزاحمت کے لیے سلیکا پوٹاشیم حل",
+          "image": "/assets/products/Bio Fertilizers/ever-silica-k.jpg",
+          "features": [
+            "Silica enhances plant stress tolerance",
+            "Potassium improves drought resistance",
+            "Climate change adaptation solution",
+            "Improves crop resilience",
+            "Natural stress protection",
+            "Sustainable farming support"
+          ],
+          "featuresUr": [
+            "سلیکا پودوں کی تناؤ برداشت کرنے کی صلاحیت کو بہتر بناتا ہے",
+            "پوٹاشیم خشک سالی کی مزاحمت کو بہتر بناتا ہے",
+            "موسمیاتی تبدیلی کے مطابق ڈھالنے کا حل",
+            "فصل کی لچک کو بہتر بناتا ہے",
+            "قدرتی تناؤ سے حفاظت",
+            "پائیدار کاشتکاری کی حمایت"
+          ],
+          "applications": [
+            "Climate stress management",
+            "Drought resistance programs",
+            "Heat stress protection",
+            "Salinity tolerance",
+            "Environmental adaptation"
+          ],
+          "applicationsUr": [
+            "موسمیاتی تناؤ کا انتظام",
+            "خشک سالی کی مزاحمت کے پروگرام",
+            "گرمی کے تناؤ سے حفاظت",
+            "نمکین پن کی برداشت",
+            "ماحولیاتی مطابقت"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Silica (SiO2)": "8%",
+            "Potassium (K2O)": "12%",
+            "pH Level": "6.5-7.0"
+          }
+        }
+      ]
+    },
+    "soilSalinityCorrectorsGroup": {
+      "name": "Soil Salinity Correctors Group",
+      "nameUr": "مٹی کی نمکین پن کی درستگی کرنے والا گروپ",
+      "products": [
+        {
+          "id": "new-never-sal",
+          "name": "NEW NEVER SAL",
+          "nameUr": "نیو نیور سال",
+          "description": "Advanced Salinity Correction Solution",
+          "descriptionUr": "جدید نمکین پن کی درستگی کا حل",
+          "image": "/assets/products/Bio Fertilizers/new-never-sal.jpg",
+          "features": [
+            "Advanced salinity correction technology",
+            "Improves soil structure",
+            "Reduces salt accumulation",
+            "Enhances water retention",
+            "Suitable for saline soils",
+            "Long-lasting effect"
+          ],
+          "featuresUr": [
+            "جدید نمکین پن کی درستگی کی ٹیکنالوجی",
+            "مٹی کی ساخت کو بہتر بناتا ہے",
+            "نمک کی جمع کو کم کرتا ہے",
+            "پانی کی برقراری کو بہتر بناتا ہے",
+            "نمکین مٹی کے لیے موزوں",
+            "دیرپا اثر"
+          ],
+          "applications": [
+            "Saline soil reclamation",
+            "Irrigation water treatment",
+            "Soil amendment programs",
+            "Agricultural land improvement",
+            "Sustainable farming practices"
+          ],
+          "applicationsUr": [
+            "نمکین مٹی کی بحالی",
+            "آبپاشی کے پانی کی تیاری",
+            "مٹی کی بہتری کے پروگرام",
+            "زرعی زمین کی بہتری",
+            "پائیدار کاشتکاری کے طریقے"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Organic Matter": "25%",
+            "pH Level": "6.0-7.0",
+            "Salinity Reduction": "40-60%"
+          }
+        },
+        {
+          "id": "ever-sal",
+          "name": "EVER SAL",
+          "nameUr": "ایور سال",
+          "description": "Salinity Correction and Soil Improvement",
+          "descriptionUr": "نمکین پن کی درستگی اور مٹی کی بہتری",
+          "image": "/assets/products/Bio Fertilizers/ever-sal.jpg",
+          "features": [
+            "Effective salinity correction",
+            "Improves soil fertility",
+            "Enhances crop growth",
+            "Reduces soil toxicity",
+            "Natural soil amendment",
+            "Environmentally friendly"
+          ],
+          "featuresUr": [
+            "موثر نمکین پن کی درستگی",
+            "مٹی کی زرخیزی کو بہتر بناتا ہے",
+            "فصل کی نشوونما کو بہتر بناتا ہے",
+            "مٹی کی زہریلی پن کو کم کرتا ہے",
+            "قدرتی مٹی کی بہتری",
+            "ماحول دوست"
+          ],
+          "applications": [
+            "Saline soil treatment",
+            "Crop establishment",
+            "Soil rehabilitation",
+            "Agricultural improvement",
+            "Organic farming"
+          ],
+          "applicationsUr": [
+            "نمکین مٹی کا علاج",
+            "فصل کی قیام",
+            "مٹی کی بحالی",
+            "زرعی بہتری",
+            "نامیاتی کاشتکاری"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Organic Matter": "20%",
+            "pH Level": "6.5-7.5",
+            "Salinity Reduction": "30-50%"
+          }
+        }
+      ]
+    },
+    "rootStimulantsAndActivatorsGroup": {
+      "name": "Root Stimulants and Activators Group",
+      "nameUr": "جڑ کی محرکات اور فعال کرنے والا گروپ",
+      "products": [
+        {
+          "id": "ever-super-root",
+          "name": "EVER SUPER ROOT",
+          "nameUr": "ایور سپر روٹ",
+          "description": "Advanced Root Development Stimulant",
+          "descriptionUr": "جدید جڑ کی نشوونما کی محرک",
+          "image": "/assets/products/Bio Fertilizers/ever-super-root.jpg",
+          "features": [
+            "Advanced root development technology",
+            "Improves root branching",
+            "Enhances nutrient absorption",
+            "Increases drought resistance",
+            "Better crop establishment",
+            "Natural growth promotion"
+          ],
+          "featuresUr": [
+            "جدید جڑ کی نشوونما کی ٹیکنالوجی",
+            "جڑ کی شاخوں کو بہتر بناتا ہے",
+            "غذائی اجزاء کی جذب کو بہتر بناتا ہے",
+            "خشک سالی کی مزاحمت کو بڑھاتا ہے",
+            "بہتر فصل کی قیام",
+            "قدرتی نشوونما کی ترغیب"
+          ],
+          "applications": [
+            "Seedling establishment",
+            "Transplant support",
+            "Root development programs",
+            "Crop establishment",
+            "Stress recovery"
+          ],
+          "applicationsUr": [
+            "پودے کی قیام",
+            "ٹرانسپلانٹ کی حمایت",
+            "جڑ کی نشوونما کے پروگرام",
+            "فصل کی قیام",
+            "تناؤ سے بحالی"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Root Stimulants": "2.5%",
+            "Growth Hormones": "0.8%",
+            "Organic Matter": "18%"
+          }
+        }
+      ]
+    },
+    "chelatedNutrientsGroup": {
+      "name": "Chelated Nutrients Group",
+      "nameUr": "کیلٹیٹ غذائی اجزاء گروپ",
+      "products": [
+        {
+          "id": "ever-micro-grow",
+          "name": "EVER MICRO GROW",
+          "nameUr": "ایور مائیکرو گرو",
+          "description": "Complete Micronutrient Solution",
+          "descriptionUr": "مکمل خرد غذائی اجزاء کا حل",
+          "image": "/assets/products/Bio Fertilizers/ever-micro-grow.jpg",
+          "features": [
+            "Complete micronutrient package",
+            "Chelated for better absorption",
+            "Improves crop quality",
+            "Prevents deficiency symptoms",
+            "Suitable for all crops",
+            "Balanced nutrient profile"
+          ],
+          "featuresUr": [
+            "مکمل خرد غذائی اجزاء کا پیکج",
+            "بہتر جذب کے لیے کیلٹیٹ",
+            "فصل کی معیار کو بہتر بناتا ہے",
+            "کمی کی علامات کو روکتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "متوازن غذائی پروفائل"
+          ],
+          "applications": [
+            "Micronutrient supplementation",
+            "Crop quality improvement",
+            "Deficiency correction",
+            "Foliar application",
+            "Soil application"
+          ],
+          "applicationsUr": [
+            "خرد غذائی اجزاء کی تکمیل",
+            "فصل کی معیار کی بہتری",
+            "کمی کی درستگی",
+            "پتے پر استعمال",
+            "مٹی میں استعمال"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Iron (Fe)": "2.0%",
+            "Zinc (Zn)": "1.5%",
+            "Manganese (Mn)": "1.0%",
+            "Copper (Cu)": "0.5%"
+          }
+        },
+        {
+          "id": "ever-iron",
+          "name": "EVER IRON",
+          "nameUr": "ایور آئرن",
+          "description": "Chelated Iron Solution (Fe-EDTA)",
+          "descriptionUr": "کیلٹیٹ آئرن حل (فی-ای ڈی ٹی اے)",
+          "image": "/assets/products/Bio Fertilizers/ever-iron.jpg",
+          "features": [
+            "High-quality chelated iron",
+            "Excellent absorption rate",
+            "Prevents iron deficiency",
+            "Improves chlorophyll production",
+            "Suitable for all crops",
+            "Fast-acting solution"
+          ],
+          "featuresUr": [
+            "اعلیٰ معیار کا کیلٹیٹ آئرن",
+            "شاندار جذب کی شرح",
+            "آئرن کی کمی کو روکتا ہے",
+            "کلوروفیل کی پیداوار کو بہتر بناتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "تیز عمل کرنے والا حل"
+          ],
+          "applications": [
+            "Iron deficiency correction",
+            "Chlorosis treatment",
+            "Foliar application",
+            "Soil application",
+            "Hydroponic systems"
+          ],
+          "applicationsUr": [
+            "آئرن کی کمی کی درستگی",
+            "کلوروسس کا علاج",
+            "پتے پر استعمال",
+            "مٹی میں استعمال",
+            "ہائیڈروپونک سسٹمز"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Iron (Fe)": "6.0%",
+            "Chelating Agent": "EDTA",
+            "pH Level": "6.0-7.0"
+          }
+        },
+        {
+          "id": "ever-zinc",
+          "name": "EVER ZINC",
+          "nameUr": "ایور زنک",
+          "description": "Chelated Zinc Solution (Zn-EDTA)",
+          "descriptionUr": "کیلٹیٹ زنک حل (زن-ای ڈی ٹی اے)",
+          "image": "/assets/products/Bio Fertilizers/ever-zinc.jpg",
+          "features": [
+            "High-quality chelated zinc",
+            "Excellent bioavailability",
+            "Prevents zinc deficiency",
+            "Improves crop growth",
+            "Suitable for all crops",
+            "Fast-acting solution"
+          ],
+          "featuresUr": [
+            "اعلیٰ معیار کا کیلٹیٹ زنک",
+            "شاندار حیاتیاتی دستیابی",
+            "زنک کی کمی کو روکتا ہے",
+            "فصل کی نشوونما کو بہتر بناتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "تیز عمل کرنے والا حل"
+          ],
+          "applications": [
+            "Zinc deficiency correction",
+            "Crop growth improvement",
+            "Foliar application",
+            "Soil application",
+            "Seed treatment"
+          ],
+          "applicationsUr": [
+            "زنک کی کمی کی درستگی",
+            "فصل کی نشوونما کی بہتری",
+            "پتے پر استعمال",
+            "مٹی میں استعمال",
+            "بیج کی تیاری"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Zinc (Zn)": "8.0%",
+            "Chelating Agent": "EDTA",
+            "pH Level": "6.0-7.0"
+          }
+        },
+        {
+          "id": "ever-manganese",
+          "name": "EVER MANGANESE",
+          "nameUr": "ایور مینگنیز",
+          "description": "Chelated Manganese Solution (Mn-EDTA)",
+          "descriptionUr": "کیلٹیٹ مینگنیز حل (من-ای ڈی ٹی اے)",
+          "image": "/assets/products/Bio Fertilizers/ever-manganese.jpg",
+          "features": [
+            "High-quality chelated manganese",
+            "Excellent absorption rate",
+            "Prevents manganese deficiency",
+            "Improves photosynthesis",
+            "Suitable for all crops",
+            "Fast-acting solution"
+          ],
+          "featuresUr": [
+            "اعلیٰ معیار کا کیلٹیٹ مینگنیز",
+            "شاندار جذب کی شرح",
+            "مینگنیز کی کمی کو روکتا ہے",
+            "فوٹوسنتھیسس کو بہتر بناتا ہے",
+            "تمام فصلوں کے لیے موزوں",
+            "تیز عمل کرنے والا حل"
+          ],
+          "applications": [
+            "Manganese deficiency correction",
+            "Photosynthesis improvement",
+            "Foliar application",
+            "Soil application",
+            "Crop quality enhancement"
+          ],
+          "applicationsUr": [
+            "مینگنیز کی کمی کی درستگی",
+            "فوٹوسنتھیسس کی بہتری",
+            "پتے پر استعمال",
+            "مٹی میں استعمال",
+            "فصل کی معیار کی بہتری"
+          ],
+          "packaging": [
+            "20 LITRE jerry cans",
+            "Bulk containers available"
+          ],
+          "packagingUr": [
+            "20 لیٹر کے جیری کنز",
+            "بڑے کنٹینرز دستیاب ہیں"
+          ],
+          "nutrientComposition": {
+            "Manganese (Mn)": "5.0%",
+            "Chelating Agent": "EDTA",
+            "pH Level": "6.0-7.0"
+          }
+        }
+      ]
+    }
+  }
+}

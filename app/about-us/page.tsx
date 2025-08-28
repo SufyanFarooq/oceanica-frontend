@@ -1,267 +1,427 @@
+'use client'
+
+import React, { useEffect, useState, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
-import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Globe, Award, Target } from 'lucide-react'
+import Image from 'next/image'
+
+import {
+  Leaf, Factory, Users, Globe, Clock,
+  Award, Shield, TestTube, CheckCircle, ArrowLeft
+} from 'lucide-react'
 
 export default function AboutUs() {
-  const values = [
-    {
-      title: 'Innovation',
-      description: 'Continuously developing cutting-edge agricultural solutions',
-      icon: '💡',
-      color: 'bg-blue-100'
-    },
-    {
-      title: 'Sustainability',
-      description: 'Committed to environmental responsibility and long-term success',
-      icon: '🌱',
-      color: 'bg-green-100'
-    },
-    {
-      title: 'Excellence',
-      description: 'Maintaining the highest standards in everything we do',
-      icon: '⭐',
-      color: 'bg-yellow-100'
-    },
-    {
-      title: 'Integrity',
-      description: 'Building trust through honest and transparent relationships',
-      icon: '🤝',
-      color: 'bg-purple-100'
+  const [counts, setCounts] = useState({
+    experience: 0,
+    countries: 0,
+    complexes: 0,
+    employees: 0
+  })
+  
+  const statsRef = useRef<HTMLElement>(null)
+
+  // Animated counting effect
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Start counting animation
+            const targetCounts = {
+              experience: 15,
+              countries: 50,
+              complexes: 3,
+              employees: 1000
+            }
+            
+            Object.keys(targetCounts).forEach((key) => {
+              const target = targetCounts[key as keyof typeof targetCounts]
+              const duration = 2000 // 2 seconds
+              const increment = target / (duration / 16) // 60fps
+              let current = 0
+              
+              const timer = setInterval(() => {
+                current += increment
+                if (current >= target) {
+                  current = target
+                  clearInterval(timer)
+                }
+                
+                setCounts(prev => ({
+                  ...prev,
+                  [key]: Math.floor(current)
+                }))
+              }, 16)
+            })
+            
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { threshold: 0.5 }
+    )
+    
+    if (statsRef.current) {
+      observer.observe(statsRef.current)
     }
+    
+    return () => observer.disconnect()
+  }, [])
+
+  // ---- data (keep/edit as you like) ----
+  const stats = [
+    { number: counts.experience,  label: 'Years of Experience',   icon: Clock, suffix: '+' },
+    { number: counts.countries,   label: 'Exporting Countries',   icon: Globe, suffix: '+' },
+    { number: counts.complexes,   label: 'Industrial Complexes',  icon: Factory, suffix: '' },
+    { number: counts.employees,   label: 'Employees',             icon: Users, suffix: '+' },
   ]
 
-  const milestones = [
+  const journey = [
     {
-      year: '2010',
-      title: 'Company Founded',
-      description: 'Oceanica Crop Science established in Pakistan'
+      year: '2008',
+      title: 'Foundation and Vision',
+      description:
+        'Oceanica Crop Science was established to revolutionize the agri-chemical industry and promote sustainable farming.',
+      achievements: ['Company established', 'First industrial complex in Lahore'],
     },
     {
-      year: '2015',
-      title: 'First Product Launch',
-      description: 'Introduced our flagship crop protection products'
+      year: '2012',
+      title: 'Expansion & Growth',
+      description:
+        'Second industrial complex launched in Faisalabad; production scaled for local & global demand.',
+      achievements: ['Second complex (Faisalabad)', 'Expanded product portfolio'],
     },
     {
-      year: '2018',
-      title: 'Regional Expansion',
-      description: 'Expanded operations across major agricultural regions'
+      year: '2015–2018',
+      title: 'Production Milestones',
+      description:
+        'Became the largest producer of Bio Fertilizers in Pakistan and expanded to regional markets.',
+      achievements: ['#1 Bio Fertilizers in Pakistan', 'Export to 25+ countries'],
     },
     {
-      year: '2020',
-      title: 'Sustainability Initiative',
-      description: 'Launched comprehensive sustainability program'
+      year: '2020–Present',
+      title: 'Global Leadership',
+      description:
+        'Recognized worldwide for innovation; exporting to 50+ countries with 1000+ employees.',
+      achievements: ['50+ countries', '1000+ dedicated employees'],
     },
-    {
-      year: '2023',
-      title: 'Digital Transformation',
-      description: 'Enhanced digital capabilities and farmer support'
-    }
   ]
 
-  const team = [
+  const solutions = [
     {
-      name: 'Dr. Ahmed Khan',
-      position: 'Chief Executive Officer',
-      expertise: 'Agricultural Science, Business Leadership',
-      image: '👨‍💼'
+      title: 'Liquid Fertilizers',
+      description:
+        'Innovative liquid formulations to improve soil fertility, root growth, and yield.',
+      image: '/assets/about-us/liquid-fertilizers.jpg',
+      color: 'bg-green-50',
     },
     {
-      name: 'Dr. Fatima Ali',
-      position: 'Head of Research & Development',
-      expertise: 'Crop Protection, Product Development',
-      image: '👩‍🔬'
+      title: 'Powder Speciality Fertilizers',
+      description:
+        'Macro & microelements with amino acids in powder form for growth and quality.',
+      image: '/assets/about-us/powder-speciality-fertilizers.jpg',
+      color: 'bg-blue-50',
     },
     {
-      name: 'Muhammad Hassan',
-      position: 'Director of Operations',
-      expertise: 'Supply Chain, Quality Management',
-      image: '👨‍💼'
-    }
+      title: 'Granular Speciality Fertilizers',
+      description:
+        'Slow-release granules that feed plants over extended periods.',
+      image: '/assets/about-us/granular-speciality-fertilizers.jpg',
+      color: 'bg-violet-50',
+    },
+  ]
+
+  const certificates = [
+    { name: 'ISO 9001',  description: 'Quality Management Systems',                       image: '/assets/about-us/9001.png' },
+    { name: 'ISO 14001', description: 'Environmental Management Systems',                image: '/assets/about-us/14001.png' },
+    { name: 'ISO 45001', description: 'Occupational Health & Safety',                    image: '/assets/about-us/45001.png' },
+    { name: 'ISO 17025', description: 'Laboratory Management Systems',                   image: '/assets/about-us/17025.png' },
+    { name: 'GMP+',      description: 'Good Manufacturing Practice & HACCP',             image: '/assets/about-us/gmp.png' },
+    { name: 'REACH',     description: 'EU Chemicals Compliance',                          image: '/assets/about-us/reach.png' },
+    { name: 'PK Quality Mark', description: 'National quality certification',             image: '/assets/about-us/egyptian-quality-mark.png' },
+    { name: 'EU Compliance',    description: 'European Fertilizing Products Regulations', image: '/assets/about-us/compliance-with-european-fertilizing.png' },
   ]
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#F7FAF8] text-slate-900">
       <Navbar />
-      
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-50 to-blue-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700">
-              <ArrowLeft className="w-4 h-4 mr-2" />
+
+      {/* HERO — video with gradient overlay */}
+      <section className="relative overflow-hidden">
+        {/* Background Video Container */}
+        <div className="absolute inset-0 w-full h-full">
+          <video 
+            className="w-full h-full object-cover" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '1'
+            }}
+          >
+            <source src="/company-overview.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          
+          {/* Dark overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/30 z-2"></div>
+        </div>
+
+        {/* Content Overlay */}
+        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 text-center md:py-24">
+          <div className="mb-6 flex justify-center">
+            <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-primary-700 backdrop-blur hover:bg-white/90 transition-colors">
+              <ArrowLeft className="h-4 w-4" />
               Back to Home
             </Link>
           </div>
-          <div className="text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
-              About Oceanica Crop Science
-            </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-              Leading agricultural innovation in Pakistan. We're committed to helping farmers 
-              increase yields, protect crops, and build sustainable futures.
-            </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600">
-              <Leaf className="w-6 h-6" />
-              <span className="font-semibold">Oceanica Crop Science</span>
-            </div>
+          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-primary-700 backdrop-blur">
+            <Leaf className="h-4 w-4" /> Oceanica Crop Science
           </div>
-        </div>
-      </section>
-
-      {/* Mission Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                Our Mission
-              </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                At Oceanica Crop Science, we're dedicated to advancing agricultural 
-                productivity and sustainability in Pakistan through innovative solutions, 
-                expert knowledge, and unwavering commitment to our farming community.
-              </p>
-              <p className="text-lg text-gray-600 mb-6">
-                We believe that by empowering farmers with the right tools and knowledge, 
-                we can build a more food-secure and prosperous Pakistan for generations to come.
-              </p>
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
-                  <Target className="w-8 h-8 text-primary-600" />
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900">Food Security</h3>
-                  <p className="text-gray-600">Supporting Pakistan's agricultural future</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-gradient-to-br from-primary-50 to-blue-50 rounded-2xl p-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">What We Do</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-                    <span className="text-gray-700">Develop innovative crop protection solutions</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-                    <span className="text-gray-700">Provide expert agronomic advice</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-                    <span className="text-gray-700">Train farmers in modern techniques</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-                    <span className="text-gray-700">Promote sustainable farming practices</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Values Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Values
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              The principles that guide everything we do and shape 
-              our relationships with farmers, partners, and communities.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <div key={index} className={`${value.color} rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300`}>
-                <div className="text-4xl mb-4">{value.icon}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                <p className="text-gray-700">{value.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* History Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Our Journey
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              From humble beginnings to becoming a leading agricultural solutions provider 
-              in Pakistan.
-            </p>
-          </div>
-          
-          <div className="space-y-8">
-            {milestones.map((milestone, index) => (
-              <div key={index} className={`flex items-center space-x-8 ${
-                index % 2 === 0 ? 'flex-row' : 'flex-row-reverse'
-              }`}>
-                <div className="flex-1">
-                  <div className={`text-right ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">{milestone.year}</h3>
-                    <h4 className="text-xl font-semibold text-primary-600 mb-2">{milestone.title}</h4>
-                    <p className="text-gray-600">{milestone.description}</p>
-                  </div>
-                </div>
-                <div className="w-4 h-4 bg-primary-500 rounded-full"></div>
-                <div className="flex-1"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Leadership Team
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Experienced professionals dedicated to advancing 
-              agricultural innovation in Pakistan.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="text-4xl mb-4">{member.image}</div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{member.name}</h3>
-                <p className="text-primary-600 font-semibold mb-2">{member.position}</p>
-                <p className="text-gray-600">{member.expertise}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className="text-4xl font-bold text-white mb-4">
-            Join Our Mission
-          </h2>
-          <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            Whether you're a farmer looking for solutions, a partner wanting to collaborate, 
-            or someone passionate about agriculture, we'd love to hear from you.
+          <h1 className="text-4xl font-bold text-white md:text-5xl">Overview | Presenting Oceanica</h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-primary-50">
+            Boosting yields and advancing sustainable agriculture through innovative, high-quality solutions
+            in bio and speciality fertilizers.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact-us" className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
+          <div className="mt-8 inline-flex rounded-xl bg-white px-6 py-4 shadow">
+            <div>
+              <div className="text-xl font-semibold">Sustain the world</div>
+              <div className="text-slate-600">Explore more ↓</div>
+            </div>
+          </div>
+          
+
+        </div>
+      </section>
+
+      {/* OVERVIEW + STATS */}
+      <section className="py-12" ref={statsRef}>
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 lg:grid-cols-12">
+          <div className="lg:col-span-7">
+            <h2 className="text-2xl font-bold">Overview | Presenting Oceanica</h2>
+            <p className="mt-3 text-slate-600">
+              Based in Pakistan, Oceanica tackles soil fertility, crop protection, and food security with products that
+              maximize productivity and minimize environmental impact.
+            </p>
+            <p className="mt-3 text-slate-600">
+              With global reach and constant innovation, we support a sustainable future for agriculture, benefitting
+              communities locally and worldwide.
+            </p>
+            <p className="mt-3 text-slate-600">
+              We are Pakistan&apos;s largest producer of Bio Fertilizers and a leading supplier of speciality fertilizers,
+              operating multiple production facilities for both domestic and international markets.
+            </p>
+          </div>
+
+          <div className="lg:col-span-5">
+            <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+              <h3 className="mb-4 text-center text-lg font-semibold">Oceanica at a Glance</h3>
+              <div className="grid grid-cols-2 gap-4">
+                {stats.map(({ number, label, icon: Icon, suffix }) => (
+                  <div key={label} className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm">
+                    <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary-50">
+                      <Icon className="h-5 w-5 text-primary-600" />
+                    </div>
+                    <div className="text-2xl font-bold text-slate-900">
+                      {number}{suffix}
+                    </div>
+                    <div className="text-sm text-slate-500">{label}</div>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4 rounded-xl bg-primary-50 p-4 text-center text-sm font-semibold text-primary-700">
+                #1 Bio Fertilizers Producer in Pakistan • #3 Speciality Fertilizers Producer in Asia
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* INDUSTRIAL COMPLEXES */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">Our Industrial Complexes</h2>
+            <p className="mt-1 text-slate-600">State-of-the-art facilities across Pakistan</p>
+          </div>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            {[
+              '/assets/about-us/company-overview-1.png',
+              '/assets/about-us/abu-rawah-3.jpg',
+            ].map((src) => (
+              <div key={src} className="relative h-72 overflow-hidden rounded-2xl shadow">
+                <Image src={src} alt="Industrial Complex" fill className="object-cover" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FOUNDATION */}
+      <section className="py-14">
+        <div className="mx-auto grid max-w-7xl items-center gap-8 px-4 lg:grid-cols-2">
+          <div>
+            <h2 className="text-2xl font-bold">Our Foundation | Promoting Excellence in Agriculture</h2>
+            <p className="mt-3 text-slate-600">
+              Oceanica began in 2008 with a vision to create high-quality Bio Fertilizers, Specialty Fertilizers, and Crop
+              Protection products that make a real difference to farm output.
+            </p>
+            <ul className="mt-4 space-y-2 text-slate-700">
+              {['High quality Bio Fertilizers', 'Speciality Fertilizers', 'Crop Protection Products'].map((x) => (
+                <li key={x} className="flex items-start gap-2">
+                  <span className="mt-2 h-2 w-2 rounded-full bg-primary-600" />
+                  {x}
+                </li>
+              ))}
+            </ul>
+            <p className="mt-4 text-slate-600">
+              In a short time we became known for pushing boundaries and setting new standards, paving the way for
+              significant advancements in agricultural practices.
+            </p>
+          </div>
+          <div className="relative h-72 overflow-hidden rounded-2xl shadow">
+            <Image src="/assets/about-us/sadat-company-overview1.jpg" alt="Production Facilities" fill className="object-cover" />
+          </div>
+        </div>
+      </section>
+
+      {/* JOURNEY — timeline */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">Our Journey</h2>
+            <p className="mt-1 text-slate-600">From vision to market leadership</p>
+          </div>
+          <div className="mt-10 grid gap-10 lg:grid-cols-2">
+            {journey.map((item) => (
+              <div key={item.year} className="relative pl-8">
+                <div className="absolute left-3 top-0 flex h-full flex-col items-center">
+                  <span className="h-3 w-3 rounded-full border-2 border-primary-600 bg-white" />
+                  <span className="mt-1 h-full w-px bg-slate-200" />
+                </div>
+                <h3 className="text-lg font-semibold">
+                  {item.year} — {item.title}
+                </h3>
+                <p className="mt-1 text-slate-600">{item.description}</p>
+                <ul className="mt-2 space-y-1 text-slate-700">
+                  {item.achievements.map((p) => (
+                    <li key={p} className="flex items-start gap-2">
+                      <CheckCircle className="mt-0.5 h-5 w-5 text-primary-600" />
+                      {p}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* WHAT WE OFFER */}
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">What we offer | Innovative Agricultural Solutions</h2>
+            <p className="mt-1 text-slate-600">Committed to developing and supporting agriculture to achieve food security.</p>
+          </div>
+          <div className="mt-8 grid gap-6 md:grid-cols-3">
+            {solutions.map((s) => (
+              <article key={s.title} className={`overflow-hidden rounded-2xl ${s.color} shadow-sm transition hover:shadow-md`}>
+                <div className="relative h-44 w-full">
+                  <Image src={s.image} alt={s.title} fill className="object-cover" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-semibold">{s.title}</h3>
+                  <p className="mt-1 text-slate-600">{s.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ADDITIONAL SOLUTIONS */}
+      <section className="bg-white py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">Additional Solutions</h2>
+            <p className="mt-1 text-slate-600">Comprehensive agricultural solutions for modern farming</p>
+          </div>
+          <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="overflow-hidden rounded-2xl bg-white shadow">
+              <div className="relative h-60 w-full">
+                <Image src="/assets/about-us/powder-feed-additives-1.jpg" alt="Powder Feed Additives" fill className="object-cover" />
+              </div>
+              <div className="p-6">
+                <h3 className="text-xl font-semibold">Powder Feed Additives</h3>
+                <p className="mt-1 text-slate-600">
+                  Essential feed additives for livestock, poultry, and aquaculture—manufactured with pure inputs and
+                  heavy-metal levels below international thresholds.
+                </p>
+              </div>
+            </div>
+            <div className="rounded-2xl bg-white p-6 shadow">
+              <h3 className="mb-4 text-center text-xl font-semibold">Our Production Facilities</h3>
+              <div className="space-y-4">
+                <div className="rounded-lg bg-primary-50 p-4 text-center">
+                  <div className="font-semibold">Lahore Industrial Complex</div>
+                  <p className="text-sm text-slate-600">Opened 2008 • Focus on Bio fertilizers</p>
+                </div>
+                <div className="rounded-lg bg-blue-50 p-4 text-center">
+                  <div className="font-semibold">Faisalabad Industrial Complex</div>
+                  <p className="text-sm text-slate-600">Launched 2012 • Expanding capacity</p>
+                </div>
+                <div className="rounded-lg bg-teal-50 p-4 text-center">
+                  <div className="font-semibold">Karachi Industrial Complex</div>
+                  <p className="text-sm text-slate-600">Opened 2020 • Export-oriented production</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CERTIFICATES */}
+      <section className="py-14">
+        <div className="mx-auto max-w-7xl px-4">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold">Certificates and Recognitions</h2>
+            <p className="mt-1 text-slate-600">Our Quality | Compliance Commitment</p>
+          </div>
+          <div className="mt-8 grid grid-cols-2 gap-6 md:grid-cols-4">
+            {certificates.map((c) => (
+              <div key={c.name} className="rounded-2xl bg-slate-50 p-6 text-center shadow-sm transition hover:shadow-md">
+                <div className="relative mx-auto h-20 w-20">
+                  <Image src={c.image} alt={c.name} fill className="object-contain" />
+                </div>
+                <div className="mt-3 text-sm font-semibold">{c.name}</div>
+                <div className="text-xs text-slate-600">{c.description}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="bg-gradient-to-r from-primary-900 via-primary-800 to-primary-900 py-16 text-center text-white">
+        <div className="mx-auto max-w-4xl px-4">
+          <h2 className="text-3xl font-bold md:text-4xl">Join Our Mission</h2>
+          <p className="mx-auto mt-2 max-w-2xl text-primary-100">
+            Whether you’re a farmer, a partner, or someone passionate about agriculture, we’d love to hear from you.
+          </p>
+          <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link href="/contact-us" className="rounded-xl bg-white px-6 py-3 font-semibold text-primary-700 shadow transition hover:-translate-y-0.5 hover:shadow-md">
               Get in Touch
             </Link>
-            <Link href="/crop-solutions" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-200">
+            <Link href="/crop-solutions" className="rounded-xl border border-white px-6 py-3 font-semibold text-white hover:bg-white/10">
               Explore Solutions
             </Link>
           </div>
