@@ -143,30 +143,30 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             {/* Left Side - Social Icons */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               <Link
                 href="#"
                 className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
-                <Facebook className="w-5 h-5" />
+                <Facebook className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
               <Link
                 href="#"
                 className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
-                <Twitter className="w-5 h-5" />
+                <Twitter className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
               <Link
                 href="#"
                 className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
-                <Instagram className="w-5 h-5" />
+                <Instagram className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
               <Link
                 href="#"
                 className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
-                <Globe className="w-5 h-5" />
+                <Globe className="w-4 h-4 md:w-5 md:h-5" />
               </Link>
             </div>
 
@@ -178,32 +178,37 @@ export default function Navbar() {
                   alt="Oceanica Crop Science"
                   width={180}
                   height={50}
-                  className="h-12 w-auto"
+                  className="h-8 w-auto md:h-12"
                   priority
                 />
               </Link>
             </div>
 
             {/* Right Side - Search Bar & Language Switcher */}
-            <div className="flex items-center space-x-4">
+            <div className="flex items-center space-x-2 md:space-x-4">
               {/* Search Bar */}
-              <form onSubmit={handleSearch} className="relative">
+              <form onSubmit={handleSearch} className="relative hidden sm:block">
                 <div className="flex items-center">
                   <input
                     type="text"
                     placeholder={locale === "en" ? "Search..." : "تلاش کریں..."}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-48 px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
+                    className="w-32 md:w-48 px-3 md:px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500 text-sm"
                   />
                   <button
                     type="submit"
-                    className="bg-primary-600 text-white px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors duration-200"
+                    className="bg-primary-600 text-white px-3 md:px-4 py-2 rounded-r-lg hover:bg-primary-700 transition-colors duration-200"
                   >
                     <Search className="w-4 h-4" />
                   </button>
                 </div>
               </form>
+
+              {/* Mobile Search Icon */}
+              <button className="sm:hidden p-2 text-gray-600 hover:text-primary-600 transition-colors duration-200">
+                <Search className="w-5 h-5" />
+              </button>
 
               {/* Language Switcher */}
               <LanguageSwitcher />
@@ -364,14 +369,14 @@ export default function Navbar() {
 
         {/* Mobile Navigation Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-gray-800 border-t border-gray-700">
+          <div className="lg:hidden bg-gray-800 border-t border-gray-700 m-2 rounded-2xl">
             <div className="px-4 py-4 space-y-3">
               <Link
                 href="/"
                 className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
-                {t("nav.home") || "Home"}
+                <Home />
               </Link>
 
               <div>

@@ -75,25 +75,37 @@ export default function CropProtectionProducts() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20 m-2">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700">
+      <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-16 md:py-20 m-2 overflow-hidden rounded-2xl">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
+          <div className="mb-6 md:mb-8">
+            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white transition-all duration-300">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
           </div>
           <div className="text-center">
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <div className="mb-6 md:mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6 shadow-lg">
+                <Shield className="w-8 h-8 md:w-10 md:h-10 text-white" />
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
               Crop Protection Products
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
               Premium agricultural solutions designed for Pakistani farmers. 
               Protect your crops with our proven product range.
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600">
-              <Shield className="w-6 h-6" />
-              <span className="font-semibold">Oceanica Crop Science</span>
+            <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex shadow-lg">
+              <Shield className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="font-semibold text-sm md:text-base">Oceanica Crop Science</span>
             </div>
           </div>
         </div>

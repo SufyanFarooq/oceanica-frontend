@@ -61,27 +61,38 @@ export default function NayaSavera() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-50 to-orange-50 py-20 m-2">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative bg-gradient-to-r from-yellow-50 to-orange-50 py-16 md:py-20 m-2 overflow-hidden rounded-2xl">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+          }}></div>
+        </div>
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="text-center">
-            <div className="text-6xl mb-4">🌅</div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <div className="mb-6 md:mb-8">
+              <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-yellow-500 to-orange-600 rounded-full mb-6 shadow-lg">
+                <div className="text-4xl md:text-5xl">🌅</div>
+              </div>
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
               Naya Savera
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
               A new dawn for Pakistani agriculture. Empowering farmers, 
               engaging youth, and building sustainable farming communities for tomorrow.
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600 mb-8">
-              <Sun className="w-6 h-6" />
-              <span className="font-semibold">Oceanica Crop Science</span>
+            <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex shadow-lg mb-6 md:mb-8">
+              <Sun className="w-5 h-5 md:w-6 md:h-6" />
+              <span className="font-semibold text-sm md:text-base">Oceanica Crop Science</span>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#initiatives" className="btn-primary inline-flex items-center">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center">
+              <Link href="#initiatives" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center justify-center">
                 Explore Initiatives
-                <ArrowRight className="ml-2 w-4 h-4" />
+                <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
               </Link>
-              <Link href="/contact-us" className="btn-secondary">
+              <Link href="/contact-us" className="bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-center">
                 Get Involved
               </Link>
             </div>

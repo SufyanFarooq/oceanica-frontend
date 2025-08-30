@@ -68,7 +68,7 @@ function HomeContent() {
     <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden min-m-screen m-2" style={{borderRadius:"20px"}}>
+      <section className="relative py-16 md:py-32 overflow-hidden min-h-screen m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
         <Image
           src="/assets/landing/hero.gif"
@@ -78,7 +78,7 @@ function HomeContent() {
           priority
           unoptimized
           quality={100}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
         />
         
         {/* Dark Overlay */}
@@ -86,37 +86,37 @@ function HomeContent() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div className="animate-fade-in-left">
-              <h1 className="text-6xl font-bold text-white mb-6 drop-shadow-lg leading-tight">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 drop-shadow-lg leading-tight">
                 {renderT('home.hero.title','h-8 w-60')}{' '}
                 <span className="text-secondary-400 bg-gradient-to-r from-secondary-400 to-accent-400 bg-clip-text text-transparent">
                   {renderT('home.hero.titleHighlight','h-8 w-48')}
                 </span>
               </h1>
-              <p className="text-xl text-white/90 mb-8 drop-shadow-lg animate-slide-up stagger-1">
+              <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 drop-shadow-lg animate-slide-up stagger-1">
                 {renderT('home.hero.subtitle','h-5 w-72')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-slide-up stagger-2">
-                <Link href="/crop-solutions" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center">
+              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 animate-slide-up stagger-2">
+                <Link href="/crop-solutions" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center justify-center">
                   {renderT('home.hero.exploreCrops','h-5 w-40')}
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
                 </Link>
-                <Link href="/products/search/crop-protection" className="bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white px-8 py-4 rounded-full font-semibold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl">
+                <Link href="/products/search/crop-protection" className="bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-center">
                   {renderT('home.hero.viewProducts','h-5 w-40')}
                 </Link>
               </div>
             </div>
             
             {/* Right Side Card with Evergrow style */}
-            <div className="relative animate-fade-in-right">
-              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-3xl shadow-2xl p-8 border border-white/20">
+            <div className="relative animate-fade-in-right mt-8 lg:mt-0">
+              <div className="bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-md rounded-2xl md:rounded-3xl shadow-2xl p-6 md:p-8 border border-white/20">
                 <div className="text-center">
-                  <div className="w-24 h-24 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg animate-scale-in stagger-3">
-                    <Leaf className="w-12 h-12 text-white" />
+                  <div className="w-16 h-16 md:w-24 md:h-24 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mx-auto mb-4 md:mb-6 shadow-lg animate-scale-in stagger-3">
+                    <Leaf className="w-8 h-8 md:w-12 md:h-12 text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white mb-3 drop-shadow-lg">Oceanica Crop Science</h3>
-                  <p className="text-white/90 drop-shadow-lg text-lg">
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2 md:mb-3 drop-shadow-lg">Oceanica Crop Science</h3>
+                  <p className="text-white/90 drop-shadow-lg text-base md:text-lg">
                     {t('home.hero.subtitle').split('.')[0]}.
                   </p>
                 </div>
