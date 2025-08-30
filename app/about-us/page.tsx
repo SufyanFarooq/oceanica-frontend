@@ -148,7 +148,7 @@ export default function AboutUs() {
       <Navbar />
 
       {/* HERO — video with gradient overlay */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden m-2 rounded-2xl">
         {/* Background Video Container */}
         <div className="absolute inset-0 w-full h-full">
           <video 

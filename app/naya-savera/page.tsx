@@ -61,7 +61,7 @@ export default function NayaSavera() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-yellow-50 to-orange-50 py-20">
+      <section className="bg-gradient-to-r from-yellow-50 to-orange-50 py-20 m-2">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center">
             <div className="text-6xl mb-4">🌅</div>

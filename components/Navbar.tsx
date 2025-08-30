@@ -24,8 +24,8 @@ export default function Navbar() {
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
   const [sustainabilityDropdownOpen, setSustainabilityDropdownOpen] =
     useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState("");
+    const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -135,7 +135,7 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-lg" : "bg-white"
+        isScrolled ? "bg-white shadow-lg" : "bg-transparent"
       }`}
     >
       {/* First Section - Social, Logo, Search & Language */}
@@ -146,25 +146,25 @@ export default function Navbar() {
             <div className="flex items-center space-x-4">
               <Link
                 href="#"
-                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
                 <Facebook className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
-                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
                 <Twitter className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
-                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
                 <Instagram className="w-5 h-5" />
               </Link>
               <Link
                 href="#"
-                className="text-gray-600 hover:text-primary-600 transition-colors duration-200"
+                className={`${isScrolled ? "text-gray-600" : "text-white"} hover:text-primary-600 transition-colors duration-200`}
               >
                 <Globe className="w-5 h-5" />
               </Link>
@@ -213,7 +213,8 @@ export default function Navbar() {
       </div>
 
       {/* Second Section - Navigation Links */}
-      <div className="bg-gray-800">
+      {/* isScrolled ? "bg-white shadow-lg" : "bg-transparent" */}
+      <div className={`${isScrolled ? "bg-gray-800 shadow-lg" : "bg-transparent"}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center justify-between h-12">
             {/* Desktop Navigation */}
@@ -336,12 +337,12 @@ export default function Navbar() {
                   {t("nav.contactUs") || "Contact US"}
                 </Link>
 
-                <Link
+                {/* <Link
                   href="/careers"
                   className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.careers") || "Careers"}
-                </Link>
+                </Link> */}
               </div>
             </div>
 
@@ -511,13 +512,13 @@ export default function Navbar() {
                 {t("nav.contactUs") || "Contact US"}
               </Link>
 
-              <Link
+              {/* <Link
                 href="/careers"
                 className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.careers") || "Careers"}
-              </Link>
+              </Link> */}
             </div>
           </div>
         )}

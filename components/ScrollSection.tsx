@@ -98,28 +98,30 @@ function ScrollSection() {
       <div className="relative z-10 max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {crops.map((crop, index) => (
-            <div key={`${crop.nameEn}-${index}`} className="bg-white rounded-2xl shadow-xl overflow-hidden">
-              <div className="relative h-64 w-full">
-                <Image
-                  src={crop.image}
-                  alt={crop.nameEn}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  className="object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+            <div key={`${crop.nameEn}-${index}`} className="bg-white shadow-2xl overflow-hidden rounded-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-gray-100" >
+              <div className="relative h-64 w-full p-4">
+                <div className="relative h-full w-full rounded-xl overflow-hidden">
+                  <Image
+                    src={crop.image}
+                    alt={crop.nameEn}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
+                </div>
               </div>
-              <div className="p-6">
-                <span className={`inline-block bg-gradient-to-r ${crop.color} px-3 py-2 rounded-full font-bold text-sm text-white shadow-lg mb-3`}>
+              <div className="p-6 pt-2">
+                <span className={`inline-block bg-gradient-to-r ${crop.color} px-4 py-2 rounded-full font-bold text-sm text-white shadow-lg mb-4`}>
                   {crop.name}
                 </span>
-                <h3 className="text-xl font-bold mb-2 text-gray-900">{crop.name}</h3>
-                <p className="text-gray-600 mb-4 text-sm">
+                <h3 className="text-xl font-bold mb-3 text-gray-900">{crop.name}</h3>
+                <p className="text-gray-600 mb-5 text-sm leading-relaxed">
                   {crop.description}
                 </p>
                 <Link
                   href={crop.href}
-                  className="inline-flex items-center bg-primary-500 hover:bg-primary-600 text-white px-4 py-2 rounded-full font-semibold text-sm transition-all duration-300"
+                  className="inline-flex items-center bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg transform hover:scale-105"
                 >
                   {locale === 'en' ? 'Learn More' : 'مزید جانیں'}
                   <ArrowRight className="ml-2 w-4 h-4" />

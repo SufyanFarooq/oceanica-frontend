@@ -1,6 +1,7 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Globe } from 'lucide-react'
 
 export default function Stewardship() {
@@ -47,24 +48,36 @@ export default function Stewardship() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-50 to-emerald-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative bg-gradient-to-r from-green-50 to-emerald-50 py-20 m-2 overflow-hidden rounded-2xl">
+        {/* Background Image */}
+        <Image
+          src="/assets/stewardship/sustainable/hero.jpg"
+          alt="Stewardship Hero - Sustainable Agriculture and Environmental Protection"
+          fill
+          className="object-cover"
+          priority
+          unoptimized
+        />
+        
+        {/* Gradient Overlay */}
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700">
+            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white transition-all duration-300">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
           </div>
           <div className="text-center">
-            <div className="text-6xl mb-4">🌱</div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <div className="text-6xl mb-4 animate-bounce">🌱</div>
+            <h1 className="text-5xl font-bold text-primary-600 mb-6 drop-shadow-lg">
               Stewardship
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
               Responsible stewardship of our products and the environment. 
               We're committed to protecting both people and the planet.
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600">
+            <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex">
               <Shield className="w-6 h-6" />
               <span className="font-semibold">Oceanica Crop Science</span>
             </div>
@@ -88,9 +101,9 @@ export default function Stewardship() {
                 Our stewardship program ensures that every product we develop and 
                 every farmer we serve contributes to a more sustainable future.
               </p>
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
-                  <Globe className="w-8 h-8 text-green-600" />
+              <div className="flex items-center space-x-4 bg-gradient-to-r from-green-50 to-emerald-50 p-6 rounded-2xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg">
+                  <Globe className="w-10 h-10 text-white" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">Environmental Responsibility</h3>
@@ -98,25 +111,30 @@ export default function Stewardship() {
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-2xl p-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Core Principles</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">Environmental protection</span>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-green-50 to-blue-50 rounded-3xl p-8 shadow-2xl border border-green-100">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-emerald-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Shield className="w-8 h-8 text-white" />
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">Safe product use</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">Community well-being</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                    <span className="text-gray-700">Sustainable development</span>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Core Principles</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Environmental protection</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Safe product use</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Community well-being</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-green-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Sustainable development</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -140,22 +158,30 @@ export default function Stewardship() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {stewardshipAreas.map((area, index) => (
-              <div key={index} className={`${area.color} rounded-xl p-8 hover:shadow-lg transition-shadow duration-300`}>
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">{area.icon}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{area.title}</h3>
-                  <p className="text-gray-700 mb-4">{area.description}</p>
+              <div key={index} className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                {/* Card Header with Icon */}
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-6 text-center">
+                  <div className="text-6xl mb-4">{area.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{area.title}</h3>
+                  <p className="text-green-100 text-sm">{area.description}</p>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-gray-900">Key Practices:</h4>
-                  <ul className="space-y-1">
-                    {area.practices.map((practice, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                        {practice}
-                      </li>
-                    ))}
-                  </ul>
+                
+                {/* Card Content */}
+                <div className="p-8">
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-gray-900 text-lg flex items-center">
+                      <Shield className="w-5 h-5 text-primary-600 mr-2" />
+                      Key Practices:
+                    </h4>
+                    <ul className="space-y-3">
+                      {area.practices.map((practice, idx) => (
+                        <li key={idx} className="flex items-start text-gray-700 bg-gray-50 p-3 rounded-lg">
+                          <div className="w-3 h-3 bg-primary-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                          <span className="leading-relaxed">{practice}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
@@ -176,12 +202,15 @@ export default function Stewardship() {
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {commitments.map((commitment, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6 border-l-4 border-green-500">
-                <div className="flex items-center">
-                  <Leaf className="w-6 h-6 text-green-600 mr-3" />
-                  <h3 className="text-lg font-semibold text-gray-900">{commitment}</h3>
+              <div key={index} className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                {/* Header with Icon */}
+                <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-6 text-center">
+                  <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Leaf className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-lg font-bold text-white leading-relaxed">{commitment}</h3>
                 </div>
               </div>
             ))}
@@ -199,28 +228,28 @@ export default function Stewardship() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Globe className="w-8 h-8 text-green-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Globe className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Environmental Protection</h3>
-              <p className="text-gray-600">Safeguarding natural resources and ecosystems</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Environmental Protection</h3>
+              <p className="text-gray-600 leading-relaxed">Safeguarding natural resources and ecosystems</p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Users className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Community Safety</h3>
-              <p className="text-gray-600">Protecting farmers and local communities</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Community Safety</h3>
+              <p className="text-gray-600 leading-relaxed">Protecting farmers and local communities</p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <TrendingUp className="w-8 h-8 text-yellow-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-yellow-500 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <TrendingUp className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Long-term Success</h3>
-              <p className="text-gray-600">Building sustainable agricultural systems</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Long-term Success</h3>
+              <p className="text-gray-600 leading-relaxed">Building sustainable agricultural systems</p>
             </div>
           </div>
         </div>

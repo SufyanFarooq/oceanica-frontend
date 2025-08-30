@@ -80,7 +80,7 @@ export default function CornPage() {
       <Navbar />
       
       {/* Hero Section - Product Promotion Banner */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
         <Image
           src="/assets/crops/corn/banner.jpg"

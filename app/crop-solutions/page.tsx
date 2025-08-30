@@ -54,7 +54,7 @@ export default function CropSolutions() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-primary-50 to-green-50 py-20">
+      <section className="bg-gradient-to-r from-primary-50 to-green-50 py-20 m-2" style={{borderRadius:"20px"}}>
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h1 className="text-5xl font-bold text-gray-900 mb-6">
             Crop Solutions

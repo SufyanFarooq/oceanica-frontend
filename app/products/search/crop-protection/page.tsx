@@ -75,7 +75,7 @@ export default function CropProtectionProducts() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20">
+      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20 m-2">
         <div className="max-w-7xl mx-auto px-4">
           <div className="mb-8">
             <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700">

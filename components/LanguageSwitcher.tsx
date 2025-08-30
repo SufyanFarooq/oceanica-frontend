@@ -3,6 +3,7 @@
 import { useI18n } from '../app/i18n/context'
 import Image from 'next/image'
 import { Globe } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 type Variant = 'light' | 'dark'
 
@@ -12,7 +13,15 @@ export default function LanguageSwitcher({ variant = 'light' }: { variant?: Vari
   const toggleLanguage = () => {
     setLocale(locale === 'en' ? 'ur' : 'en')
   }
+  const [isScrolled, setIsScrolled] = useState(false);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   const isDark = variant === 'dark'
 
   return (
@@ -21,7 +30,7 @@ export default function LanguageSwitcher({ variant = 'light' }: { variant?: Vari
       <button
         onClick={toggleLanguage}
         className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-colors duration-200 ${
-          isDark ? 'hover:bg-white/10' : 'hover:bg-gray-100'
+          isScrolled ? 'hover:bg-white/10 bg-gray-600' : 'hover:bg-gray-100 bg-white'
         }`}
         title={locale === 'en' ? 'اردو میں تبدیل کریں' : 'Switch to English'}
       >
@@ -33,7 +42,7 @@ export default function LanguageSwitcher({ variant = 'light' }: { variant?: Vari
             height={24}
             className="rounded"
           /> */}
-          <span className={`text-sm font-medium ${isDark ? 'text-gray-100' : 'text-gray-700'}`}>
+          <span className={`text-sm font-medium ${isScrolled ? 'text-gray-100' : 'text-gray-700'}`}>
             {locale === 'en' ? 'اردو' : 'English'}
           </span>
         </div>

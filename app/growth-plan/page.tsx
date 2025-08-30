@@ -1,6 +1,7 @@
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Globe, Target } from 'lucide-react'
 
 export default function GrowthPlan() {
@@ -58,24 +59,34 @@ export default function GrowthPlan() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-50 to-indigo-50 py-20">
-        <div className="max-w-7xl mx-auto px-4">
+      <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-20 m-2 overflow-hidden rounded-2xl">
+        {/* Background Image */}
+        <Image
+          src="/assets/stewardship/growth-plan/hero.jpg"
+          alt="Growth Plan Hero - Sustainable Development and Agricultural Progress"
+          fill
+          className="object-cover "
+          priority
+          unoptimized
+        />
+        
+        <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700">
+            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white transition-all duration-300">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Back to Home
             </Link>
           </div>
           <div className="text-center">
-            <div className="text-6xl mb-4">📈</div>
-            <h1 className="text-5xl font-bold text-gray-900 mb-6">
+            <div className="text-6xl mb-4 animate-pulse">📈</div>
+            <h1 className="text-5xl font-bold text-primary-600 mb-6 drop-shadow-lg">
               Good Growth Plan
             </h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+            <p className="text-xl text-gray-100 max-w-3xl mx-auto mb-8 leading-relaxed">
               Our comprehensive roadmap for sustainable growth that benefits 
               farmers, communities, and the environment.
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600">
+            <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex">
               <Target className="w-6 h-6" />
               <span className="font-semibold">Oceanica Crop Science</span>
             </div>
@@ -99,9 +110,9 @@ export default function GrowthPlan() {
                 We believe that true growth comes from balancing economic success with 
                 social responsibility and environmental stewardship.
               </p>
-              <div className="flex items-center space-x-4">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center">
-                  <TrendingUp className="w-8 h-8 text-blue-600" />
+              <div className="flex items-center space-x-4 bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-2xl">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center shadow-lg">
+                  <TrendingUp className="w-10 h-10 text-white" />
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-gray-900">Sustainable Growth</h3>
@@ -109,25 +120,30 @@ export default function GrowthPlan() {
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl p-8">
-              <div className="text-center">
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Growth Principles</h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Inclusive development</span>
+            <div className="relative">
+              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-3xl p-8 shadow-2xl border border-blue-100">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                    <Target className="w-8 h-8 text-white" />
                   </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Environmental responsibility</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Community empowerment</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                    <span className="text-gray-700">Long-term thinking</span>
+                  <h3 className="text-2xl font-bold text-gray-900 mb-6">Growth Principles</h3>
+                  <div className="space-y-4">
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Inclusive development</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Environmental responsibility</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Community empowerment</span>
+                    </div>
+                    <div className="flex items-center space-x-4 p-3 bg-white rounded-xl shadow-sm">
+                      <div className="w-4 h-4 bg-blue-500 rounded-full"></div>
+                      <span className="text-gray-700 font-medium">Long-term thinking</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -151,22 +167,30 @@ export default function GrowthPlan() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {growthPillars.map((pillar, index) => (
-              <div key={index} className={`${pillar.color} rounded-xl p-8 hover:shadow-lg transition-shadow duration-300`}>
-                <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">{pillar.icon}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{pillar.title}</h3>
-                  <p className="text-gray-700 mb-4">{pillar.description}</p>
+              <div key={index} className="bg-white rounded-3xl shadow-2xl overflow-hidden hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                {/* Card Header with Icon */}
+                <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-6 text-center">
+                  <div className="text-6xl mb-4">{pillar.icon}</div>
+                  <h3 className="text-2xl font-bold text-white mb-2">{pillar.title}</h3>
+                  <p className="text-blue-100 text-sm">{pillar.description}</p>
                 </div>
-                <div className="space-y-2">
-                  <h4 className="font-semibold text-gray-900">Key Goals:</h4>
-                  <ul className="space-y-1">
-                    {pillar.goals.map((goal, idx) => (
-                      <li key={idx} className="flex items-center text-gray-600">
-                        <div className="w-2 h-2 bg-primary-500 rounded-full mr-3"></div>
-                        {goal}
-                      </li>
-                    ))}
-                  </ul>
+                
+                {/* Card Content */}
+                <div className="p-8">
+                  <div className="space-y-4">
+                    <h4 className="font-bold text-gray-900 text-lg flex items-center">
+                      <Target className="w-5 h-5 text-primary-600 mr-2" />
+                      Key Goals:
+                    </h4>
+                    <ul className="space-y-3">
+                      {pillar.goals.map((goal, idx) => (
+                        <li key={idx} className="flex items-start text-gray-700 bg-gray-50 p-3 rounded-lg">
+                          <div className="w-3 h-3 bg-primary-500 rounded-full mr-3 mt-2 flex-shrink-0"></div>
+                          <span className="leading-relaxed">{goal}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             ))}
@@ -189,17 +213,28 @@ export default function GrowthPlan() {
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {targets.map((target, index) => (
-              <div key={index} className="bg-gray-50 rounded-xl p-8 text-center hover:shadow-lg transition-shadow duration-300">
-                <div className="text-4xl mb-4">🎯</div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2">{target.year}</h3>
-                <p className="text-gray-700 mb-4">{target.target}</p>
-                <span className={`inline-block px-3 py-1 rounded-full text-sm font-semibold ${
-                  target.status === 'In Progress' ? 'bg-blue-100 text-blue-800' :
-                  target.status === 'Planning' ? 'bg-yellow-100 text-yellow-800' :
-                  'bg-green-100 text-green-800'
+              <div key={index} className="bg-white rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+                {/* Header with Year */}
+                <div className={`p-6 text-center ${
+                  target.status === 'In Progress' ? 'bg-gradient-to-br from-blue-500 to-blue-600' :
+                  target.status === 'Planning' ? 'bg-gradient-to-br from-yellow-500 to-orange-500' :
+                  'bg-gradient-to-br from-green-500 to-emerald-600'
                 }`}>
-                  {target.status}
-                </span>
+                  <div className="text-5xl mb-2">🎯</div>
+                  <h3 className="text-3xl font-bold text-white">{target.year}</h3>
+                </div>
+                
+                {/* Content */}
+                <div className="p-8 text-center">
+                  <p className="text-gray-700 mb-6 text-lg leading-relaxed">{target.target}</p>
+                  <span className={`inline-block px-6 py-3 rounded-full text-sm font-bold shadow-lg ${
+                    target.status === 'In Progress' ? 'bg-blue-100 text-blue-800 border-2 border-blue-300' :
+                    target.status === 'Planning' ? 'bg-yellow-100 text-yellow-800 border-2 border-yellow-300' :
+                    'bg-green-100 text-green-800 border-2 border-green-300'
+                  }`}>
+                    {target.status}
+                  </span>
+                </div>
               </div>
             ))}
           </div>
@@ -220,28 +255,28 @@ export default function GrowthPlan() {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Target className="w-8 h-8 text-primary-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Target className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Clear Metrics</h3>
-              <p className="text-gray-600">Measurable goals and regular progress tracking</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Clear Metrics</h3>
+              <p className="text-gray-600 leading-relaxed">Measurable goals and regular progress tracking</p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Clock className="w-8 h-8 text-green-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Clock className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Regular Reporting</h3>
-              <p className="text-gray-600">Transparent communication of our progress</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Regular Reporting</h3>
+              <p className="text-gray-600 leading-relaxed">Transparent communication of our progress</p>
             </div>
             
-            <div className="text-center p-6">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+            <div className="bg-white rounded-3xl p-8 text-center shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border border-gray-100">
+              <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg">
+                <Users className="w-10 h-10 text-white" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Stakeholder Engagement</h3>
-              <p className="text-gray-600">Involving all stakeholders in our journey</p>
+              <h3 className="text-xl font-bold text-gray-900 mb-3">Stakeholder Engagement</h3>
+              <p className="text-gray-600 leading-relaxed">Involving all stakeholders in our journey</p>
             </div>
           </div>
         </div>

@@ -80,7 +80,7 @@ export default function WheatPage() {
       <Navbar />
       
       {/* Hero Section - Product Promotion Banner */}
-      <section className="relative py-32 overflow-hidden">
+      <section className="relative py-32 overflow-hidden m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
         <Image
           src="/assets/crops/wheat/hero-banner.jpg"

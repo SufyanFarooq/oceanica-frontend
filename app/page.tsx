@@ -67,16 +67,18 @@ function HomeContent() {
   return (
     <div className="min-h-screen bg-white" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
-      
       {/* Hero Section */}
-      <section className="relative py-32 overflow-hidden min-m-screen" style={{borderRadius: '60px'}}>
+      <section className="relative py-32 overflow-hidden min-m-screen m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
         <Image
-          src="/assets/landing/hero.jpg"
+          src="/assets/landing/hero.gif"
           alt="Oceanica Crop Science Hero Background"
           fill
-          className="object-cover transition-all duration-[3000ms] ease-in-out animate-ken-burns"
+          className="object-cover object-center"
           priority
+          unoptimized
+          quality={100}
+          sizes="100vw"
         />
         
         {/* Dark Overlay */}
@@ -122,6 +124,8 @@ function HomeContent() {
             </div>
           </div>
         </div>
+        
+
       </section>
 
       {/* Features Section */}
