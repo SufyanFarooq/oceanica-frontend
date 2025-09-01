@@ -70,19 +70,28 @@ function HomeContent() {
       {/* Hero Section */}
       <section className="relative py-16 md:py-32 overflow-hidden min-h-screen m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
-        <Image
-          src="/assets/landing/hero.gif"
-          alt="Oceanica Crop Science Hero Background"
-          fill
-          className="object-cover object-center"
-          priority
-          unoptimized
-          quality={100}
-          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 100vw, 100vw"
-        />
+        <video 
+            className="w-full h-full object-cover" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+            style={{
+              position: 'absolute',
+              top: '0',
+              left: '0',
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover',
+              zIndex: '1'
+            }}
+          >
+            <source src="assets/landing/hero.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/40"></div>
+        {/* <div className="absolute inset-0 bg-black/40"></div> */}
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4">

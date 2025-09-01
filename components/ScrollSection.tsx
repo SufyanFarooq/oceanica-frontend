@@ -110,11 +110,21 @@ function ScrollSection() {
   ]), [locale])
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % crops.length)
+    if (currentSlide >= crops.length - 1) {
+      // When reaching the last slide, jump to first slide without animation
+      setCurrentSlide(0)
+    } else {
+      setCurrentSlide((prev) => prev + 1)
+    }
   }
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + crops.length) % crops.length)
+    if (currentSlide <= 0) {
+      // When at first slide, jump to last slide without animation
+      setCurrentSlide(crops.length - 1)
+    } else {
+      setCurrentSlide((prev) => prev - 1)
+    }
   }
 
   const goToSlide = (index: number) => {
@@ -139,7 +149,7 @@ function ScrollSection() {
         src="/assets/landing/crops/crops.jpg"
         alt="Crops Background"
         fill
-        className="object-cover opacity-10"
+        className="object-cover opacity-40"
         priority
       />
       
@@ -153,17 +163,59 @@ function ScrollSection() {
         </p>
       </div>
 
-      {/* Desktop Grid Layout */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 hidden md:block">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {crops.map((crop, index) => (
-            <CropCard key={`${crop.nameEn}-${index}`} crop={crop} locale={locale} />
+      {/* Desktop Carousel - 4 Cards at a time */}
+      <div className="relative z-10 max-w-7xl mx-auto px-6 hidden lg:block">
+        <div className="relative overflow-hidden rounded-2xl">
+          <div 
+            className="flex transition-transform duration-500 ease-in-out"
+            style={{ transform: `translateX(-${currentSlide * 25}%)` }}
+          >
+            {crops.map((crop, index) => (
+              <div key={`${crop.nameEn}-${index}`} className="w-1/4 flex-shrink-0 px-2">
+                <CropCard crop={crop} locale={locale} />
+              </div>
+            ))}
+            {/* Add first 3 cards at the end to fill empty space */}
+            {crops.slice(0, 3).map((crop, index) => (
+              <div key={`${crop.nameEn}-end-${index}`} className="w-1/4 flex-shrink-0 px-2">
+                <CropCard crop={crop} locale={locale} />
+              </div>
+            ))}
+          </div>
+          
+          {/* Carousel Navigation */}
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-20"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 p-2 rounded-full shadow-lg transition-all duration-300 hover:scale-110 z-20"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+        </div>
+
+        {/* Carousel Indicators */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {crops.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === currentSlide 
+                  ? 'bg-primary-500 scale-125' 
+                  : 'bg-gray-300 hover:bg-gray-400'
+              }`}
+            />
           ))}
         </div>
       </div>
 
-      {/* Mobile Carousel */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:hidden">
+      {/* Mobile/Tablet Carousel */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 lg:hidden">
         <div className="relative overflow-hidden rounded-2xl">
           <div 
             ref={carouselRef}
@@ -221,7 +273,7 @@ function ScrollSection() {
   );
 }
 
-// Enhanced Crop Card Component
+// Enhanced Crop Card Component - Image Focused
 function CropCard({ crop, locale }: { crop: Crop; locale: string }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
@@ -234,61 +286,39 @@ function CropCard({ crop, locale }: { crop: Crop; locale: string }) {
   }, [crop.images.length])
 
   return (
-    <div className="bg-white shadow-2xl overflow-hidden rounded-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2 border border-gray-100 group">
-      {/* Animated Image Gallery */}
-      <div className="relative h-64 w-full p-4">
-        <div className="relative h-full w-full rounded-xl overflow-hidden">
-          {crop.images.map((image, index) => (
-            <Image
-              key={image}
-              src={image}
-              alt={`${crop.nameEn} ${index + 1}`}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              className={`object-cover transition-all duration-2000 ease-in-out ${
-                index === currentImageIndex 
-                  ? 'opacity-100 scale-105' 
-                  : 'opacity-0 scale-110'
-              }`}
-            />
-          ))}
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent" />
-          
-
+    <Link href={crop.href} className="block">
+      <div className="  overflow-hidden rounded-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-2  group cursor-pointer">
+        {/* Animated Image Gallery - Full Card */}
+        <div className="relative h-96 w-full">
+          <div className="relative h-full w-full overflow-hidden">
+            {crop.images.map((image, index) => (
+              <Image
+                key={image}
+                src={image}
+                alt={`${crop.nameEn} ${index + 1}`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                className={`object-cover transition-all duration-2000 ease-in-out ${
+                  index === currentImageIndex 
+                    ? 'opacity-100 scale-105' 
+                    : 'opacity-0 scale-110'
+                }`}
+              />
+            ))}
+            
+            {/* Semi-transparent Overlay at Bottom */}
+            <div className="absolute bottom-10 left-0 right-0 bg-white/50 backdrop-blur-sm m-2">
+              <div className="flex items-center justify-between p-2">
+                <span className="text-gray-800 font-semibold text-lg">
+                  {crop.name}
+                </span>
+                <ArrowRight className="w-5 h-5 text-gray-800 group-hover:translate-x-1 transition-transform duration-300" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Card Content */}
-      <div className="p-6 pt-2">
-        {/* Animated Badge */}
-        <div className="mb-4">
-          <span className={`inline-block bg-gradient-to-r ${crop.color} px-4 py-2 rounded-full font-bold text-sm text-white shadow-lg animate-pulse`}>
-            {crop.name}
-          </span>
-        </div>
-
-        {/* Crop Name with Animation */}
-        <h3 className="text-xl font-bold mb-3 text-gray-900 group-hover:text-primary-600 transition-colors duration-300">
-          {crop.name}
-        </h3>
-
-        {/* Description */}
-        <p className="text-gray-600 mb-5 text-sm leading-relaxed">
-          {crop.description}
-        </p>
-
-        {/* Action Button */}
-        <Link
-          href={crop.href}
-          className="inline-flex items-center bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-5 py-3 rounded-full font-semibold text-sm transition-all duration-300 hover:shadow-lg transform hover:scale-105 group-hover:translate-x-1"
-        >
-          {locale === 'en' ? 'Learn More' : 'مزید جانیں'}
-          <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-        </Link>
-      </div>
-    </div>
+    </Link>
   )
 }
 
