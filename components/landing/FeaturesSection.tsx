@@ -1,0 +1,155 @@
+'use client'
+
+import Image from 'next/image'
+import Link from 'next/link'
+import { Leaf, TrendingUp, Shield, Users } from 'lucide-react'
+import { useI18n } from '@/app/i18n/context'
+
+export default function FeaturesSection() {
+  const { t, locale } = useI18n()
+
+  return (
+    <section className="py-24 bg-gradient-to-br from-gray-50 to-white relative overflow-hidden">
+      {/* Agriculture-themed animated background elements */}
+      <div className="absolute top-0 left-0 w-32 h-32 bg-primary-200 rounded-full opacity-20 -translate-x-16 -translate-y-16 animate-pulse"></div>
+      <div className="absolute top-20 right-0 w-24 h-24 bg-secondary-200 rounded-full opacity-20 translate-x-12 animate-bounce"></div>
+      <div className="absolute bottom-20 left-20 w-20 h-20 bg-accent-200 rounded-full opacity-20 animate-ping"></div>
+      
+      {/* Floating Leaves */}
+      <div className="absolute top-10 left-1/4 w-8 h-8 text-primary-400 opacity-30 animate-float-slow">
+        <Leaf className="w-full h-full" />
+      </div>
+      <div className="absolute top-32 right-1/3 w-6 h-6 text-secondary-400 opacity-40 animate-float-medium">
+        <Leaf className="w-full h-full" />
+      </div>
+      <div className="absolute bottom-32 left-1/3 w-10 h-10 text-accent-400 opacity-25 animate-float-fast">
+        <Leaf className="w-full h-full" />
+      </div>
+      
+      {/* Growing Plants Animation */}
+      <div className="absolute top-16 left-16 w-4 h-4 bg-accent-500 rounded-full opacity-60 animate-grow-plant"></div>
+      <div className="absolute top-24 right-24 w-3 h-3 bg-primary-500 rounded-full opacity-50 animate-grow-plant-delayed"></div>
+      <div className="absolute bottom-24 left-32 w-5 h-5 bg-secondary-500 rounded-full opacity-70 animate-grow-plant-slow"></div>
+      
+      {/* Floating Seeds */}
+      <div className="absolute top-40 left-1/2 w-2 h-2 bg-accent-600 rounded-full opacity-80 animate-float-seed"></div>
+      <div className="absolute top-60 right-16 w-3 h-3 bg-primary-600 rounded-full opacity-60 animate-float-seed-delayed"></div>
+      <div className="absolute bottom-40 left-1/2 w-2 h-2 bg-secondary-600 rounded-full opacity-70 animate-float-seed-slow"></div>
+      
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
+        <div className="text-center mb-20 animate-slide-up">
+          <h2 className="text-5xl font-bold text-gray-900 mb-6">
+            {locale === 'ur' && <span className="bg-gradient-to-r from-accent-500 to-accent-600 bg-clip-text text-transparent">
+              اوشینیکا
+            </span>}
+            {locale === 'en' ? 'Why Choose ' : ' کو کیوں منتخب کریں؟ '}
+            {locale === 'en' &&<span className="bg-gradient-to-r from-accent-500 to-accent-600 bg-clip-text text-transparent">
+              Oceanica
+            </span>}
+            {locale === 'en' ? '?' : ''}
+          </h2>
+                      <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              {t('home.features.subtitle')}
+            </p>
+        </div>
+        
+        {/* 2-Column Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          
+          {/* Left Column - 1 Large Card */}
+          <div className="animate-fade-in-left">
+            <div className="relative h-full min-h-[600px] bg-white rounded-3xl shadow-2xl overflow-hidden group hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+              {/* Background Image */}
+              <Image
+                src="/assets/landing/why-chose-us/Innovation.jpg"
+                alt="Innovation Background"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              
+              {/* Dark Overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+              
+              {/* Content */}
+              <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+                <div className="w-16 h-16 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Leaf className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-3xl font-bold mb-4 drop-shadow-lg">{t('home.features.innovation.title')}</h3>
+                <p className="text-white/90 text-lg leading-relaxed drop-shadow-lg">{t('home.features.innovation.description')}</p>
+              </div>
+            </div>
+          </div>
+          
+          {/* Right Column - 3 Cards in Grid */}
+          <div className="grid grid-rows-2 gap-6 animate-fade-in-right h-full">
+            
+            {/* Top Row - 2 Cards */}
+            <div className="grid grid-cols-2 gap-6">
+              
+              {/* Quality Card */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                <div className="relative h-full min-h-[280px]">
+                  <Image
+                    src="/assets/landing/why-chose-us/quality.jpg"
+                    alt="Quality"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <Shield className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2 drop-shadow-lg">{t('home.features.quality.title')}</h4>
+                    <p className="text-white/90 text-sm drop-shadow-lg">{t('home.features.quality.description')}</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Results Card */}
+              <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden h-full">
+                <div className="relative h-full min-h-[280px]">
+                  <Image
+                    src="/assets/landing/why-chose-us/results.jpg"
+                    alt="Results"
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                  <div className="absolute bottom-4 left-4 right-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-accent-400 to-accent-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                      <TrendingUp className="w-6 h-6 text-white" />
+                    </div>
+                    <h4 className="text-xl font-bold text-white mb-2 drop-shadow-lg">{t('home.features.results.title')}</h4>
+                    <p className="text-white/90 text-sm drop-shadow-lg">{t('home.features.results.description')}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Bottom Row - 1 Large Card */}
+            <div className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 overflow-hidden">
+              <div className="relative h-full min-h-[280px]">
+                <Image
+                  src="/assets/landing/why-chose-us/support.jpg"
+                  alt="Support"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-primary-400 to-primary-500 rounded-full flex items-center justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                                      <h4 className="text-xl font-bold text-white mb-2 drop-shadow-lg">{t('home.features.support.title')}</h4>
+                    <p className="text-white/90 text-sm drop-shadow-lg">{t('home.features.support.description')}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}

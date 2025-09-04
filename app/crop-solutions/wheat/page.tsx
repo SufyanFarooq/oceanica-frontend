@@ -243,7 +243,7 @@ export default function WheatPage() {
                 
                 <button
                   type="submit"
-                  className="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
+                  className="w-full bg-primary-500 hover:bg-primary-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center"
                 >
                   Submit <span className="ml-2">→</span>
                 </button>
