@@ -6,6 +6,7 @@ import Footer from '../../../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Play, Download, ChevronLeft, ChevronRight, Globe } from 'lucide-react'
+import VideosPDF from '@/components/crops/Videos&PDF'
 
 export default function RicePage() {
   const [currentProductIndex, setCurrentProductIndex] = useState(0)
@@ -139,6 +140,7 @@ export default function RicePage() {
           </div>
         </div>
       </section>
+
 
       {/* Get in Touch Section */}
       <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
@@ -407,85 +409,86 @@ export default function RicePage() {
       </section>
 
       {/* Promotional Banner Section */}
-      <section className="py-20 bg-gradient-to-r from-primary-600 to-primary-700">
+      <section className="py-20 bg-gradient-to-r from-green-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white rounded-3xl p-12 text-center shadow-2xl">
-            <div className="w-24 h-24 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-8">
-              <Leaf className="w-12 h-12 text-white" />
-            </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
-              Boost Your Rice Quality with Oceanica
-            </h2>
-            <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-              Discover our comprehensive range of rice protection products designed specifically for Pakistani growing conditions
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/products/search/crop-protection" className="bg-primary-600 text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary-700 transition-colors duration-200">
-                Explore Products
-              </Link>
-              <Link href="/contact-us" className="border-2 border-primary-600 text-primary-600 px-8 py-4 rounded-lg font-semibold hover:bg-primary-600 hover:text-white transition-colors duration-200">
-                Get Expert Advice
-              </Link>
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-0">
+              {/* Left Side - Product Image */}
+              <div className="relative h-96 lg:h-auto bg-gradient-to-br from-green-100 to-blue-100 p-8 flex items-center justify-center">
+                <div className="relative w-full h-full">
+                  <Image
+                    src="/assets/crops/lavoura-promotion.png"
+                    alt="LAVOURA SULPHATE OF POTASH (SOP) Water Soluble Fertilizer"
+                    fill
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+              
+              {/* Right Side - Product Information */}
+              <div className="p-8 lg:p-12 bg-gradient-to-br from-green-600 to-green-700 text-white relative overflow-hidden">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 opacity-10">
+                  <div className="w-full h-full" style={{
+                    backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
+                  }}></div>
+                </div>
+                
+                <div className="relative z-10">
+                  <div className="mb-6">
+                    <h2 className="text-3xl lg:text-4xl font-bold mb-4">Boost Your Rice Yields</h2>
+                    <p className="text-lg opacity-90">Discover our comprehensive range of rice protection products designed specifically for Pakistani growing conditions</p>
+                  </div>
+                  
+                  <div className="space-y-4 mb-8">
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      </div>
+                      <p className="text-sm opacity-90">Completely water-soluble, improving water efficiency</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      </div>
+                      <p className="text-sm opacity-90">Increases cellulose in plant cells, strengthening cell walls</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      </div>
+                      <p className="text-sm opacity-90">Enhances natural resistance against diseases and pests</p>
+                    </div>
+                    <div className="flex items-start space-x-3">
+                      <div className="w-6 h-6 bg-white/20 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      </div>
+                      <p className="text-sm opacity-90">Guarantees increase in yield and fruit quality</p>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 mb-6">
+                    <div className="text-sm font-semibold mb-2">Dosage per Acre</div>
+                    <div className="text-sm opacity-90">Apply 10 to 25 kg of LAVOURA per acre</div>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <Link href="/products/search/crop-protection" className="bg-white text-green-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200 text-center">
+                      Explore Products
+                    </Link>
+                    <Link href="/contact-us" className="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-green-600 transition-colors duration-200 text-center">
+                      Get Expert Advice
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Video and PDF Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Related Videos */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Related Videos</h3>
-              <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-                <div className="relative h-64 bg-gray-200">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center shadow-lg">
-                      <Play className="w-10 h-10 text-primary-600 ml-1" />
-                    </div>
-                  </div>
-                  <div className="absolute top-4 left-4 bg-black/70 text-white px-3 py-1 rounded text-sm">
-                    Oceanica
-                  </div>
-                </div>
-                <div className="p-6">
-                  <h4 className="text-lg font-semibold text-gray-900 mb-2">
-                    Oceanica Pakistan - Rice Solutions
-                  </h4>
-                  <p className="text-gray-600">Learn about our comprehensive rice protection solutions</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Links and Downloads */}
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Links and Downloads</h3>
-              <div className="bg-green-50 rounded-xl p-8 border border-green-200">
-                <h4 className="text-lg font-semibold text-gray-900 mb-4">Download Resources</h4>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                    <Download className="w-5 h-5 text-gray-600" />
-                    <div className="flex-1">
-                      <p className="font-medium text-gray-900">Rice Crop Program</p>
-                      <p className="text-sm text-gray-600">(2.7 MB)</p>
-                    </div>
-                    <Download className="w-5 h-5 text-gray-600" />
-                  </div>
-                  <div className="flex items-center space-x-3 p-4 bg-white rounded-lg shadow-sm">
-                    <Download className="w-5 h-5 text-gray-600" />
-                    <div className="flex-1">
-                      <p className="font-medium text-gray-900">Rice Growing Guide</p>
-                      <p className="text-sm text-gray-600">(2.0 MB)</p>
-                    </div>
-                    <Download className="w-5 h-5 text-gray-600" />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    {/* Video and PDF Section */}
+    <VideosPDF />
 
       {/* CTA Section */}
       <section className="py-20 bg-primary-600">
