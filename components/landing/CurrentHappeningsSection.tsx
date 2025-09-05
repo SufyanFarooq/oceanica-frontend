@@ -65,7 +65,7 @@ export default function CurrentHappeningsSection() {
   }, [currentSlide])
 
   return (
-    <section className="py-32 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
+    <section className="py-20 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-20">
         <div className="w-full h-full" style={{
@@ -80,22 +80,22 @@ export default function CurrentHappeningsSection() {
       
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-20 animate-fade-in-down">
-          <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-8 shadow-2xl animate-bounce-in">
-            <svg className="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
+        <div className="text-center mb-16 animate-fade-in-down">
+          <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6 shadow-2xl animate-bounce-in">
+            <svg className="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
             </svg>
           </div>
-          <h2 className="text-6xl md:text-7xl font-bold text-blue-900 mb-8 animate-fade-in-up stagger-1 leading-tight">
+          <h2 className="text-4xl md:text-5xl font-bold text-blue-900 mb-6 animate-fade-in-up stagger-1 leading-tight">
             {locale === 'en' ? 'CURRENT HAPPENINGS' : 'موجودہ واقعات'}
           </h2>
-          <p className="text-2xl md:text-3xl text-gray-600 max-w-5xl mx-auto animate-slide-up stagger-2 leading-relaxed">
+          <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto animate-slide-up stagger-2 leading-relaxed">
             {locale === 'en' ? 'Stay updated with the latest news, events, and developments from Oceanica Crop Science' : 'اوشینیکا کراپ سائنس کی تازہ ترین خبروں، واقعات اور ترقی سے باخبر رہیں'}
           </p>
         </div>
 
         {/* Desktop Carousel - 3 Cards at a time */}
-        <div className="hidden lg:block mb-12">
+        <div className="hidden lg:block mb-10">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl animate-fade-in-up stagger-3">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
@@ -124,7 +124,7 @@ export default function CurrentHappeningsSection() {
           </div>
 
           {/* Progress Indicator */}
-          <div className="flex justify-center mt-10">
+          <div className="flex justify-center mt-8">
             <div className="w-48 h-2 bg-gray-200 rounded-full overflow-hidden shadow-lg">
               <div 
                 className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-500 rounded-full"
@@ -137,7 +137,7 @@ export default function CurrentHappeningsSection() {
         </div>
 
         {/* Mobile/Tablet Carousel */}
-        <div className="lg:hidden mb-12">
+        <div className="lg:hidden mb-10">
           <div className="relative overflow-hidden rounded-3xl shadow-2xl animate-fade-in-up stagger-3">
             <div 
               className="flex transition-transform duration-500 ease-in-out"
@@ -166,7 +166,7 @@ export default function CurrentHappeningsSection() {
           </div>
 
           {/* Progress Indicator */}
-          <div className="flex justify-center mt-8">
+          <div className="flex justify-center mt-6">
             <div className="w-32 h-2 bg-gray-200 rounded-full overflow-hidden shadow-lg">
               <div 
                 className="h-full bg-gradient-to-r from-blue-500 to-indigo-600 transition-all duration-500 rounded-full"
@@ -179,13 +179,13 @@ export default function CurrentHappeningsSection() {
         </div>
 
         {/* View All Button */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-12">
           <Link
             href="/news"
-            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-12 py-6 rounded-full font-bold text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-3xl animate-bounce-in shadow-2xl"
+            className="inline-flex items-center bg-gradient-to-r from-blue-600 to-indigo-700 hover:from-blue-700 hover:to-indigo-800 text-white px-10 py-5 rounded-full font-bold text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-3xl animate-bounce-in shadow-2xl"
           >
             {locale === 'en' ? 'View All News' : 'تمام خبریں دیکھیں'}
-            <ChevronRight className="ml-3 w-6 h-6 animate-float-gentle" />
+            <ChevronRight className="ml-3 w-5 h-5 animate-float-gentle" />
           </Link>
         </div>
       </div>

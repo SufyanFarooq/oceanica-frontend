@@ -82,7 +82,7 @@ export default function ContactUs() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-primary-600 via-primary-700 to-blue-600 py-20 overflow-hidden m-2 rounded-2xl">
+      <section className="relative bg-gradient-to-r from-primary-600 via-primary-700 to-blue-600 py-32 overflow-hidden m-2 rounded-2xl">
         {/* Background Image */}
         <Image
           src="/assets/contact-us/hero.jpg"

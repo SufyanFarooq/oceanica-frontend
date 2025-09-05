@@ -51,7 +51,7 @@ export default function BioFertilizers() {
         <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-900 text-white py-20 overflow-hidden m-2" style={{borderRadius:"20px"}}>
+      <section className="relative bg-gradient-to-br from-accent-900 via-accent-800 to-accent-900 text-white py-32 overflow-hidden m-2" style={{borderRadius:"20px"}}>
         {/* Background Image */}
         <Image
           src="/assets/products/banner.jpg"

@@ -25,7 +25,7 @@ export default function HeroSection() {
   }
 
   return (
-    <section className="relative py-12 md:py-20 overflow-hidden min-h-screen md:min-h-[70vh] m-2" style={{borderRadius:"20px"}}>
+    <section className="relative py-32 overflow-hidden m-2" style={{borderRadius:"20px"}}>
       {/* Background Image Slideshow */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="relative w-full h-full">

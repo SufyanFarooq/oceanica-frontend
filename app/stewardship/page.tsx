@@ -48,7 +48,7 @@ export default function Stewardship() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-green-50 to-emerald-50 py-20 m-2 overflow-hidden rounded-2xl">
+      <section className="relative bg-gradient-to-r from-green-50 to-emerald-50 py-32 m-2 overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
           src="/assets/stewardship/sustainable/hero.jpg"

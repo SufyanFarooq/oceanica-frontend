@@ -59,7 +59,7 @@ export default function GrowthPlan() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-20 m-2 overflow-hidden rounded-2xl">
+      <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-32 m-2 overflow-hidden rounded-2xl">
         {/* Background Image */}
         <Image
           src="/assets/stewardship/growth-plan/hero.jpg"

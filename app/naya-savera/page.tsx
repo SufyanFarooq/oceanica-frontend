@@ -61,7 +61,7 @@ export default function NayaSavera() {
       <Navbar />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-yellow-50 to-orange-50 py-16 md:py-20 m-2 overflow-hidden rounded-2xl">
+      <section className="relative bg-gradient-to-r from-yellow-50 to-orange-50 py-32 m-2 overflow-hidden rounded-2xl">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{

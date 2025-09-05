@@ -148,7 +148,7 @@ export default function AboutUs() {
       <Navbar />
 
       {/* HERO — video with gradient overlay */}
-      <section className="relative overflow-hidden m-2 rounded-2xl">
+      <section className="relative overflow-hidden m-2 rounded-2xl py-32">
         {/* Background Video Container */}
         <div className="absolute inset-0 w-full h-full">
           <video 
@@ -176,7 +176,7 @@ export default function AboutUs() {
         </div>
 
         {/* Content Overlay */}
-        <div className="relative z-10 mx-auto max-w-7xl px-4 py-16 text-center md:py-24">
+        <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
           <div className="mb-6 flex justify-center">
             <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-primary-700 backdrop-blur hover:bg-white/90 transition-colors">
               <ArrowLeft className="h-4 w-4" />
