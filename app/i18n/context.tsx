@@ -16,8 +16,12 @@ const I18nContext = createContext<I18nContextType | undefined>(undefined)
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocale] = useState<Locale>('en')
   const [translations, setTranslations] = useState<Record<string, any>>({})
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    // Mark as client-side
+    setIsClient(true)
+    
     // Load saved language preference from localStorage
     const savedLocale = localStorage.getItem('locale') as Locale
     if (savedLocale && (savedLocale === 'en' || savedLocale === 'ur')) {
@@ -26,6 +30,9 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   }, [])
 
   useEffect(() => {
+    // Only run on client-side
+    if (!isClient) return
+    
     // Save language preference to localStorage
     localStorage.setItem('locale', locale)
     
@@ -33,19 +40,18 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.dir = locale === 'ur' ? 'rtl' : 'ltr'
     document.documentElement.lang = locale
 
-    // Fetch translations from public folder
-    const loadTranslations = async () => {
-      try {
-        const res = await fetch(`/i18n/${locale}.json`, { cache: 'no-store' })
-        const data = await res.json()
-        setTranslations(data)
-      } catch (e) {
-        console.error('Failed to load translations', e)
-        setTranslations({})
+    // Set default translations to prevent loading state
+    const defaultTranslations = {
+      nav: {
+        crops: "Crops",
+        products: "Products", 
+        sustainability: "Sustainability",
+        aboutUs: "About Us",
+        contactUs: "Contact Us"
       }
     }
-    loadTranslations()
-  }, [locale])
+    setTranslations(defaultTranslations)
+  }, [locale, isClient])
 
   const t = (key: string): string => {
     const keys = key.split('.')

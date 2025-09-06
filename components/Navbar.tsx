@@ -13,12 +13,15 @@ import {
   Instagram,
   Globe,
   Home,
+  ShoppingCart,
 } from "lucide-react";
 import { useI18n } from "../app/i18n/context";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { useCart } from "../app/contexts/CartContext";
 
 export default function Navbar() {
   const { t, locale, isRTL } = useI18n();
+  const { getTotalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [cropsDropdownOpen, setCropsDropdownOpen] = useState(false);
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false);
@@ -218,6 +221,19 @@ export default function Navbar() {
                 <Search className="w-5 h-5" />
               </button>
 
+              {/* Cart Icon */}
+              <Link 
+                href="/cart" 
+                className="relative p-2 text-gray-600 hover:text-primary-600 transition-colors duration-200"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                {getTotalItems() > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </Link>
+
               {/* Language Switcher */}
               <LanguageSwitcher />
             </div>
@@ -235,13 +251,13 @@ export default function Navbar() {
               <div className="flex items-center space-x-8">
                 <Link
                   href="/"
-                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   <Home className="w-5 h-5" />
                 </Link>
 
                 <div className="relative group">
-                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                  <button className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.crops") || "Crops"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </button>
@@ -273,7 +289,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                  <button className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.products") || "Products"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </button>
@@ -305,7 +321,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                  <button className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.sustainability") || "Sustainability"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </button>
@@ -338,21 +354,21 @@ export default function Navbar() {
 
                 <Link
                   href="/about-us"
-                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.aboutUs") || "About US"}
                 </Link>
 
                 <Link
                   href="/contact-us"
-                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.contactUs") || "Contact US"}
                 </Link>
 
                 {/* <Link
                   href="/careers"
-                  className="text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.careers") || "Careers"}
                 </Link> */}
@@ -363,7 +379,7 @@ export default function Navbar() {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-white hover:text-accent-400 transition-colors duration-200"
+                className="text-accent-400 transition-colors duration-200"
               >
                 {isOpen ? (
                   <X className="w-6 h-6" />
@@ -381,7 +397,7 @@ export default function Navbar() {
             <div className="px-4 py-4 space-y-3">
               <Link
                 href="/"
-                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 <Home />
@@ -390,7 +406,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setCropsDropdownOpen(!cropsDropdownOpen)}
-                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.crops") || "Crops"}
                   <ChevronDown
@@ -430,7 +446,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.products") || "Products"}
                   <ChevronDown
@@ -472,7 +488,7 @@ export default function Navbar() {
                   onClick={() =>
                     setSustainabilityDropdownOpen(!sustainabilityDropdownOpen)
                   }
-                  className="flex items-center justify-between w-full text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.sustainability") || "Sustainability"}
                   <ChevronDown
@@ -511,7 +527,7 @@ export default function Navbar() {
 
               <Link
                 href="/about-us"
-                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.aboutUs") || "About US"}
@@ -519,15 +535,30 @@ export default function Navbar() {
 
               <Link
                 href="/contact-us"
-                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.contactUs") || "Contact US"}
               </Link>
 
+              {/* Cart Link */}
+              <Link
+                href="/cart"
+                className="flex items-center gap-2 text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                onClick={() => setIsOpen(false)}
+              >
+                <ShoppingCart className="w-4 h-4" />
+                {locale === "en" ? "Cart" : "کارٹ"}
+                {getTotalItems() > 0 && (
+                  <span className="bg-red-500 text-white text-xs rounded-full h-5 w-5 flex items-center justify-center font-semibold">
+                    {getTotalItems()}
+                  </span>
+                )}
+              </Link>
+
               {/* <Link
                 href="/careers"
-                className="block text-white hover:text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.careers") || "Careers"}

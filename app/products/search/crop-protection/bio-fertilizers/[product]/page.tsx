@@ -1,6 +1,8 @@
 
 
-import React from 'react'
+'use client'
+
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../../../../../components/Navbar'
 import Footer from '../../../../../../components/Footer'
 import {
@@ -8,13 +10,24 @@ import {
   Download,
   Package,
   CheckCircle,
-  Sprout
+  Sprout,
+  Star,
+  Heart,
+  Share2,
+  ShoppingCart,
+  Minus,
+  Plus,
+  Truck,
+  Shield,
+  RotateCcw
 } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import { getProductBySlug, getRelatedProducts } from '../../../../../../app/utils/productUtils'
 import ProductCard from '../../../../../../components/ProductCard'
+import AddToCartSection from '../../../../../../components/AddToCartSection'
+import MobileCTA from '../../../../../../components/MobileCTA'
 
 // Load translations
 async function getTranslations(locale: string) {
@@ -27,17 +40,38 @@ async function getTranslations(locale: string) {
   }
 }
 
-export default async function ProductDetail({ params }: { params: Promise<{ product: string }> }) {
+export default function ProductDetail({ params }: { params: Promise<{ product: string }> }) {
   // For now, default to English. In a real app, you'd get this from headers or cookies
   const locale: 'en' | 'ur' = 'en'
-  const translations = await getTranslations(locale)
   const isRTL = false // Since we're defaulting to English for now
 
-  const resolvedParams = await params
-  const product = getProductBySlug('bioFertilizers', resolvedParams.product)
+  // Mock e-commerce data for bio-fertilizers - using fixed values to prevent hydration mismatch
+  const mockPrice = 1200; // Fixed price instead of random
+  const mockRating = 4.7; // Fixed rating
+  const mockReviews = 35; // Fixed reviews count
+  const mockInStock = true; // Fixed stock status
+  const mockDiscount = 0; // Fixed discount
+
+  const [resolvedParams, setResolvedParams] = useState<{ product: string } | null>(null)
+  const [product, setProduct] = useState<any>(null)
+
+  useEffect(() => {
+    const resolveParams = async () => {
+      const resolved = await params
+      setResolvedParams(resolved)
+      const productData = getProductBySlug('bioFertilizers', resolved.product)
+      setProduct(productData)
+    }
+    resolveParams()
+  }, [params])
+
   if (!product) {
-    // NOTE: notFound() is server-only in App Router; if you hit issues, replace with a client redirect.
-    notFound()
+    return <div className="min-h-screen bg-[#F7FAF8] flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-emerald-600 mx-auto"></div>
+        <p className="mt-4 text-gray-600">Loading product...</p>
+      </div>
+    </div>
   }
 
   const relatedProducts = getRelatedProducts('bioFertilizers', product.id, true).slice(0, 3)
@@ -52,9 +86,9 @@ export default async function ProductDetail({ params }: { params: Promise<{ prod
     <div className="min-h-screen bg-[#F7FAF8]" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
 
-      {/* Breadcrumbs */}
-      <section className="bg-white/80 py-4">
-        <div className="mx-auto max-w-7xl px-4">
+      {/* HERO */}
+      <section className="py-32">
+        <div className="mx-auto max-w-7xl px-4 mb-2">
           <nav className="flex items-center gap-2 text-sm text-slate-600">
             <Link href="/" className="hover:text-emerald-700">{locale === 'en' ? 'Home' : 'ہوم'}</Link>
             <span>/</span>
@@ -65,10 +99,6 @@ export default async function ProductDetail({ params }: { params: Promise<{ prod
             <span className="font-medium text-emerald-700">{name}</span>
           </nav>
         </div>
-      </section>
-
-      {/* HERO */}
-      <section className="bg-gradient-to-br from-emerald-50 to-white py-10 md:py-14">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 lg:grid-cols-12">
           {/* Image */}
           <div className="lg:col-span-5">
@@ -80,7 +110,7 @@ export default async function ProductDetail({ params }: { params: Promise<{ prod
                   fill
                   sizes="(min-width:1024px) 40vw, 100vw"
                   className="object-contain"
-                  priority={false}
+                  priority={true}
                 />
                 {/* top-left small badge */}
                 <div className="absolute left-3 top-3">
@@ -103,33 +133,135 @@ export default async function ProductDetail({ params }: { params: Promise<{ prod
           {/* Info (sticky) */}
           <div className="lg:col-span-7">
             <div className="lg:sticky lg:top-6">
-              <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{name}</h1>
-              <p className="mt-2 text-emerald-700/90 text-lg font-semibold">{desc}</p>
+              {/* Product Title & Rating */}
+              <div className="mb-4">
+                <h1 className="text-3xl font-bold text-slate-900 md:text-4xl">{name}</h1>
+                <p className="mt-2 text-emerald-700/90 text-lg font-semibold">{desc}</p>
+                
+                {/* Rating */}
+                <div className="mt-3 flex items-center gap-3">
+                  <div className="flex items-center">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={`h-5 w-5 ${
+                          i < Math.floor(mockRating) ? 'text-yellow-400 fill-current' : 'text-gray-300'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-sm text-gray-600">
+                    {mockRating} ({mockReviews} {locale === 'en' ? 'reviews' : 'ریویوز'})
+                  </span>
+                </div>
+              </div>
 
-              {/* CTAs */}
-              <div className="mt-5 flex flex-wrap gap-3">
+              {/* Pricing */}
+              <div className="mb-6 rounded-xl bg-emerald-50 p-4">
+                <div className="flex items-center gap-3">
+                  {mockDiscount > 0 && (
+                    <span className="bg-red-500 text-white px-2 py-1 rounded text-sm font-semibold">
+                      -{mockDiscount}%
+                    </span>
+                  )}
+                  <div>
+                    <div className="flex items-center gap-2">
+                      <span className="text-3xl font-bold text-emerald-600">
+                        PKR {mockPrice.toLocaleString()}
+                      </span>
+                      {mockDiscount > 0 && (
+                        <span className="text-lg text-gray-500 line-through">
+                          PKR {Math.round(mockPrice / (1 - mockDiscount / 100)).toLocaleString()}
+                        </span>
+                      )}
+                    </div>
+                    <div className="text-sm text-gray-600">
+                      / {product.weight || "20L"}
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Stock Status */}
+                <div className="mt-2">
+                  <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-semibold ${
+                    mockInStock 
+                      ? 'bg-green-100 text-green-800' 
+                      : 'bg-red-100 text-red-800'
+                  }`}>
+                    <div className={`w-2 h-2 rounded-full ${
+                      mockInStock ? 'bg-green-500' : 'bg-red-500'
+                    }`}></div>
+                    {mockInStock 
+                      ? (locale === 'en' ? 'In Stock' : 'اسٹاک میں')
+                      : (locale === 'en' ? 'Out of Stock' : 'اسٹاک ختم')
+                    }
+                  </span>
+                </div>
+              </div>
+
+              {/* Quantity & Add to Cart */}
+              <AddToCartSection 
+                product={{
+                  id: product.id,
+                  name: product.name,
+                  nameUr: product.nameUr,
+                  price: mockPrice,
+                  weight: product.weight || "20L",
+                  image: product.image,
+                  category: 'bioFertilizers'
+                }}
+                mockInStock={mockInStock}
+                locale={locale}
+              />
+
+              {/* Action Buttons */}
+              <div className="mb-6 flex gap-3">
+                <button className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                  <Heart className="h-4 w-4" />
+                  {locale === 'en' ? 'Wishlist' : 'خواہشات'}
+                </button>
+                <button className="flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm font-semibold text-gray-700 hover:bg-gray-50 transition-colors">
+                  <Share2 className="h-4 w-4" />
+                  {locale === 'en' ? 'Share' : 'شیئر کریں'}
+                </button>
                 <Link
                   href="/contact-us"
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 text-sm font-semibold text-white shadow-sm transition hover:-translate-y-0.5 hover:bg-emerald-700"
-                  aria-label="Contact Sales Team"
+                  className="flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition-colors"
                 >
                   <Phone className="h-4 w-4" />
-                  {locale === 'en' ? 'Contact Sales Team' : 'سیلز ٹیم سے رابطہ کریں'}
+                  {locale === 'en' ? 'Contact Sales' : 'سیلز سے رابطہ'}
                 </Link>
-                <a
-                  href="#"
-                  className="inline-flex items-center gap-2 rounded-xl border border-emerald-200 bg-white px-5 py-3 text-sm font-semibold text-emerald-700 transition hover:bg-emerald-50"
-                >
-                  <Download className="h-4 w-4" />
-                  {locale === 'en' ? 'Download TDS' : 'ٹی ڈی ایس ڈاؤنلوڈ کریں'}
-                </a>
               </div>
 
               {/* Quick pills */}
-              <div className="mt-4 flex flex-wrap gap-2 text-xs text-slate-600">
-                {product.weight && <span className="rounded-full bg-white px-3 py-1">{product.weight}</span>}
-                <span className="rounded-full bg-white px-3 py-1">{locale === 'en' ? 'Organic • Biodegradable' : 'نامیاتی • قابلِ تحلیل'}</span>
-                <span className="rounded-full bg-white px-3 py-1">{locale === 'en' ? 'All Crops' : 'تمام فصلیں'}</span>
+              <div className="mb-6 flex flex-wrap gap-2 text-xs text-slate-600">
+                {product.weight && (
+                  <span className="rounded-full bg-white px-3 py-1 border border-gray-200">
+                    {product.weight}
+                  </span>
+                )}
+                <span className="rounded-full bg-white px-3 py-1 border border-gray-200">
+                  {locale === 'en' ? 'Organic • Biodegradable' : 'نامیاتی • قابلِ تحلیل'}
+                </span>
+                <span className="rounded-full bg-white px-3 py-1 border border-gray-200">
+                  {locale === 'en' ? 'All Crops' : 'تمام فصلیں'}
+                </span>
+              </div>
+
+              {/* Shipping & Guarantee Info */}
+              <div className="mt-6 space-y-3">
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <Truck className="h-5 w-5 text-emerald-600" />
+                  <span>{locale === 'en' ? 'Free shipping on orders over PKR 3,000' : '3,000 روپے سے زیادہ کے آرڈر پر مفت شپنگ'}</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <Shield className="h-5 w-5 text-emerald-600" />
+                  <span>{locale === 'en' ? '30-day money-back guarantee' : '30 دن کی رقم واپسی کی گارنٹی'}</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm text-gray-600">
+                  <RotateCcw className="h-5 w-5 text-emerald-600" />
+                  <span>{locale === 'en' ? 'Easy returns & exchanges' : 'آسان واپسی اور تبادلہ'}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -272,20 +404,19 @@ export default async function ProductDetail({ params }: { params: Promise<{ prod
       </section>
 
       {/* Mobile fixed CTA bar */}
-      <div className="fixed inset-x-0 bottom-0 z-40 flex items-center justify-between gap-3 border-t border-emerald-100 bg-white/95 p-3 backdrop-blur md:hidden">
-        <a
-          href="#"
-          className="flex-1 rounded-xl border border-emerald-200 px-4 py-3 text-center text-sm font-semibold text-emerald-700"
-        >
-          TDS
-        </a>
-        <Link
-          href="/contact-us"
-          className="flex-1 rounded-xl bg-emerald-600 px-4 py-3 text-center text-sm font-semibold text-white"
-        >
-          {locale === 'en' ? 'Contact Sales' : 'سیلز سے رابطہ'}
-        </Link>
-      </div>
+      <MobileCTA 
+        product={{
+          id: product.id,
+          name: product.name,
+          nameUr: product.nameUr,
+          price: mockPrice,
+          weight: product.weight || "20L",
+          image: product.image,
+          category: 'bioFertilizers'
+        }}
+        mockInStock={mockInStock}
+        locale={locale}
+      />
 
       <Footer />
     </div>
