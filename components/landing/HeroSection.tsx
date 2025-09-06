@@ -29,6 +29,17 @@ export default function HeroSection() {
       {/* Background Image Slideshow */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="relative w-full h-full">
+        <Image
+            src="/assets/landing/hero-gardening.jpg"
+            alt="Gardening Hero Background"
+            fill
+            className={`object-cover object-center transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}
+            priority
+            unoptimized
+            quality={100}
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+            id="slide-2"
+          />
           <Image
             src="/assets/landing/hero-farming.jpg"
             alt="Farming Hero Background"
@@ -39,17 +50,6 @@ export default function HeroSection() {
             quality={100}
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
             id="slide-1"
-          />
-          <Image
-            src="/assets/landing/hero-gardening.jpg"
-            alt="Gardening Hero Background"
-            fill
-            className={`object-cover object-center transition-opacity duration-1000 ${currentSlide === 2 ? 'opacity-100' : 'opacity-0'}`}
-            priority
-            unoptimized
-            quality={100}
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-            id="slide-2"
           />
           <Image
             src="/assets/landing/hero-seedings.jpg"
