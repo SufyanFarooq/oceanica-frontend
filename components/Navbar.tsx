@@ -149,7 +149,7 @@ export default function Navbar() {
             <div className="flex items-center space-x-1 md:space-x-2 lg:space-x-4">
               <Link
                 href="#"
-                className={`${isScrolled ? "text-gray-600 hover:text-primary-600" : "w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center hover:from-accent-400 hover:to-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"} transition-colors duration-200`}
+                className={`${isScrolled ? "text-gray-600 hover:text-primary-600" : "w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center hover:from-primary-400 hover:to-primary-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"} transition-colors duration-200`}
               >
                 <svg className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
@@ -173,7 +173,7 @@ export default function Navbar() {
               </Link>
               <Link
                 href="#"
-                className={`${isScrolled ? "text-gray-600 hover:text-primary-600" : "w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-accent-500 to-accent-600 rounded-full flex items-center justify-center hover:from-accent-400 hover:to-accent-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"} transition-colors duration-200`}
+                className={`${isScrolled ? "text-gray-600 hover:text-primary-600" : "w-6 h-6 md:w-8 md:h-8 lg:w-10 lg:h-10 bg-gradient-to-r from-primary-500 to-primary-600 rounded-full flex items-center justify-center hover:from-primary-400 hover:to-primary-500 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-110"} transition-colors duration-200`}
               >
                 <svg className="w-3 h-3 md:w-4 md:h-4 lg:w-5 lg:h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
@@ -240,7 +240,10 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-
+      {/* <li><Link href="/about-us" className="text-gray-200 hover:text-primary-400 transition-colors duration-300 flex items-center group">
+                <span className="w-1.5 h-1.5 bg-primary-400 rounded-full mr-3 group-hover:scale-150 transition-transform"></span>
+                {t('nav.aboutUs')}
+              </Link></li> */}
       {/* Second Section - Navigation Links */}
       {/* isScrolled ? "bg-white shadow-lg" : "bg-transparent" */}
       <div className={`${isScrolled ? "bg-gray-800 shadow-lg" : "bg-transparent"}`}>
@@ -251,13 +254,13 @@ export default function Navbar() {
               <div className="flex items-center space-x-8">
                 <Link
                   href="/"
-                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   <Home className="w-5 h-5" />
                 </Link>
 
                 <div className="relative group">
-                  <Link href="/crop-solutions" className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide hover:text-accent-300">
+                  <Link href="/crop-solutions" className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide hover:text-primary-300">
                     {t("nav.crops") || "Crops"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </Link>
@@ -289,7 +292,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                  <button className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.products") || "Products"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </button>
@@ -321,7 +324,7 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                  <button className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.sustainability") || "Sustainability"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
                   </button>
@@ -354,21 +357,21 @@ export default function Navbar() {
 
                 <Link
                   href="/about-us"
-                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.aboutUs") || "About US"}
                 </Link>
 
                 <Link
                   href="/contact-us"
-                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.contactUs") || "Contact US"}
                 </Link>
 
                 {/* <Link
                   href="/careers"
-                  className="text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.careers") || "Careers"}
                 </Link> */}
@@ -379,7 +382,7 @@ export default function Navbar() {
             <div className="lg:hidden">
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-accent-400 transition-colors duration-200"
+                className="text-primary-400 transition-colors duration-200"
               >
                 {isOpen ? (
                   <X className="w-6 h-6" />
@@ -397,7 +400,7 @@ export default function Navbar() {
             <div className="px-4 py-4 space-y-3">
               <Link
                 href="/"
-                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 <Home />
@@ -406,7 +409,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setCropsDropdownOpen(!cropsDropdownOpen)}
-                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.crops") || "Crops"}
                   <ChevronDown
@@ -446,7 +449,7 @@ export default function Navbar() {
               <div>
                 <button
                   onClick={() => setProductsDropdownOpen(!productsDropdownOpen)}
-                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.products") || "Products"}
                   <ChevronDown
@@ -488,7 +491,7 @@ export default function Navbar() {
                   onClick={() =>
                     setSustainabilityDropdownOpen(!sustainabilityDropdownOpen)
                   }
-                  className="flex items-center justify-between w-full text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                  className="flex items-center justify-between w-full text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 >
                   {t("nav.sustainability") || "Sustainability"}
                   <ChevronDown
@@ -527,7 +530,7 @@ export default function Navbar() {
 
               <Link
                 href="/about-us"
-                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.aboutUs") || "About US"}
@@ -535,7 +538,7 @@ export default function Navbar() {
 
               <Link
                 href="/contact-us"
-                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.contactUs") || "Contact US"}
@@ -544,7 +547,7 @@ export default function Navbar() {
               {/* Cart Link */}
               <Link
                 href="/cart"
-                className="flex items-center gap-2 text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="flex items-center gap-2 text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 <ShoppingCart className="w-4 h-4" />
@@ -558,7 +561,7 @@ export default function Navbar() {
 
               {/* <Link
                 href="/careers"
-                className="block text-accent-400 transition-colors duration-200 font-medium uppercase tracking-wide"
+                className="block text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide"
                 onClick={() => setIsOpen(false)}
               >
                 {t("nav.careers") || "Careers"}
