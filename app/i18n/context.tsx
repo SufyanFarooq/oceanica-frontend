@@ -40,14 +40,24 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     document.documentElement.dir = locale === 'ur' ? 'rtl' : 'ltr'
     document.documentElement.lang = locale
 
-    // Set default translations to prevent loading state
-    const defaultTranslations = {
+    // Set translations based on locale
+    const translations = {
       nav: {
-        crops: "Crops",
-        products: "Products", 
-        sustainability: "Sustainability",
-        aboutUs: "About Us",
-        contactUs: "Contact Us"
+        crops: locale === 'en' ? "Crops" : "فصلیں",
+        products: locale === 'en' ? "Products" : "مصنوعات", 
+        sustainability: locale === 'en' ? "Sustainability" : "پائیداری",
+        aboutUs: locale === 'en' ? "About Us" : "ہمارے بارے میں",
+        contactUs: locale === 'en' ? "Contact Us" : "رابطہ",
+        nayaSavera: locale === 'en' ? "Naya Savera" : "نیا سویرا",
+        careers: locale === 'en' ? "Careers" : "کیریئر"
+      },
+      footer: {
+        description: locale === 'en' 
+          ? "Empowering farmers with innovative agricultural solutions for sustainable farming and maximum crop yield."
+          : "پائیدار کاشتکاری اور زیادہ سے زیادہ فصل کی پیداوار کے لیے کسانوں کو جدید زرعی حل فراہم کرنا۔",
+        cropSolutions: locale === 'en' ? "Crop Solutions" : "فصل کے حل",
+        products: locale === 'en' ? "Products" : "مصنوعات",
+        company: locale === 'en' ? "Company" : "کمپنی"
       },
       home: {
         hero: {
@@ -85,7 +95,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         }
       }
     }
-    setTranslations(defaultTranslations)
+    setTranslations(translations)
   }, [locale, isClient])
 
   const t = (key: string): string => {

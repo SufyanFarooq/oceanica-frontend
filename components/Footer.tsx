@@ -160,10 +160,23 @@ export default function Footer() {
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-12 pt-8 text-center">
-          <p className="text-gray-300 text-sm">
-            © {new Date().getFullYear()} Oceanica Crop Science. {locale === 'en' ? 'All rights reserved.' : 'تمام حقوق محفوظ ہیں۔'}
-          </p>
+        <div className="border-t border-gray-700 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-300 text-sm">
+              © {new Date().getFullYear()} Oceanica Crop Science. {locale === 'en' ? 'All rights reserved.' : 'تمام حقوق محفوظ ہیں۔'}
+            </p>
+            <p className="text-gray-400 text-sm">
+              {locale === 'en' ? 'Powered by' : 'طاقت فراہم کی گئی'} 
+              <a 
+                href="https://codebridge.info/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="ml-1 text-emerald-400 hover:text-emerald-300 transition-colors duration-300 font-semibold"
+              >
+                Codebridge
+              </a>
+            </p>
+          </div>
         </div>
       </div>
     </footer>

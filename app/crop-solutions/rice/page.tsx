@@ -1,15 +1,17 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '../../../components/Navbar'
 import Footer from '../../../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
 import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Play, Download, ChevronLeft, ChevronRight, Globe } from 'lucide-react'
 import VideosPDF from '@/components/crops/Videos&PDF'
+import ProductCard from '../../../components/products/ProductCard'
 
 export default function RicePage() {
-  const [currentProductIndex, setCurrentProductIndex] = useState(0)
+  const [productsCarouselIndex, setProductsCarouselIndex] = useState(0)
+  const [isProductsAutoPlaying, setIsProductsAutoPlaying] = useState(true)
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
@@ -29,52 +31,42 @@ export default function RicePage() {
     })
   }
 
-  const relatedProducts = [
-    {
-      id: 'ever-amino-l',
-      name: 'Ever Amino L',
-      category: 'BIO FERTILIZERS',
-      logo: '🌱',
-      details: 'Amino Acid Based Liquid Fertilizer',
-      form: 'Liquid Formulation',
-      color: 'green'
-    },
-    {
-      id: 'ever-boron',
-      name: 'Ever Boron',
-      category: 'BIO FERTILIZERS',
-      logo: '🌿',
-      details: 'Boron Enriched Bio Fertilizer',
-      form: 'Liquid Formulation',
-      color: 'blue'
-    },
-    {
-      id: 'ever-iron',
-      name: 'Ever Iron',
-      category: 'BIO FERTILIZERS',
-      logo: '🛡️',
-      details: 'Iron Fortified Bio Solution',
-      form: 'Liquid Formulation',
-      color: 'green'
-    },
-    {
-      id: 'ever-super-root',
-      name: 'Ever Super Root',
-      category: 'BIO FERTILIZERS',
-      logo: '💧',
-      details: 'Root Development Enhancer',
-      form: 'Liquid Formulation',
-      color: 'blue'
-    }
+  // Auto-play for products carousel
+  useEffect(() => {
+    if (!isProductsAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setProductsCarouselIndex((prev) => (prev + 1) % 2) // 2 slides (4 products each)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isProductsAutoPlaying])
+
+  const nextProducts = () => {
+    setProductsCarouselIndex((prev) => (prev + 1) % 2)
+  }
+
+  const prevProducts = () => {
+    setProductsCarouselIndex((prev) => (prev - 1 + 2) % 2)
+  }
+
+  // Product data for carousel - 2 slides of 4 products each
+  const productSlides = [
+    // Slide 1: 4 products
+    [
+      { type: 'bioFertilizers', index: 0 },
+      { type: 'bioFertilizers', index: 1 },
+      { type: 'bioFertilizers', index: 2 },
+      { type: 'bioFertilizers', index: 3 }
+    ],
+    // Slide 2: 4 products
+    [
+      { type: 'specialityFertilizers', index: 0 },
+      { type: 'specialityFertilizers', index: 1 },
+      { type: 'specialityFertilizers', index: 2 },
+      { type: 'specialityFertilizers', index: 3 }
+    ]
   ]
-
-  const nextProduct = () => {
-    setCurrentProductIndex((prev) => (prev + 1) % relatedProducts.length)
-  }
-
-  const prevProduct = () => {
-    setCurrentProductIndex((prev) => (prev - 1 + relatedProducts.length) % relatedProducts.length)
-  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -288,114 +280,56 @@ export default function RicePage() {
           </div>
           
           {/* Products Carousel */}
-          <div className="relative">
-            {/* Mobile: Single column, Desktop: Grid */}
-            <div className="block lg:hidden">
-              {/* Mobile Single Product View */}
-              <div className="max-w-sm mx-auto">
-                <div className="bg-white rounded-xl p-6 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-shadow duration-300">
-                  <div className="text-center mb-4">
-                    <div className="text-4xl mb-3">{relatedProducts[currentProductIndex].logo}</div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-1">{relatedProducts[currentProductIndex].name}</h3>
-                    <p className="text-sm text-gray-600 uppercase tracking-wide">{relatedProducts[currentProductIndex].category}</p>
-                  </div>
-                  <div className="text-center mb-4">
-                    <p className="text-sm font-semibold text-gray-900">{relatedProducts[currentProductIndex].name}</p>
-                  </div>
-                  <div className="text-xs text-gray-600 mb-4 text-center">
-                    <p>{relatedProducts[currentProductIndex].details}</p>
-                    <p>{relatedProducts[currentProductIndex].form}</p>
-                  </div>
-                  <div className="text-center">
-                    <Link href={`/products/search/crop-protection/bio-fertilizers/${relatedProducts[currentProductIndex].id}`} className="text-gray-700 hover:text-primary-600 font-medium text-sm">
-                      Learn more →
-                    </Link>
+          <div 
+            className="relative overflow-hidden bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8"
+            onMouseEnter={() => setIsProductsAutoPlaying(false)}
+            onMouseLeave={() => setIsProductsAutoPlaying(true)}
+          >
+            {/* Carousel Container */}
+            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${productsCarouselIndex * 100}%)` }}>
+              {productSlides.map((slide, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+                    {slide.map((product, productIndex) => (
+                      <ProductCard
+                        key={`${slideIndex}-${productIndex}`}
+                        productType={product.type as 'bioFertilizers' | 'specialityFertilizers'}
+                        index={product.index}
+                        isVisible={true}
+                      />
+                    ))}
                   </div>
                 </div>
-              </div>
-              
-              {/* Mobile Navigation */}
-              <div className="flex justify-center items-center mt-6 space-x-4">
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevProducts}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            >
+              <ChevronLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextProducts}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            >
+              <ChevronRight className="w-6 h-6" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {productSlides.map((_, index) => (
                 <button
-                  onClick={prevProduct}
-                  className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-                >
-                  <ChevronLeft className="w-6 h-6 text-gray-600" />
-                </button>
-                
-                {/* Mobile Progress Dots */}
-                <div className="flex space-x-2">
-                  {relatedProducts.map((_, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentProductIndex(index)}
-                      className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                        index === currentProductIndex ? 'bg-primary-500' : 'bg-gray-300'
-                      }`}
-                    />
-                  ))}
-                </div>
-                
-                <button
-                  onClick={nextProduct}
-                  className="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-                >
-                  <ChevronRight className="w-6 h-6 text-gray-600" />
-                </button>
-              </div>
-            </div>
-            
-            {/* Desktop Grid View */}
-            <div className="hidden lg:flex justify-center">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl">
-                {relatedProducts.map((product, index) => (
-                  <div key={product.id} className={`bg-white rounded-xl p-6 shadow-lg border-l-4 border-${product.color}-500 hover:shadow-xl transition-shadow duration-300 ${index === currentProductIndex ? 'ring-2 ring-primary-500' : ''}`}>
-                    <div className="text-center mb-4">
-                      <div className="text-4xl mb-3">{product.logo}</div>
-                      <h3 className="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
-                      <p className="text-sm text-gray-600 uppercase tracking-wide">{product.category}</p>
-                    </div>
-                    <div className="text-center mb-4">
-                      <p className="text-sm font-semibold text-gray-900">{product.name}</p>
-                    </div>
-                    <div className="text-xs text-gray-600 mb-4 text-center">
-                      <p>{product.details}</p>
-                      <p>{product.form}</p>
-                    </div>
-                    <div className="text-center">
-                      <Link href={`/products/search/crop-protection/bio-fertilizers/${product.id}`} className="text-gray-700 hover:text-primary-600 font-medium text-sm">
-                        Learn more →
-                      </Link>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Desktop Navigation Arrows */}
-            <div className="hidden lg:block">
-              <button
-                onClick={prevProduct}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-              >
-                <ChevronLeft className="w-5 h-5 text-gray-600" />
-              </button>
-              <button
-                onClick={nextProduct}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center hover:bg-gray-50 transition-colors duration-200"
-              >
-                <ChevronRight className="w-5 h-5 text-gray-600" />
-              </button>
-            </div>
-          </div>
-          
-          {/* Desktop Progress Bar */}
-          <div className="hidden lg:flex justify-center mt-8">
-            <div className="w-64 h-1 bg-gray-200 rounded-full">
-              <div 
-                className="h-1 bg-primary-500 rounded-full transition-all duration-300"
-                style={{ width: `${((currentProductIndex + 1) / relatedProducts.length) * 100}%` }}
-              ></div>
+                  key={index}
+                  onClick={() => setProductsCarouselIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === productsCarouselIndex 
+                      ? 'bg-emerald-500 scale-125' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
             </div>
           </div>
         </div>
