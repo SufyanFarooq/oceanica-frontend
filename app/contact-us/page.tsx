@@ -97,12 +97,6 @@ export default function ContactUs() {
         <div className="absolute inset-0 bg-black/50"></div>
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-white/90 hover:text-white transition-colors duration-200">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Link>
-          </div>
           <div className="text-center">
             <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 rounded-full mb-6 backdrop-blur-sm">
               <MessageCircle className="w-10 h-10 text-white" />

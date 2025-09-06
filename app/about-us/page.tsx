@@ -5,18 +5,21 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useI18n } from '../i18n/context'
 
 import {
   Leaf, Factory, Users, Globe, Clock,
-  Award, Shield, TestTube, CheckCircle, ArrowLeft
+  Award, Shield, TestTube, CheckCircle, ArrowLeft,
+  Sprout, Droplets, Zap, Heart
 } from 'lucide-react'
 
 export default function AboutUs() {
+  const { locale, isRTL } = useI18n()
   const [counts, setCounts] = useState({
     experience: 0,
     countries: 0,
-    complexes: 0,
-    employees: 0
+    products: 0,
+    farmers: 0
   })
   
   const statsRef = useRef<HTMLElement>(null)
@@ -30,9 +33,9 @@ export default function AboutUs() {
             // Start counting animation
             const targetCounts = {
               experience: 15,
-              countries: 50,
-              complexes: 3,
-              employees: 1000
+              countries: 25,
+              products: 150,
+              farmers: 50000
             }
             
             Object.keys(targetCounts).forEach((key) => {
@@ -71,64 +74,82 @@ export default function AboutUs() {
 
   // ---- data (keep/edit as you like) ----
   const stats = [
-    { number: counts.experience,  label: 'Years of Experience',   icon: Clock, suffix: '+' },
-    { number: counts.countries,   label: 'Exporting Countries',   icon: Globe, suffix: '+' },
-    { number: counts.complexes,   label: 'Industrial Complexes',  icon: Factory, suffix: '' },
-    { number: counts.employees,   label: 'Employees',             icon: Users, suffix: '+' },
+    { number: counts.experience,  label: locale === 'en' ? 'Years of Experience' : 'سال کا تجربہ',   icon: Clock, suffix: '+' },
+    { number: counts.countries,   label: locale === 'en' ? 'Countries Served' : 'خدمت کرنے والے ممالک',   icon: Globe, suffix: '+' },
+    { number: counts.products,   label: locale === 'en' ? 'Product Varieties' : 'پروڈکٹ کی اقسام',  icon: Leaf, suffix: '+' },
+    { number: counts.farmers,   label: locale === 'en' ? 'Farmers Supported' : 'کسانوں کی مدد',             icon: Users, suffix: '+' },
   ]
 
   const journey = [
     {
       year: '2008',
-      title: 'Foundation and Vision',
-      description:
-        'Oceanica Crop Science was established to revolutionize the agri-chemical industry and promote sustainable farming.',
-      achievements: ['Company established', 'First industrial complex in Lahore'],
+      title: locale === 'en' ? 'Foundation and Vision' : 'بنیاد اور وژن',
+      description: locale === 'en' 
+        ? 'Oceanica Crop Science was established with a vision to revolutionize agricultural practices through innovative crop protection and nutrition solutions.'
+        : 'اوشینیکا کراپ سائنس کو جدید فصل کی حفاظت اور غذائیت کے حل کے ذریعے زرعی طریقوں میں انقلاب لانے کے وژن کے ساتھ قائم کیا گیا۔',
+      achievements: locale === 'en' 
+        ? ['Company established', 'First bio-fertilizer production facility']
+        : ['کمپنی قائم', 'پہلی بائیو کھاد کی پیداواری سہولت'],
     },
     {
       year: '2012',
-      title: 'Expansion & Growth',
-      description:
-        'Second industrial complex launched in Faisalabad; production scaled for local & global demand.',
-      achievements: ['Second complex (Faisalabad)', 'Expanded product portfolio'],
+      title: locale === 'en' ? 'Product Innovation' : 'پروڈکٹ انوویشن',
+      description: locale === 'en'
+        ? 'Launched our first line of speciality fertilizers and expanded our bio-fertilizer range for diverse crop needs.'
+        : 'ہماری پہلی خصوصی کھادوں کی لائن لانچ کی اور مختلف فصلوں کی ضروریات کے لیے اپنی بائیو کھادوں کی رینج کو بڑھایا۔',
+      achievements: locale === 'en'
+        ? ['Speciality fertilizers launched', 'Expanded product portfolio']
+        : ['خصوصی کھادیں لانچ', 'پروڈکٹ پورٹ فولیو میں اضافہ'],
     },
     {
       year: '2015–2018',
-      title: 'Production Milestones',
-      description:
-        'Became the largest producer of Bio Fertilizers in Pakistan and expanded to regional markets.',
-      achievements: ['#1 Bio Fertilizers in Pakistan', 'Export to 25+ countries'],
+      title: locale === 'en' ? 'Market Leadership' : 'مارکیٹ لیڈرشپ',
+      description: locale === 'en'
+        ? 'Became a trusted name in agricultural solutions, serving farmers across Pakistan with premium quality products.'
+        : 'زرعی حل میں ایک قابل اعتماد نام بن گئے، پاکستان بھر کے کسانوں کو اعلیٰ معیار کی مصنوعات فراہم کرتے ہیں۔',
+      achievements: locale === 'en'
+        ? ['Market leadership in Pakistan', '50,000+ farmers served']
+        : ['پاکستان میں مارکیٹ لیڈرشپ', '50,000+ کسانوں کی خدمت'],
     },
     {
       year: '2020–Present',
-      title: 'Global Leadership',
-      description:
-        'Recognized worldwide for innovation; exporting to 50+ countries with 1000+ employees.',
-      achievements: ['50+ countries', '1000+ dedicated employees'],
+      title: locale === 'en' ? 'Sustainable Future' : 'پائیدار مستقبل',
+      description: locale === 'en'
+        ? 'Leading the way in sustainable agriculture with eco-friendly solutions and innovative crop protection technologies.'
+        : 'ماحول دوست حل اور جدید فصل کی حفاظت کی ٹیکنالوجی کے ساتھ پائیدار زراعت میں راہنمائی کر رہے ہیں۔',
+      achievements: locale === 'en'
+        ? ['150+ product varieties', '25+ countries served']
+        : ['150+ پروڈکٹ اقسام', '25+ ممالک میں خدمات'],
     },
   ]
 
   const solutions = [
     {
-      title: 'Liquid Fertilizers',
-      description:
-        'Innovative liquid formulations to improve soil fertility, root growth, and yield.',
-      image: '/assets/about-us/liquid-fertilizers.jpg',
+      title: locale === 'en' ? 'Bio Fertilizers' : 'بائیو کھادیں',
+      description: locale === 'en'
+        ? 'Natural and organic solutions that enhance soil health and promote sustainable agricultural practices.'
+        : 'قدرتی اور نامیاتی حل جو مٹی کی صحت کو بہتر بناتے ہیں اور پائیدار زرعی طریقوں کو فروغ دیتے ہیں۔',
+      image: '/assets/products/Bio Fertilizers/hero-banner.jpg',
       color: 'bg-green-50',
+      icon: Sprout,
     },
     {
-      title: 'Powder Speciality Fertilizers',
-      description:
-        'Macro & microelements with amino acids in powder form for growth and quality.',
-      image: '/assets/about-us/powder-speciality-fertilizers.jpg',
+      title: locale === 'en' ? 'Speciality Fertilizers' : 'خصوصی کھادیں',
+      description: locale === 'en'
+        ? 'Advanced nutrient solutions for optimal crop growth and maximum yield potential.'
+        : 'بہترین فصل کی نشوونما اور زیادہ سے زیادہ پیداوار کے لیے جدید غذائی اجزاء کے حل۔',
+      image: '/assets/products/Speciality Fertilizers/hero-banner.jpg',
       color: 'bg-blue-50',
+      icon: Droplets,
     },
     {
-      title: 'Granular Speciality Fertilizers',
-      description:
-        'Slow-release granules that feed plants over extended periods.',
-      image: '/assets/about-us/granular-speciality-fertilizers.jpg',
+      title: locale === 'en' ? 'Crop Protection' : 'فصل کی حفاظت',
+      description: locale === 'en'
+        ? 'Comprehensive crop protection solutions to safeguard your harvest from pests and diseases.'
+        : 'آپ کی فصل کو کیڑوں اور بیماریوں سے بچانے کے لیے جامع فصل کی حفاظت کے حل۔',
+      image: '/assets/products/Crop Protection/hero-banner.jpg',
       color: 'bg-violet-50',
+      icon: Shield,
     },
   ]
 
@@ -144,61 +165,35 @@ export default function AboutUs() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#F7FAF8] text-slate-900">
+    <div className="min-h-screen bg-[#F7FAF8] text-slate-900" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
 
-      {/* HERO — video with gradient overlay */}
-      <section className="relative overflow-hidden m-2 rounded-2xl py-32">
-        {/* Background Video Container */}
+      {/* HERO — agricultural background */}
+      <section className="relative overflow-hidden m-2 rounded-2xl py-32 bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-900">
+        {/* Background Image */}
         <div className="absolute inset-0 w-full h-full">
-          <video 
-            className="w-full h-full object-cover" 
-            autoPlay 
-            muted 
-            loop 
-            playsInline
-            style={{
-              position: 'absolute',
-              top: '0',
-              left: '0',
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover',
-              zIndex: '1'
-            }}
-          >
-            <source src="/company-overview.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          
+          <Image
+            src="/assets/about-us/agricultural-field.jpg"
+            alt="Agricultural Field"
+            fill
+            className="object-cover"
+            priority
+          />
           {/* Dark overlay for better text readability */}
-          <div className="absolute inset-0 bg-black/30 z-2"></div>
+          <div className="absolute inset-0 bg-emerald-900/60"></div>
         </div>
 
         {/* Content Overlay */}
         <div className="relative z-10 mx-auto max-w-7xl px-4 text-center">
-          <div className="mb-6 flex justify-center">
-            <Link href="/" className="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-primary-700 backdrop-blur hover:bg-white/90 transition-colors">
-              <ArrowLeft className="h-4 w-4" />
-              Back to Home
-            </Link>
-          </div>
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-1 text-sm font-medium text-primary-700 backdrop-blur">
-            <Leaf className="h-4 w-4" /> Oceanica Crop Science
-          </div>
-          <h1 className="text-4xl font-bold text-white md:text-5xl">Overview | Presenting Oceanica</h1>
-          <p className="mx-auto mt-4 max-w-3xl text-lg text-primary-50">
-            Boosting yields and advancing sustainable agriculture through innovative, high-quality solutions
-            in bio and speciality fertilizers.
+          <h1 className="text-4xl font-bold text-white md:text-5xl">
+            {locale === 'en' ? 'About Oceanica Crop Science' : 'اوشینیکا کراپ سائنس کے بارے میں'}
+          </h1>
+          <p className="mx-auto mt-4 max-w-3xl text-lg text-emerald-50">
+            {locale === 'en' 
+              ? 'Empowering farmers with innovative agricultural solutions for sustainable farming and maximum crop yield.'
+              : 'پائیدار کاشتکاری اور زیادہ سے زیادہ فصل کی پیداوار کے لیے کسانوں کو جدید زرعی حل فراہم کرنا۔'
+            }
           </p>
-          <div className="mt-8 inline-flex rounded-xl bg-white px-6 py-4 shadow">
-            <div>
-              <div className="text-xl font-semibold">Sustain the world</div>
-              <div className="text-slate-600">Explore more ↓</div>
-            </div>
-          </div>
-          
-
         </div>
       </section>
 
@@ -206,29 +201,39 @@ export default function AboutUs() {
       <section className="py-12" ref={statsRef}>
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-start gap-8 px-4 lg:grid-cols-12">
           <div className="lg:col-span-7">
-            <h2 className="text-2xl font-bold">Overview | Presenting Oceanica</h2>
+            <h2 className="text-2xl font-bold">
+              {locale === 'en' ? 'About Oceanica Crop Science' : 'اوشینیکا کراپ سائنس کے بارے میں'}
+            </h2>
             <p className="mt-3 text-slate-600">
-              Based in Pakistan, Oceanica tackles soil fertility, crop protection, and food security with products that
-              maximize productivity and minimize environmental impact.
+              {locale === 'en' 
+                ? 'Oceanica Crop Science is a leading agricultural solutions provider, specializing in bio-fertilizers, speciality fertilizers, and crop protection products. We are committed to sustainable farming practices and helping farmers achieve maximum yield.'
+                : 'اوشینیکا کراپ سائنس ایک معروف زرعی حل فراہم کنندہ ہے، جو بائیو کھادوں، خصوصی کھادوں اور فصل کی حفاظت کی مصنوعات میں مہارت رکھتا ہے۔ ہم پائیدار کاشتکاری کے طریقوں کے لیے پرعزم ہیں اور کسانوں کو زیادہ سے زیادہ پیداوار حاصل کرنے میں مدد کرتے ہیں۔'
+              }
             </p>
             <p className="mt-3 text-slate-600">
-              With global reach and constant innovation, we support a sustainable future for agriculture, benefitting
-              communities locally and worldwide.
+              {locale === 'en'
+                ? 'With over 15 years of experience in the agricultural industry, we have built a reputation for quality, innovation, and farmer support. Our products are designed to enhance soil health, improve crop yield, and promote sustainable agricultural practices.'
+                : 'زرعی صنعت میں 15 سال سے زیادہ کے تجربے کے ساتھ، ہم نے معیار، جدت اور کسانوں کی مدد کے لیے ایک شہرت قائم کی ہے۔ ہماری مصنوعات مٹی کی صحت کو بہتر بنانے، فصل کی پیداوار کو بہتر بنانے اور پائیدار زرعی طریقوں کو فروغ دینے کے لیے ڈیزائن کی گئی ہیں۔'
+              }
             </p>
             <p className="mt-3 text-slate-600">
-              We are Pakistan&apos;s largest producer of Bio Fertilizers and a leading supplier of speciality fertilizers,
-              operating multiple production facilities for both domestic and international markets.
+              {locale === 'en'
+                ? 'We serve farmers across Pakistan and export our products to over 25 countries, making us a trusted partner in global agriculture.'
+                : 'ہم پاکستان بھر کے کسانوں کی خدمت کرتے ہیں اور اپنی مصنوعات کو 25 سے زیادہ ممالک میں برآمد کرتے ہیں، جو ہمیں عالمی زراعت میں ایک قابل اعتماد پارٹنر بناتا ہے۔'
+              }
             </p>
           </div>
 
           <div className="lg:col-span-5">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="mb-4 text-center text-lg font-semibold">Oceanica at a Glance</h3>
+              <h3 className="mb-4 text-center text-lg font-semibold">
+                {locale === 'en' ? 'Oceanica at a Glance' : 'اوشینیکا ایک نظر میں'}
+              </h3>
               <div className="grid grid-cols-2 gap-4">
                 {stats.map(({ number, label, icon: Icon, suffix }) => (
                   <div key={label} className="rounded-2xl border border-slate-200 bg-white p-5 text-center shadow-sm">
-                    <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-primary-50">
-                      <Icon className="h-5 w-5 text-primary-600" />
+                    <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-emerald-50">
+                      <Icon className="h-5 w-5 text-emerald-600" />
                     </div>
                     <div className="text-2xl font-bold text-slate-900">
                       {number}{suffix}
@@ -237,8 +242,11 @@ export default function AboutUs() {
                   </div>
                 ))}
               </div>
-              <div className="mt-4 rounded-xl bg-primary-50 p-4 text-center text-sm font-semibold text-primary-700">
-                #1 Bio Fertilizers Producer in Pakistan • #3 Speciality Fertilizers Producer in Asia
+              <div className="mt-4 rounded-xl bg-emerald-50 p-4 text-center text-sm font-semibold text-emerald-700">
+                {locale === 'en' 
+                  ? 'Leading Agricultural Solutions Provider • Trusted by Farmers Worldwide'
+                  : 'معروف زرعی حل فراہم کنندہ • دنیا بھر کے کسانوں کی طرف سے قابل اعتماد'
+                }
               </div>
             </div>
           </div>

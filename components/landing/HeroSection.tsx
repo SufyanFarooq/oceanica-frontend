@@ -94,15 +94,6 @@ export default function HeroSection() {
               <p className="text-lg md:text-xl text-white/90 mb-6 md:mb-8 drop-shadow-lg animate-slide-up stagger-3">
                 {t('home.hero.subtitle')}
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 md:gap-4 animate-bounce-in stagger-4">
-                <Link href="/crop-solutions" className="bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl inline-flex items-center justify-center animate-pulse-glow">
-                  {t('home.hero.exploreCrops')}
-                  <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5 animate-float-gentle" />
-                </Link>
-                <Link href="/products/search/crop-protection" className="bg-gradient-to-r from-secondary-500 to-secondary-600 hover:from-secondary-600 hover:to-secondary-700 text-white px-6 md:px-8 py-3 md:py-4 rounded-full font-semibold text-base md:text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl text-center animate-pulse-glow">
-                  {t('home.hero.viewProducts')}
-                </Link>
-              </div>
             </div>
             
             {/* Right Side Card with Evergrow style */}

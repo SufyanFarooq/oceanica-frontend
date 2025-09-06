@@ -62,12 +62,6 @@ export default function Stewardship() {
         {/* Gradient Overlay */}
         
         <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="mb-8">
-            <Link href="/" className="inline-flex items-center text-primary-600 hover:text-primary-700 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full hover:bg-white transition-all duration-300">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Home
-            </Link>
-          </div>
           <div className="text-center">
             <div className="text-6xl mb-4 animate-bounce">🌱</div>
             <h1 className="text-5xl font-bold text-primary-600 mb-6 drop-shadow-lg">

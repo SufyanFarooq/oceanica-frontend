@@ -96,13 +96,6 @@ export default function RicePage() {
         
         {/* Content */}
         <div className="relative z-10 max-w-7xl mx-auto px-4">
-          <div className="mb-8">
-            <Link href="/crop-solutions" className="inline-flex items-center text-white hover:text-gray-200">
-              <ArrowLeft className="w-4 h-4 mr-2" />
-              Back to Crop Solutions
-            </Link>
-          </div>
-          
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Side - Text Content */}
             <div className="text-white">
