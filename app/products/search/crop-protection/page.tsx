@@ -1,73 +1,76 @@
+'use client'
+
 import Navbar from '../../../../components/Navbar'
 import Footer from '../../../../components/Footer'
 import Link from 'next/link'
 import { ArrowLeft, Leaf, Shield, TrendingUp, Clock, Users, Search } from 'lucide-react'
+import ProductCard from '../../../../components/products/ProductCard'
+import { getAllProducts } from '../../../utils/productUtils'
+import { useI18n } from '../../../i18n/context'
+import { useState, useEffect } from 'react'
+import Image from 'next/image'
 
 export default function CropProtectionProducts() {
-  const productCategories = [
-    {
-      name: 'Herbicide',
-      href: '/products/search/crop-protection/type/herbicide-1156',
-      description: 'Selective weed control products for various crops',
-      icon: '🌿',
-      color: 'bg-green-100',
-      features: ['Broad-spectrum control', 'Crop safety', 'Residual activity']
-    },
-    {
-      name: 'Insecticide',
-      href: '/products/search/crop-protection/type/insecticide-1166',
-      description: 'Targeted pest control solutions',
-      icon: '🦗',
-      color: 'bg-blue-100',
-      features: ['Pest-specific targeting', 'Long-lasting protection', 'Minimal resistance risk']
-    },
-    {
-      name: 'Fungicide',
-      href: '/products/search/crop-protection/type/fungicide-1161',
-      description: 'Disease prevention and treatment products',
-      icon: '🍄',
-      color: 'bg-purple-100',
-      features: ['Preventive protection', 'Curative action', 'Yield preservation']
-    },
-    {
-      name: 'Seedcare',
-      href: '/products/search/crop-protection/type/seedcare-1176',
-      description: 'Seed treatment and protection solutions',
-      icon: '🌱',
-      color: 'bg-yellow-100',
-      features: ['Early disease protection', 'Improved germination', 'Better establishment']
-    }
+  const { locale } = useI18n()
+  const [productsCarouselIndex, setProductsCarouselIndex] = useState(0)
+  const [isProductsAutoPlaying, setIsProductsAutoPlaying] = useState(true)
+  const [heroImageIndex, setHeroImageIndex] = useState(0)
+
+  // Hero images carousel
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setHeroImageIndex((prev) => (prev + 1) % 3) // 3 images
+    }, 5000)
+
+    return () => clearInterval(interval)
+  }, [])
+
+  // Auto-play for products carousel
+  useEffect(() => {
+    if (!isProductsAutoPlaying) return
+
+    const interval = setInterval(() => {
+      setProductsCarouselIndex((prev) => (prev + 1) % 2) // 2 slides (4 products each)
+    }, 4000)
+
+    return () => clearInterval(interval)
+  }, [isProductsAutoPlaying])
+
+  const nextProducts = () => {
+    setProductsCarouselIndex((prev) => (prev + 1) % 2)
+  }
+
+  const prevProducts = () => {
+    setProductsCarouselIndex((prev) => (prev - 1 + 2) % 2)
+  }
+
+  // Hero images
+  const heroImages = [
+    '/assets/products/promotion/oceanica_1.png',
+    '/assets/products/promotion/oceanica_2.png',
+    '/assets/products/promotion/oceanica_3.jpg'
   ]
 
-  const featuredProducts = [
-    {
-      name: 'Oceanica Shield Pro',
-      category: 'Fungicide',
-      description: 'Advanced disease protection for multiple crops',
-      image: '🛡️',
-      rating: 4.8
-    },
-    {
-      name: 'Oceanica Weed Control Plus',
-      category: 'Herbicide',
-      description: 'Effective weed management with crop safety',
-      image: '🌿',
-      rating: 4.7
-    },
-    {
-      name: 'Oceanica Pest Shield',
-      category: 'Insecticide',
-      description: 'Targeted pest control for maximum protection',
-      image: '🦗',
-      rating: 4.9
-    },
-    {
-      name: 'Oceanica Seed Guard',
-      category: 'Seedcare',
-      description: 'Complete seed protection and enhancement',
-      image: '🌱',
-      rating: 4.8
-    }
+  // Get real products data
+  const bioFertilizers = getAllProducts('bioFertilizers').slice(0, 4)
+  const specialityFertilizers = getAllProducts('specialityFertilizers').slice(0, 4)
+  
+  // Product data for carousel - 2 slides of 4 products each
+  const productSlides = [
+    // Slide 1: 4 Bio Fertilizers
+    [
+      { type: 'bioFertilizers', index: 0 },
+      { type: 'bioFertilizers', index: 1 },
+      { type: 'bioFertilizers', index: 2 },
+      { type: 'bioFertilizers', index: 3 }
+    ],
+    // Slide 2: 4 Speciality Fertilizers
+    [
+      { type: 'specialityFertilizers', index: 0 },
+      { type: 'specialityFertilizers', index: 1 },
+      { type: 'specialityFertilizers', index: 2 },
+      { type: 'specialityFertilizers', index: 3 }
+    ]
   ]
 
   return (
@@ -76,6 +79,27 @@ export default function CropProtectionProducts() {
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-32 m-2 overflow-hidden rounded-2xl">
+        {/* Background Images Carousel */}
+        <div className="absolute inset-0">
+          {heroImages.map((image, index) => (
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === heroImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={image}
+                alt={`Oceanica Product ${index + 1}`}
+                fill
+                className="object-fill"
+                priority={index === 0}
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 to-indigo-50/40"></div>
+            </div>
+          ))}
+        </div>
+
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
@@ -91,11 +115,13 @@ export default function CropProtectionProducts() {
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
-              Crop Protection Products
+              {locale === 'en' ? 'Crop Protection Products' : 'فصل کی حفاظت کی مصنوعات'}
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
-              Premium agricultural solutions designed for Pakistani farmers. 
-              Protect your crops with our proven product range.
+              {locale === 'en' 
+                ? 'Premium agricultural solutions designed for Pakistani farmers. Protect your crops with our proven product range.'
+                : 'پاکستانی کسانوں کے لیے ڈیزائن کیے گئے پریمیم زرعی حل۔ ہماری ثابت شدہ مصنوعات کی رینج کے ساتھ اپنی فصلوں کی حفاظت کریں۔'
+              }
             </p>
             <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex shadow-lg">
               <Shield className="w-5 h-5 md:w-6 md:h-6" />
@@ -103,56 +129,205 @@ export default function CropProtectionProducts() {
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Search Section */}
-      <section className="py-12 bg-white border-b">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="relative">
-            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search for products..."
-              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+        {/* Image Indicators */}
+        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {heroImages.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setHeroImageIndex(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === heroImageIndex 
+                  ? 'bg-blue-500 scale-125' 
+                  : 'bg-white/50 hover:bg-white/70'
+              }`}
             />
-          </div>
+          ))}
         </div>
       </section>
 
       {/* Product Categories */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gradient-to-br from-gray-50 via-white to-gray-100">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Product Categories
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-500 to-blue-600 rounded-full mb-6 shadow-lg">
+              <Leaf className="w-10 h-10 text-white" />
+            </div>
+            <h2 className="text-5xl font-bold text-gray-900 mb-6">
+              {locale === 'en' ? 'Product Categories' : 'مصنوعات کی اقسام'}
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our comprehensive range of crop protection solutions 
-              designed for every stage of crop development.
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+              {locale === 'en' 
+                ? 'Explore our comprehensive range of crop protection solutions designed for every stage of crop development.'
+                : 'فصل کی ترقی کے ہر مرحلے کے لیے ڈیزائن کیے گئے فصل کی حفاظت کے حل کی ہماری جامع رینج کو دریافت کریں۔'
+              }
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {productCategories.map((category, index) => (
-              <Link
-                key={index}
-                href={category.href}
-                className={`${category.color} rounded-xl p-8 hover:shadow-xl transition-all duration-300 hover:-translate-y-2`}
-              >
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{category.icon}</div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3">{category.name}</h3>
-                  <p className="text-gray-700 mb-4">{category.description}</p>
-                  <div className="space-y-2">
-                    {category.features.map((feature, idx) => (
-                      <div key={idx} className="text-sm text-gray-600">
-                        • {feature}
-                      </div>
-                    ))}
+            <Link
+              href="/products/search/crop-protection/bio-fertilizers"
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-green-100 hover:border-green-300 overflow-hidden"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+              </div>
+              
+              <div className="relative z-10 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-4xl">🌱</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-green-600 transition-colors duration-300">
+                  {locale === 'en' ? 'Bio Fertilizers' : 'بائیو کھادیں'}
+                </h3>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  {locale === 'en' 
+                    ? 'Natural and organic fertilizer solutions for sustainable farming'
+                    : 'پائیدار کاشتکاری کے لیے قدرتی اور نامیاتی کھاد کے حل'
+                  }
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Natural ingredients' : 'قدرتی اجزاء'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Soil health improvement' : 'مٹی کی صحت میں بہتری'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Sustainable farming' : 'پائیدار کاشتکاری'}</span>
                   </div>
                 </div>
-              </Link>
-            ))}
+              </div>
+            </Link>
+
+            <Link
+              href="/products/search/crop-protection/speciality-fertilizers"
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-blue-100 hover:border-blue-300 overflow-hidden"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232563eb' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+              </div>
+              
+              <div className="relative z-10 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-4xl">🌾</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-300">
+                  {locale === 'en' ? 'Speciality Fertilizers' : 'خصوصی کھادیں'}
+                </h3>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  {locale === 'en' 
+                    ? 'Specialized nutrient solutions for specific crops and conditions'
+                    : 'مخصوص فصلوں اور حالات کے لیے خصوصی غذائی اجزاء کے حل'
+                  }
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Crop-specific formulas' : 'فصل مخصوص فارمولے'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'High efficiency' : 'اعلی کارکردگی'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Yield optimization' : 'پیداوار کی بہتری'}</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/products/search/crop-protection/herbicides"
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-purple-100 hover:border-purple-300 overflow-hidden"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238b5cf6' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+              </div>
+              
+              <div className="relative z-10 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-4xl">🌿</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-600 transition-colors duration-300">
+                  {locale === 'en' ? 'Herbicides' : 'جڑی بوٹی مار'}
+                </h3>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  {locale === 'en' 
+                    ? 'Effective weed control solutions for clean crop fields'
+                    : 'صاف فصل کے کھیتوں کے لیے موثر جڑی بوٹی کنٹرول کے حل'
+                  }
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Broad-spectrum control' : 'وسیع کنٹرول'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Crop safety' : 'فصل کی حفاظت'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Residual activity' : 'باقی سرگرمی'}</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
+
+            <Link
+              href="/products/search/crop-protection/insecticides"
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 hover:-translate-y-3 border border-yellow-100 hover:border-yellow-300 overflow-hidden"
+            >
+              {/* Background Pattern */}
+              <div className="absolute inset-0 opacity-5 group-hover:opacity-10 transition-opacity duration-500">
+                <div className="absolute inset-0" style={{
+                  backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23eab308' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
+                }}></div>
+              </div>
+              
+              <div className="relative z-10 text-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
+                  <span className="text-4xl">🦗</span>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-yellow-600 transition-colors duration-300">
+                  {locale === 'en' ? 'Insecticides' : 'کیڑے مار'}
+                </h3>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  {locale === 'en' 
+                    ? 'Targeted pest control solutions for healthy crops'
+                    : 'صحت مند فصلوں کے لیے ہدف شدہ کیڑے کنٹرول کے حل'
+                  }
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Pest-specific targeting' : 'کیڑے مخصوص ہدف'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Long-lasting protection' : 'دیرپا حفاظت'}</span>
+                  </div>
+                  <div className="flex items-center justify-center space-x-2 text-sm text-gray-600">
+                    <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
+                    <span>{locale === 'en' ? 'Minimal resistance risk' : 'کم مزاحمت کا خطرہ'}</span>
+                  </div>
+                </div>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -162,41 +337,68 @@ export default function CropProtectionProducts() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Featured Products
+              {locale === 'en' ? 'Featured Products' : 'نمایاں مصنوعات'}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Our most popular and effective crop protection solutions 
-              trusted by farmers across Pakistan.
+              {locale === 'en' 
+                ? 'Our most popular and effective crop protection solutions trusted by farmers across Pakistan.'
+                : 'پاکستان بھر کے کسانوں کی جانب سے قابل اعتماد ہماری سب سے مقبول اور موثر فصل کی حفاظت کے حل۔'
+              }
             </p>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {featuredProducts.map((product, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300">
-                <div className="text-center">
-                  <div className="text-4xl mb-4">{product.image}</div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{product.name}</h3>
-                  <p className="text-sm text-gray-500 mb-2">{product.category}</p>
-                  <p className="text-gray-600 mb-4">{product.description}</p>
-                  <div className="flex items-center justify-center space-x-1 mb-4">
-                    {[...Array(5)].map((_, i) => (
-                      <div
-                        key={i}
-                        className={`w-4 h-4 ${
-                          i < Math.floor(product.rating) ? 'text-yellow-400' : 'text-gray-300'
-                        }`}
-                      >
-                        ★
-                      </div>
+          {/* Products Carousel */}
+          <div 
+            className="relative overflow-hidden bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8"
+            onMouseEnter={() => setIsProductsAutoPlaying(false)}
+            onMouseLeave={() => setIsProductsAutoPlaying(true)}
+          >
+            {/* Carousel Container */}
+            <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${productsCarouselIndex * 100}%)` }}>
+              {productSlides.map((slide, slideIndex) => (
+                <div key={slideIndex} className="w-full flex-shrink-0">
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto px-4">
+                    {slide.map((product, productIndex) => (
+                      <ProductCard
+                        key={`${slideIndex}-${productIndex}`}
+                        productType={product.type as 'bioFertilizers' | 'specialityFertilizers'}
+                        index={product.index}
+                        isVisible={true}
+                      />
                     ))}
-                    <span className="text-sm text-gray-600 ml-2">{product.rating}</span>
                   </div>
-                  <button className="w-full bg-primary-600 text-white py-2 px-4 rounded-lg hover:bg-primary-700 transition-colors duration-200">
-                    Learn More
-                  </button>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
+
+            {/* Navigation Buttons */}
+            <button
+              onClick={prevProducts}
+              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            >
+              <ArrowLeft className="w-6 h-6" />
+            </button>
+            <button
+              onClick={nextProducts}
+              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 hover:scale-110 z-10"
+            >
+              <ArrowLeft className="w-6 h-6 rotate-180" />
+            </button>
+
+            {/* Dots Indicator */}
+            <div className="flex justify-center mt-8 space-x-2">
+              {productSlides.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setProductsCarouselIndex(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    index === productsCarouselIndex 
+                      ? 'bg-emerald-500 scale-125' 
+                      : 'bg-gray-300 hover:bg-gray-400'
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -206,7 +408,7 @@ export default function CropProtectionProducts() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Why Choose Oceanica Products?
+              {locale === 'en' ? 'Why Choose Oceanica Products?' : 'اوشینیکا کی مصنوعات کیوں منتخب کریں؟'}
             </h2>
           </div>
           
@@ -215,24 +417,45 @@ export default function CropProtectionProducts() {
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <TrendingUp className="w-8 h-8 text-primary-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Proven Results</h3>
-              <p className="text-gray-600">Field-tested products that consistently deliver results</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {locale === 'en' ? 'Proven Results' : 'ثابت شدہ نتائج'}
+              </h3>
+              <p className="text-gray-600">
+                {locale === 'en' 
+                  ? 'Field-tested products that consistently deliver results'
+                  : 'میدان میں آزمودہ مصنوعات جو مسلسل نتائج فراہم کرتی ہیں'
+                }
+              </p>
             </div>
             
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-green-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Expert Support</h3>
-              <p className="text-gray-600">Technical support and application guidance</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {locale === 'en' ? 'Expert Support' : 'ماہرین کی مدد'}
+              </h3>
+              <p className="text-gray-600">
+                {locale === 'en' 
+                  ? 'Technical support and application guidance'
+                  : 'تکنیکی مدد اور استعمال کی رہنمائی'
+                }
+              </p>
             </div>
             
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-blue-600" />
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Expertise</h3>
-              <p className="text-gray-600">Understanding of Pakistan's farming conditions</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                {locale === 'en' ? 'Local Expertise' : 'مقامی مہارت'}
+              </h3>
+              <p className="text-gray-600">
+                {locale === 'en' 
+                  ? 'Understanding of Pakistan\'s farming conditions'
+                  : 'پاکستان کی کاشتکاری کی حالتوں کی سمجھ'
+                }
+              </p>
             </div>
           </div>
         </div>
@@ -242,18 +465,20 @@ export default function CropProtectionProducts() {
       <section className="py-20 bg-primary-600">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold text-white mb-4">
-            Need Product Recommendations?
+            {locale === 'en' ? 'Need Product Recommendations?' : 'مصنوعات کی سفارشات چاہیے؟'}
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            Our product specialists are here to help you choose the right solutions 
-            for your specific crop and growing conditions.
+            {locale === 'en' 
+              ? 'Our product specialists are here to help you choose the right solutions for your specific crop and growing conditions.'
+              : 'ہمارے مصنوعات کے ماہرین آپ کی مخصوص فصل اور کاشتکاری کی حالتوں کے لیے صحیح حل منتخب کرنے میں مدد کے لیے یہاں موجود ہیں۔'
+            }
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/contact-us" className="bg-white text-primary-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-200">
-              Get Expert Advice
+              {locale === 'en' ? 'Get Expert Advice' : 'ماہرین کی مشاورت حاصل کریں'}
             </Link>
             <Link href="/crop-solutions" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-200">
-              View Crop Solutions
+              {locale === 'en' ? 'View Crop Solutions' : 'فصل کے حل دیکھیں'}
             </Link>
           </div>
         </div>

@@ -292,10 +292,14 @@ export default function Navbar() {
                 </div>
 
                 <div className="relative group">
-                  <button className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide">
+                {/* <Link href="/crop-solutions" className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide hover:text-primary-300">
+                    {t("nav.crops") || "Crops"}
+                    <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
+                  </Link> */}
+                  <Link href="/products/search/crop-protection" className="flex items-center text-primary-400 transition-colors duration-200 font-medium uppercase tracking-wide">
                     {t("nav.products") || "Products"}
                     <ChevronDown className="w-4 h-4 ml-1 group-hover:rotate-180 transition-transform duration-200" />
-                  </button>
+                  </Link>
                   <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-100">
                     <div className="p-1">
                       {products.map((product) => (
