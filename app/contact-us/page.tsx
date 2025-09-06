@@ -94,7 +94,7 @@ export default function ContactUs() {
         />
         
         {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50"></div>
+        <div className="absolute inset-0  bg-black/50"></div>
         
         <div className="max-w-7xl mx-auto px-4 relative z-10">
           <div className="text-center">
