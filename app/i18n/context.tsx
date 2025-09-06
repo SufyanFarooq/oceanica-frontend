@@ -48,6 +48,41 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         sustainability: "Sustainability",
         aboutUs: "About Us",
         contactUs: "Contact Us"
+      },
+      home: {
+        hero: {
+          title: "Leading Agricultural Solutions",
+          titleHighlight: "for Sustainable Farming",
+          subtitle: "Empowering farmers with innovative crop protection and nutrition solutions for maximum yield and environmental sustainability.",
+          exploreCrops: "Explore Crops",
+          viewProducts: "View Products"
+        },
+        features: {
+          subtitle: "Why Choose Oceanica Crop Science",
+          innovation: {
+            title: "Innovation & Technology",
+            description: "Cutting-edge agricultural solutions powered by advanced research and technology."
+          },
+          quality: {
+            title: "Premium Quality",
+            description: "Rigorous quality control ensures every product meets the highest standards."
+          },
+          results: {
+            title: "Proven Results",
+            description: "Trusted by farmers worldwide for consistent, superior crop yields."
+          },
+          support: {
+            title: "Expert Support",
+            description: "Dedicated agricultural experts providing guidance and support."
+          }
+        },
+        cta: {
+          subtitle: "Ready to transform your agricultural practices? Contact our experts today for personalized solutions."
+        },
+        crops: {
+          title: "Crop Solutions",
+          subtitle: "Specialized nutrition and protection for every crop type"
+        }
       }
     }
     setTranslations(defaultTranslations)
