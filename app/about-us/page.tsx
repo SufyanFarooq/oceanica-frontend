@@ -21,7 +21,7 @@ export default function AboutUs() {
     products: 0,
     farmers: 0
   })
-  
+
   const statsRef = useRef<HTMLElement>(null)
   const [visibleElements, setVisibleElements] = useState<Set<string>>(new Set())
   const [activeJourneyIndex, setActiveJourneyIndex] = useState(0)
@@ -36,7 +36,7 @@ export default function AboutUs() {
             if (elementId) {
               setVisibleElements(prev => new Set(Array.from(prev).concat(elementId)))
             }
-            
+
             // Start counting animation for stats
             if (entry.target === statsRef.current) {
               const targetCounts = {
@@ -45,20 +45,20 @@ export default function AboutUs() {
                 products: 150,
                 farmers: 50000
               }
-              
+
               Object.keys(targetCounts).forEach((key) => {
                 const target = targetCounts[key as keyof typeof targetCounts]
                 const duration = 2000 // 2 seconds
                 const increment = target / (duration / 16) // 60fps
                 let current = 0
-                
+
                 const timer = setInterval(() => {
                   current += increment
                   if (current >= target) {
                     current = target
                     clearInterval(timer)
                   }
-                  
+
                   setCounts(prev => ({
                     ...prev,
                     [key]: Math.floor(current)
@@ -71,15 +71,15 @@ export default function AboutUs() {
       },
       { threshold: 0.1 }
     )
-    
+
     // Observe all elements with data-animate-id
     const elementsToObserve = document.querySelectorAll('[data-animate-id]')
     elementsToObserve.forEach(el => observer.observe(el))
-    
+
     if (statsRef.current) {
       observer.observe(statsRef.current)
     }
-    
+
     return () => observer.disconnect()
   }, [])
 
@@ -100,33 +100,33 @@ export default function AboutUs() {
           }
         })
       },
-      { 
+      {
         threshold: 0.5,
         rootMargin: '-20% 0px -20% 0px'
       }
     )
 
     journeyCards.forEach(card => observer.observe(card))
-    
+
     return () => observer.disconnect()
   }, [])
 
   // ---- data (keep/edit as you like) ----
   const stats = [
-    { number: counts.experience,  label: locale === 'en' ? 'Years of Experience' : 'سال کا تجربہ',   icon: Clock, suffix: '+' },
-    { number: counts.countries,   label: locale === 'en' ? 'Countries Served' : 'خدمت کرنے والے ممالک',   icon: Globe, suffix: '+' },
-    { number: counts.products,   label: locale === 'en' ? 'Product Varieties' : 'پروڈکٹ کی اقسام',  icon: Leaf, suffix: '+' },
-    { number: counts.farmers,   label: locale === 'en' ? 'Farmers Supported' : 'کسانوں کی مدد',             icon: Users, suffix: '+' },
+    { number: counts.experience, label: locale === 'en' ? 'Years of Experience' : 'سال کا تجربہ', icon: Clock, suffix: '+' },
+    { number: counts.countries, label: locale === 'en' ? 'City Served' : 'خدمت کرنے والے ممالک', icon: Globe, suffix: '+' },
+    { number: counts.products, label: locale === 'en' ? 'Product Varieties' : 'پروڈکٹ کی اقسام', icon: Leaf, suffix: '+' },
+    { number: counts.farmers, label: locale === 'en' ? 'Farmers Supported' : 'کسانوں کی مدد', icon: Users, suffix: '+' },
   ]
 
   const journey = [
     {
       year: '2008',
       title: locale === 'en' ? 'Foundation and Vision' : 'بنیاد اور وژن',
-      description: locale === 'en' 
+      description: locale === 'en'
         ? 'Oceanica Crop Science was established with a vision to revolutionize agricultural practices through innovative crop protection and nutrition solutions.'
         : 'اوشینیکا کراپ سائنس کو جدید فصل کی حفاظت اور غذائیت کے حل کے ذریعے زرعی طریقوں میں انقلاب لانے کے وژن کے ساتھ قائم کیا گیا۔',
-      achievements: locale === 'en' 
+      achievements: locale === 'en'
         ? ['Company established', 'First bio-fertilizer production facility']
         : ['کمپنی قائم', 'پہلی بائیو کھاد کی پیداواری سہولت'],
     },
@@ -157,7 +157,7 @@ export default function AboutUs() {
         ? 'Leading the way in sustainable agriculture with eco-friendly solutions and innovative crop protection technologies.'
         : 'ماحول دوست حل اور جدید فصل کی حفاظت کی ٹیکنالوجی کے ساتھ پائیدار زراعت میں راہنمائی کر رہے ہیں۔',
       achievements: locale === 'en'
-        ? ['150+ product varieties', '25+ countries served']
+        ? ['150+ product varieties', '25+ City served']
         : ['150+ پروڈکٹ اقسام', '25+ ممالک میں خدمات'],
     },
   ]
@@ -193,14 +193,14 @@ export default function AboutUs() {
   ]
 
   const certificates = [
-    { name: 'ISO 9001',  description: 'Quality Management Systems',                       image: '/assets/about-us/9001.png' },
-    { name: 'ISO 14001', description: 'Environmental Management Systems',                image: '/assets/about-us/14001.png' },
-    { name: 'ISO 45001', description: 'Occupational Health & Safety',                    image: '/assets/about-us/45001.png' },
-    { name: 'ISO 17025', description: 'Laboratory Management Systems',                   image: '/assets/about-us/17025.png' },
-    { name: 'GMP+',      description: 'Good Manufacturing Practice & HACCP',             image: '/assets/about-us/gmp.png' },
-    { name: 'REACH',     description: 'EU Chemicals Compliance',                          image: '/assets/about-us/reach.png' },
-    { name: 'PK Quality Mark', description: 'National quality certification',             image: '/assets/about-us/egyptian-quality-mark.png' },
-    { name: 'EU Compliance',    description: 'European Fertilizing Products Regulations', image: '/assets/about-us/compliance-with-european-fertilizing.png' },
+    { name: 'ISO 9001', description: 'Quality Management Systems', image: '/assets/about-us/9001.png' },
+    { name: 'ISO 14001', description: 'Environmental Management Systems', image: '/assets/about-us/14001.png' },
+    { name: 'ISO 45001', description: 'Occupational Health & Safety', image: '/assets/about-us/45001.png' },
+    { name: 'ISO 17025', description: 'Laboratory Management Systems', image: '/assets/about-us/17025.png' },
+    { name: 'GMP+', description: 'Good Manufacturing Practice & HACCP', image: '/assets/about-us/gmp.png' },
+    { name: 'REACH', description: 'EU Chemicals Compliance', image: '/assets/about-us/reach.png' },
+    { name: 'PK Quality Mark', description: 'National quality certification', image: '/assets/about-us/egyptian-quality-mark.png' },
+    { name: 'EU Compliance', description: 'European Fertilizing Products Regulations', image: '/assets/about-us/compliance-with-european-fertilizing.png' },
   ]
 
   return (
@@ -232,7 +232,7 @@ export default function AboutUs() {
               {locale === 'en' ? 'About Oceanica Crop Science' : 'اوشینیکا کراپ سائنس کے بارے میں'}
             </h1>
             <p className="text-xl text-white/90 max-w-4xl mx-auto mb-8 leading-relaxed">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'Empowering farmers with innovative agricultural solutions for sustainable farming and maximum crop yield.'
                 : 'پائیدار کاشتکاری اور زیادہ سے زیادہ فصل کی پیداوار کے لیے کسانوں کو جدید زرعی حل فراہم کرنا۔'
               }
@@ -260,7 +260,7 @@ export default function AboutUs() {
             </div>
             <div className="space-y-6">
               <p className="text-lg text-slate-600 leading-relaxed">
-                {locale === 'en' 
+                {locale === 'en'
                   ? 'Oceanica Crop Science is a leading agricultural solutions provider, specializing in bio-fertilizers, speciality fertilizers, and crop protection products. We are committed to sustainable farming practices and helping farmers achieve maximum yield.'
                   : 'اوشینیکا کراپ سائنس ایک معروف زرعی حل فراہم کنندہ ہے، جو بائیو کھادوں، خصوصی کھادوں اور فصل کی حفاظت کی مصنوعات میں مہارت رکھتا ہے۔ ہم پائیدار کاشتکاری کے طریقوں کے لیے پرعزم ہیں اور کسانوں کو زیادہ سے زیادہ پیداوار حاصل کرنے میں مدد کرتے ہیں۔'
                 }
@@ -300,7 +300,7 @@ export default function AboutUs() {
               </div>
               <div className="mt-8 rounded-2xl bg-gradient-to-r from-emerald-500 to-emerald-600 p-6 text-center">
                 <p className="text-white font-semibold text-lg">
-                  {locale === 'en' 
+                  {locale === 'en'
                     ? 'Leading Agricultural Solutions Provider • Trusted by Farmers Worldwide'
                     : 'معروف زرعی حل فراہم کنندہ • دنیا بھر کے کسانوں کی طرف سے قابل اعتماد'
                   }
@@ -320,7 +320,7 @@ export default function AboutUs() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
           }}></div>
         </div>
-        
+
         <div className="mx-auto max-w-7xl px-4 relative z-10">
           <div className={`text-center mb-16 transition-all duration-1000 ${visibleElements.has('journey') ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
             <span className="inline-flex items-center px-4 py-2 rounded-full bg-emerald-500/20 text-emerald-300 text-sm font-semibold mb-6">
@@ -331,84 +331,75 @@ export default function AboutUs() {
               {locale === 'en' ? 'From Vision to Leadership' : 'وژن سے لیڈرشپ تک'}
             </h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'A timeline of innovation, growth, and agricultural excellence'
                 : 'جدت، ترقی اور زرعی عمدگی کا وقت کا جدول'
               }
             </p>
           </div>
-          
+
           <div className="relative">
             {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-emerald-500 via-emerald-400 to-emerald-500 rounded-full"></div>
-            
+
             <div className="space-y-32">
               {journey.map((item, index) => (
-                <div 
-                  key={item.year} 
-                  className={`journey-card relative flex items-center justify-center transition-all duration-1000 ${
-                    activeJourneyIndex === index 
-                      ? 'opacity-100 scale-100 translate-y-0' 
-                      : activeJourneyIndex > index 
-                        ? 'opacity-30 scale-95 -translate-y-8' 
+                <div
+                  key={item.year}
+                  className={`journey-card relative flex items-center justify-center transition-all duration-1000 ${activeJourneyIndex === index
+                      ? 'opacity-100 scale-100 translate-y-0'
+                      : activeJourneyIndex > index
+                        ? 'opacity-30 scale-95 -translate-y-8'
                         : 'opacity-30 scale-95 translate-y-8'
-                  }`}
+                    }`}
                   data-card-index={index}
                 >
                   {/* Timeline Dot */}
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-slate-900 shadow-lg z-10 transition-all duration-500 ${
-                    activeJourneyIndex === index 
-                      ? 'bg-gradient-to-br from-emerald-400 to-emerald-600 scale-125' 
+                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-8 h-8 rounded-full border-4 border-slate-900 shadow-lg z-10 transition-all duration-500 ${activeJourneyIndex === index
+                      ? 'bg-gradient-to-br from-emerald-400 to-emerald-600 scale-125'
                       : 'bg-gradient-to-br from-emerald-600/50 to-emerald-800/50 scale-100'
-                  }`}></div>
-                  
+                    }`}></div>
+
                   {/* Content Card */}
                   <div className="w-full max-w-4xl">
-                    <div className={`group bg-white/10 backdrop-blur-md rounded-3xl p-8 border transition-all duration-500 hover:scale-105 hover:shadow-2xl ${
-                      activeJourneyIndex === index 
-                        ? 'bg-white/20 border-white/30 shadow-2xl' 
+                    <div className={`group bg-white/10 backdrop-blur-md rounded-3xl p-8 border transition-all duration-500 hover:scale-105 hover:shadow-2xl ${activeJourneyIndex === index
+                        ? 'bg-white/20 border-white/30 shadow-2xl'
                         : 'bg-white/5 border-white/10 shadow-lg'
-                    }`}>
+                      }`}>
                       <div className="flex items-center gap-6 mb-6">
-                        <div className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-500 ${
-                          activeJourneyIndex === index 
-                            ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 scale-110' 
+                        <div className={`w-20 h-20 rounded-2xl flex items-center justify-center shadow-lg transition-all duration-500 ${activeJourneyIndex === index
+                            ? 'bg-gradient-to-br from-emerald-500 to-emerald-600 scale-110'
                             : 'bg-gradient-to-br from-emerald-600/70 to-emerald-800/70 scale-100'
-                        }`}>
+                          }`}>
                           <span className="text-white font-bold text-lg leading-tight text-center">{item.year}</span>
                         </div>
                         <div>
-                          <h3 className={`text-3xl font-bold mb-2 transition-all duration-500 ${
-                            activeJourneyIndex === index ? 'text-white' : 'text-slate-300'
-                          }`}>{item.title}</h3>
+                          <h3 className={`text-3xl font-bold mb-2 transition-all duration-500 ${activeJourneyIndex === index ? 'text-white' : 'text-slate-300'
+                            }`}>{item.title}</h3>
                         </div>
                       </div>
-                      
-                      <p className={`leading-relaxed mb-8 text-xl transition-all duration-500 ${
-                        activeJourneyIndex === index ? 'text-slate-200' : 'text-slate-400'
-                      }`}>
+
+                      <p className={`leading-relaxed mb-8 text-xl transition-all duration-500 ${activeJourneyIndex === index ? 'text-slate-200' : 'text-slate-400'
+                        }`}>
                         {item.description}
                       </p>
-                      
+
                       <div className="space-y-4">
                         {item.achievements.map((achievement, achievementIndex) => (
-                          <div 
-                            key={achievementIndex} 
-                            className={`flex items-center gap-4 transition-all duration-500 group-hover:translate-x-3 ${
-                              activeJourneyIndex === index 
-                                ? 'opacity-100 translate-x-0' 
+                          <div
+                            key={achievementIndex}
+                            className={`flex items-center gap-4 transition-all duration-500 group-hover:translate-x-3 ${activeJourneyIndex === index
+                                ? 'opacity-100 translate-x-0'
                                 : 'opacity-60 translate-x-2'
-                            }`} 
+                              }`}
                             style={{ transitionDelay: `${achievementIndex * 150}ms` }}
                           >
-                            <div className={`w-3 h-3 rounded-full transition-all duration-500 ${
-                              activeJourneyIndex === index 
-                                ? 'bg-emerald-400 scale-125' 
+                            <div className={`w-3 h-3 rounded-full transition-all duration-500 ${activeJourneyIndex === index
+                                ? 'bg-emerald-400 scale-125'
                                 : 'bg-emerald-500/60 scale-100'
-                            }`}></div>
-                            <span className={`font-medium text-lg transition-all duration-500 ${
-                              activeJourneyIndex === index ? 'text-slate-100' : 'text-slate-300'
-                            }`}>{achievement}</span>
+                              }`}></div>
+                            <span className={`font-medium text-lg transition-all duration-500 ${activeJourneyIndex === index ? 'text-slate-100' : 'text-slate-300'
+                              }`}>{achievement}</span>
                           </div>
                         ))}
                       </div>
@@ -433,40 +424,39 @@ export default function AboutUs() {
               {locale === 'en' ? 'What We Offer' : 'ہم کیا پیش کرتے ہیں'}
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'Innovative Agricultural Solutions for Sustainable Farming'
                 : 'پائیدار کاشتکاری کے لیے جدید زرعی حل'
               }
             </p>
           </div>
-          
+
           <div className="grid gap-8 md:grid-cols-3">
             {solutions.map((solution, index) => (
-              <article 
-                key={solution.title} 
-                className={`group overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 ${
-                  visibleElements.has('solutions') 
-                    ? 'opacity-100 translate-y-0' 
+              <article
+                key={solution.title}
+                className={`group overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-700 transform hover:-translate-y-2 ${visibleElements.has('solutions')
+                    ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-12'
-                }`}
+                  }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 {/* Image Container */}
                 <div className="relative h-64 w-full overflow-hidden">
-                  <Image 
-                    src={solution.image} 
-                    alt={solution.title} 
-                    fill 
-                    className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                  <Image
+                    src={solution.image}
+                    alt={solution.title}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  
+
                   {/* Icon Overlay */}
                   <div className="absolute top-4 right-4 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
                     <solution.icon className="w-6 h-6 text-emerald-600" />
                   </div>
                 </div>
-                
+
                 {/* Content */}
                 <div className="p-8">
                   <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-emerald-600 transition-colors duration-300">
@@ -475,7 +465,7 @@ export default function AboutUs() {
                   <p className="text-slate-600 leading-relaxed mb-6">
                     {solution.description}
                   </p>
-                  
+
                   {/* Learn More Button */}
                   <div className="flex items-center justify-between">
                     <div className="w-12 h-0.5 bg-gradient-to-r from-emerald-500 to-emerald-600"></div>
@@ -498,7 +488,7 @@ export default function AboutUs() {
               {locale === 'en' ? 'Our Team' : 'ہماری ٹیم'}
             </h2>
             <p className="mt-1 text-slate-600">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'Meet the experts behind Oceanica Crop Science'
                 : 'اوشینیکا کراپ سائنس کے پیچھے ماہرین سے ملیں'
               }
@@ -510,7 +500,7 @@ export default function AboutUs() {
                 name: locale === 'en' ? 'Dr. Ahmed Hassan' : 'ڈاکٹر احمد حسن',
                 position: locale === 'en' ? 'Chief Executive Officer' : 'چیف ایگزیکٹو آفیسر',
                 image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face',
-                description: locale === 'en' 
+                description: locale === 'en'
                   ? 'Leading agricultural innovation with 20+ years of experience in crop science and sustainable farming.'
                   : '20+ سال کے تجربے کے ساتھ زرعی جدت کی قیادت کر رہے ہیں۔'
               },
@@ -533,11 +523,11 @@ export default function AboutUs() {
             ].map((member, index) => (
               <div key={index} className="group overflow-hidden rounded-3xl bg-white shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
                 <div className="relative h-72 w-full overflow-hidden">
-                  <Image 
-                    src={member.image} 
-                    alt={member.name} 
-                    fill 
-                    className="object-cover transition-transform duration-300 group-hover:scale-110" 
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>

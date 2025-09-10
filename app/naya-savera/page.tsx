@@ -76,9 +76,9 @@ export default function NayaSavera() {
                 <div className="text-4xl md:text-5xl">🌅</div>
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
+            {/* <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
               Naya Savera
-            </h1>
+            </h1> */}
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
               A new dawn for Pakistani agriculture. Empowering farmers, 
               engaging youth, and building sustainable farming communities for tomorrow.

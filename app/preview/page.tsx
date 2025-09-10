@@ -6,7 +6,7 @@ const data = [
   { year: '2008', title: 'Foundation and Vision', desc: 'Established with a vision to revolutionize agriculture.', points: ['Company established', 'First bio-fertilizer facility'] },
   { year: '2012', title: 'Product Innovation', desc: 'Launched speciality fertilizers and expanded bio range.', points: ['Speciality fertilizers launched', 'Expanded product portfolio'] },
   { year: '2015–2018', title: 'Market Leadership', desc: 'Trusted name serving farmers across Pakistan.', points: ['Market leadership in Pakistan', '50,000+ farmers served'] },
-  { year: '2020–Present', title: 'Sustainable Future', desc: 'Leading sustainable agriculture with eco solutions.', points: ['150+ product varieties', '25+ countries served'] },
+  { year: '2020–Present', title: 'Sustainable Future', desc: 'Leading sustainable agriculture with eco solutions.', points: ['150+ product varieties', '25+ City served'] },
 ]
 
 export default function JourneyTest() {

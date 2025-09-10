@@ -16,14 +16,7 @@ export default function CropProtectionProducts() {
   const [isProductsAutoPlaying, setIsProductsAutoPlaying] = useState(true)
   const [heroImageIndex, setHeroImageIndex] = useState(0)
 
-  // Hero images carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setHeroImageIndex((prev) => (prev + 1) % 3) // 3 images
-    }, 5000)
-
-    return () => clearInterval(interval)
-  }, [])
+  // Removed hero images carousel - using static image
 
   // Auto-play for products carousel
   useEffect(() => {
@@ -44,17 +37,13 @@ export default function CropProtectionProducts() {
     setProductsCarouselIndex((prev) => (prev - 1 + 2) % 2)
   }
 
-  // Hero images
-  const heroImages = [
-    '/assets/products/promotion/oceanica_1.png',
-    '/assets/products/promotion/oceanica_2.png',
-    '/assets/products/promotion/oceanica_3.jpg'
-  ]
+  // Static hero image
+  const heroImage = '/assets/products/promotion/oceanica_4.jpg'
 
   // Get real products data
   const bioFertilizers = getAllProducts('bioFertilizers').slice(0, 4)
   const specialityFertilizers = getAllProducts('specialityFertilizers').slice(0, 4)
-  
+
   // Product data for carousel - 2 slides of 4 products each
   const productSlides = [
     // Slide 1: 4 Bio Fertilizers
@@ -76,28 +65,32 @@ export default function CropProtectionProducts() {
   return (
     <div className="min-h-screen bg-white">
       <Navbar />
-      
+
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-50 to-indigo-50 py-32 m-2 overflow-hidden rounded-2xl">
-        {/* Background Images Carousel */}
-        <div className="absolute inset-0">
-          {heroImages.map((image, index) => (
-            <div
-              key={index}
-              className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === heroImageIndex ? 'opacity-100' : 'opacity-0'
-              }`}
-            >
-              <Image
-                src={image}
-                alt={`Oceanica Product ${index + 1}`}
-                fill
-                className="object-fill"
-                priority={index === 0}
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-50/40 to-indigo-50/40"></div>
-            </div>
-          ))}
+      <section className="relative bg-white h-[100vh] m-2 overflow-hidden rounded-2xl mt-20">
+        {/* Blurred Crop Background */}
+        <div className="absolute inset-0 top-0">
+          <Image
+            src="/assets/landing/hero-farming.jpg"
+            alt="Crop Background"
+            fill
+            className="object-cover blur-sm opacity-30"
+            priority
+            quality={80}
+          />
+        </div>
+
+        {/* Main Static Background Image */}
+        <div className="absolute inset-0 top-0 flex items-center justify-center">
+          <Image
+            src={heroImage}
+            alt="Oceanica Crop Science Background"
+            width={1100}
+            height={800}
+            className="object-cover mx-auto block relative z-10"
+            priority
+            quality={100}
+          />
         </div>
 
         {/* Background Pattern */}
@@ -106,44 +99,31 @@ export default function CropProtectionProducts() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`
           }}></div>
         </div>
-        
+
         <div className="relative z-10 max-w-7xl mx-auto px-4">
           <div className="text-center">
             <div className="mb-6 md:mb-8">
-              <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6 shadow-lg">
+              {/* <div className="inline-flex items-center justify-center w-16 h-16 md:w-20 md:h-20 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full mb-6 shadow-lg">
                 <Shield className="w-8 h-8 md:w-10 md:h-10 text-white" />
-              </div>
+              </div> */}
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 md:mb-6 drop-shadow-sm">
-              {locale === 'en' ? 'Crop Protection Products' : 'فصل کی حفاظت کی مصنوعات'}
+              {/* {locale === 'en' ? 'Crop Protection Products' : 'فصل کی حفاظت کی مصنوعات'} */}
             </h1>
             <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-6 md:mb-8 leading-relaxed">
-              {locale === 'en' 
+              {/* {locale === 'en'
                 ? 'Premium agricultural solutions designed for Pakistani farmers. Protect your crops with our proven product range.'
                 : 'پاکستانی کسانوں کے لیے ڈیزائن کیے گئے پریمیم زرعی حل۔ ہماری ثابت شدہ مصنوعات کی رینج کے ساتھ اپنی فصلوں کی حفاظت کریں۔'
-              }
+              } */}
             </p>
-            <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex shadow-lg">
+            {/* <div className="flex items-center justify-center space-x-2 text-primary-600 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full inline-flex shadow-lg">
               <Shield className="w-5 h-5 md:w-6 md:h-6" />
               <span className="font-semibold text-sm md:text-base">Oceanica Crop Science</span>
-            </div>
+            </div> */}
           </div>
         </div>
 
-        {/* Image Indicators */}
-        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {heroImages.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setHeroImageIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                index === heroImageIndex 
-                  ? 'bg-blue-500 scale-125' 
-                  : 'bg-white/50 hover:bg-white/70'
-              }`}
-            />
-          ))}
-        </div>
+        {/* Removed image indicators - using static image */}
       </section>
 
       {/* Product Categories */}
@@ -157,13 +137,13 @@ export default function CropProtectionProducts() {
               {locale === 'en' ? 'Product Categories' : 'مصنوعات کی اقسام'}
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'Explore our comprehensive range of crop protection solutions designed for every stage of crop development.'
                 : 'فصل کی ترقی کے ہر مرحلے کے لیے ڈیزائن کیے گئے فصل کی حفاظت کے حل کی ہماری جامع رینج کو دریافت کریں۔'
               }
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Link
               href="/products/search/crop-protection/bio-fertilizers"
@@ -175,7 +155,7 @@ export default function CropProtectionProducts() {
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23059669' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
                 }}></div>
               </div>
-              
+
               <div className="relative z-10 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <span className="text-4xl">🌱</span>
@@ -184,7 +164,7 @@ export default function CropProtectionProducts() {
                   {locale === 'en' ? 'Bio Fertilizers' : 'بائیو کھادیں'}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  {locale === 'en' 
+                  {locale === 'en'
                     ? 'Natural and organic fertilizer solutions for sustainable farming'
                     : 'پائیدار کاشتکاری کے لیے قدرتی اور نامیاتی کھاد کے حل'
                   }
@@ -216,7 +196,7 @@ export default function CropProtectionProducts() {
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%232563eb' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
                 }}></div>
               </div>
-              
+
               <div className="relative z-10 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <span className="text-4xl">🌾</span>
@@ -225,7 +205,7 @@ export default function CropProtectionProducts() {
                   {locale === 'en' ? 'Speciality Fertilizers' : 'خصوصی کھادیں'}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  {locale === 'en' 
+                  {locale === 'en'
                     ? 'Specialized nutrient solutions for specific crops and conditions'
                     : 'مخصوص فصلوں اور حالات کے لیے خصوصی غذائی اجزاء کے حل'
                   }
@@ -257,7 +237,7 @@ export default function CropProtectionProducts() {
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238b5cf6' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
                 }}></div>
               </div>
-              
+
               <div className="relative z-10 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <span className="text-4xl">🌿</span>
@@ -266,7 +246,7 @@ export default function CropProtectionProducts() {
                   {locale === 'en' ? 'Herbicides' : 'جڑی بوٹی مار'}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  {locale === 'en' 
+                  {locale === 'en'
                     ? 'Effective weed control solutions for clean crop fields'
                     : 'صاف فصل کے کھیتوں کے لیے موثر جڑی بوٹی کنٹرول کے حل'
                   }
@@ -298,7 +278,7 @@ export default function CropProtectionProducts() {
                   backgroundImage: `url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23eab308' fill-opacity='0.1'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E")`
                 }}></div>
               </div>
-              
+
               <div className="relative z-10 text-center">
                 <div className="w-20 h-20 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
                   <span className="text-4xl">🦗</span>
@@ -307,7 +287,7 @@ export default function CropProtectionProducts() {
                   {locale === 'en' ? 'Insecticides' : 'کیڑے مار'}
                 </h3>
                 <p className="text-gray-700 mb-6 leading-relaxed">
-                  {locale === 'en' 
+                  {locale === 'en'
                     ? 'Targeted pest control solutions for healthy crops'
                     : 'صحت مند فصلوں کے لیے ہدف شدہ کیڑے کنٹرول کے حل'
                   }
@@ -340,15 +320,15 @@ export default function CropProtectionProducts() {
               {locale === 'en' ? 'Featured Products' : 'نمایاں مصنوعات'}
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              {locale === 'en' 
+              {locale === 'en'
                 ? 'Our most popular and effective crop protection solutions trusted by farmers across Pakistan.'
                 : 'پاکستان بھر کے کسانوں کی جانب سے قابل اعتماد ہماری سب سے مقبول اور موثر فصل کی حفاظت کے حل۔'
               }
             </p>
           </div>
-          
+
           {/* Products Carousel */}
-          <div 
+          <div
             className="relative overflow-hidden bg-gradient-to-r from-gray-50 to-gray-100 rounded-3xl p-8"
             onMouseEnter={() => setIsProductsAutoPlaying(false)}
             onMouseLeave={() => setIsProductsAutoPlaying(true)}
@@ -391,11 +371,10 @@ export default function CropProtectionProducts() {
                 <button
                   key={index}
                   onClick={() => setProductsCarouselIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === productsCarouselIndex 
-                      ? 'bg-emerald-500 scale-125' 
-                      : 'bg-gray-300 hover:bg-gray-400'
-                  }`}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${index === productsCarouselIndex
+                    ? 'bg-emerald-500 scale-125'
+                    : 'bg-gray-300 hover:bg-gray-400'
+                    }`}
                 />
               ))}
             </div>
@@ -411,7 +390,7 @@ export default function CropProtectionProducts() {
               {locale === 'en' ? 'Why Choose Oceanica Products?' : 'اوشینیکا کی مصنوعات کیوں منتخب کریں؟'}
             </h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -421,13 +400,13 @@ export default function CropProtectionProducts() {
                 {locale === 'en' ? 'Proven Results' : 'ثابت شدہ نتائج'}
               </h3>
               <p className="text-gray-600">
-                {locale === 'en' 
+                {locale === 'en'
                   ? 'Field-tested products that consistently deliver results'
                   : 'میدان میں آزمودہ مصنوعات جو مسلسل نتائج فراہم کرتی ہیں'
                 }
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="w-8 h-8 text-green-600" />
@@ -436,13 +415,13 @@ export default function CropProtectionProducts() {
                 {locale === 'en' ? 'Expert Support' : 'ماہرین کی مدد'}
               </h3>
               <p className="text-gray-600">
-                {locale === 'en' 
+                {locale === 'en'
                   ? 'Technical support and application guidance'
                   : 'تکنیکی مدد اور استعمال کی رہنمائی'
                 }
               </p>
             </div>
-            
+
             <div className="text-center p-6">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Users className="w-8 h-8 text-blue-600" />
@@ -451,7 +430,7 @@ export default function CropProtectionProducts() {
                 {locale === 'en' ? 'Local Expertise' : 'مقامی مہارت'}
               </h3>
               <p className="text-gray-600">
-                {locale === 'en' 
+                {locale === 'en'
                   ? 'Understanding of Pakistan\'s farming conditions'
                   : 'پاکستان کی کاشتکاری کی حالتوں کی سمجھ'
                 }
@@ -468,7 +447,7 @@ export default function CropProtectionProducts() {
             {locale === 'en' ? 'Need Product Recommendations?' : 'مصنوعات کی سفارشات چاہیے؟'}
           </h2>
           <p className="text-xl text-primary-100 mb-8 max-w-3xl mx-auto">
-            {locale === 'en' 
+            {locale === 'en'
               ? 'Our product specialists are here to help you choose the right solutions for your specific crop and growing conditions.'
               : 'ہمارے مصنوعات کے ماہرین آپ کی مخصوص فصل اور کاشتکاری کی حالتوں کے لیے صحیح حل منتخب کرنے میں مدد کے لیے یہاں موجود ہیں۔'
             }

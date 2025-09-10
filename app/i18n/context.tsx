@@ -21,7 +21,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Mark as client-side
     setIsClient(true)
-    
+
     // Load saved language preference from localStorage
     const savedLocale = localStorage.getItem('locale') as Locale
     if (savedLocale && (savedLocale === 'en' || savedLocale === 'ur')) {
@@ -32,10 +32,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     // Only run on client-side
     if (!isClient) return
-    
+
     // Save language preference to localStorage
     localStorage.setItem('locale', locale)
-    
+
     // Update document direction for RTL support
     document.documentElement.dir = locale === 'ur' ? 'rtl' : 'ltr'
     document.documentElement.lang = locale
@@ -44,15 +44,15 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
     const translations = {
       nav: {
         crops: locale === 'en' ? "Crops" : "فصلیں",
-        products: locale === 'en' ? "Products" : "مصنوعات", 
+        products: locale === 'en' ? "Products" : "مصنوعات",
         sustainability: locale === 'en' ? "Sustainability" : "پائیداری",
         aboutUs: locale === 'en' ? "About Us" : "ہمارے بارے میں",
         contactUs: locale === 'en' ? "Contact Us" : "رابطہ",
-        nayaSavera: locale === 'en' ? "Naya Savera" : "نیا سویرا",
+        nayaSavera: locale === 'en' ? "New Product" : "نیا سویرا",
         careers: locale === 'en' ? "Careers" : "کیریئر"
       },
       footer: {
-        description: locale === 'en' 
+        description: locale === 'en'
           ? "Empowering farmers with innovative agricultural solutions for sustainable farming and maximum crop yield."
           : "پائیدار کاشتکاری اور زیادہ سے زیادہ فصل کی پیداوار کے لیے کسانوں کو جدید زرعی حل فراہم کرنا۔",
         cropSolutions: locale === 'en' ? "Crop Solutions" : "فصل کے حل",
@@ -101,7 +101,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
   const t = (key: string): string => {
     const keys = key.split('.')
     let value: any = translations
-    
+
     for (const k of keys) {
       if (value && typeof value === 'object' && k in value) {
         value = value[k]
@@ -109,7 +109,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
         return key // Return key if translation not found
       }
     }
-    
+
     return typeof value === 'string' ? value : key
   }
 
